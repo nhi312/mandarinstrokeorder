@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>筆順練習本 · Stroke Order &amp; Vocabulary Workbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF0E8; --card:#F8F9F4; --ink:#161E1A; --ink-soft:#525E57;
+  --rule:#C6D0C3; --rule-soft:#DDE3D9; --vermilion:#B03A2C; --jade:#286A64;
+  --shadow:0 1px 0 rgba(22,30,26,.06), 0 8px 24px -18px rgba(22,30,26,.5);
+  --hz:'Noto Serif TC',"Songti TC","PMingLiU",serif;
+  --tx:'Spectral',Georgia,"Times New Roman",serif; --tap:44px;
+}
+body.book-cn{--hz:'Noto Serif SC',"Songti SC","SimSun",serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--tx);font-size:17px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+.label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* ---------- book chooser ---------- */
+.choose{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 18px;
+  background:repeating-linear-gradient(to bottom,transparent 0 43px,var(--rule-soft) 43px 44px),var(--paper)}
+.choose-in{max-width:980px;width:100%}
+.choose h1{font-family:var(--tx);font-weight:600;font-size:clamp(24px,4.6vw,38px);margin:8px 0 0;line-height:1.18}
+.choose h1 .cn{font-family:var(--hz);display:block;font-size:.6em;color:var(--ink-soft);margin-top:6px}
+.choose>.choose-in>p{color:var(--ink-soft);max-width:66ch;margin:14px 0 0}
+.choose-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin:26px 0 0}
+.pick{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;cursor:pointer;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:18px 16px 16px;font-family:var(--tx);
+  color:var(--ink);box-shadow:var(--shadow)}
+.pick:hover{border-color:var(--vermilion)}
+.pick-glyphs{display:flex;gap:6px;margin-bottom:8px}
+.pick-sq{width:78px;height:78px;position:relative;background:#fff;border:1px solid var(--rule);display:grid;place-items:center;
+  background-image:
+    linear-gradient(to right,transparent calc(50% - .5px),#E7CFC9 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+    linear-gradient(to bottom,transparent calc(50% - .5px),#E7CFC9 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px));}
+.pick-sq b{font-family:'Noto Serif TC','Noto Serif SC',serif;font-size:48px;font-weight:700;line-height:1;color:var(--ink)}
+.pick-sq i{position:absolute;bottom:2px;right:4px;font-style:normal;font-size:9px;letter-spacing:.08em;color:var(--jade);text-transform:uppercase}
+.pick .t1{font-family:var(--hz);font-size:20px;font-weight:600}
+.pick .t2{font-size:15px}
+.pick .t3{font-size:13.5px;color:var(--ink-soft);margin-top:4px;line-height:1.5}
+.pick .t3 b{color:var(--ink);font-weight:600}
+.pick .go{margin-top:12px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--vermilion)}
+.choose .fine{font-size:14px;color:var(--ink-soft);margin-top:24px;border-top:1px solid var(--rule);padding-top:14px;max-width:72ch}
+.choose .fine b{color:var(--ink)}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:1px solid var(--rule);background:repeating-linear-gradient(to bottom,transparent 0 43px,var(--rule-soft) 43px 44px),var(--card)}
+.mast-in{padding:22px 18px;max-width:1180px;margin:0 auto}
+.mast h1{font-family:var(--hz);font-weight:700;margin:6px 0 2px;font-size:clamp(26px,5.5vw,44px);line-height:1.08;letter-spacing:.02em}
+.mast h1 .en{font-family:var(--tx);font-weight:600;font-size:.4em;display:block;letter-spacing:.01em;margin-top:8px;color:var(--ink-soft)}
+.mast p{margin:12px 0 0;max-width:64ch;color:var(--ink-soft)}
+.mast p b{color:var(--ink);font-weight:600}
+.mast .small{font-size:14px}
+
+details.fold{margin:16px 0 0;border-top:1px solid var(--rule);padding-top:10px}
+details.fold summary{cursor:pointer;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--vermilion);min-height:var(--tap);display:flex;align-items:center;gap:8px}
+details.fold summary::marker{content:""}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary::before{content:"▸";transition:transform .2s}
+details[open].fold summary::before{transform:rotate(90deg)}
+.rule-grid{display:grid;gap:10px 22px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));padding:6px 0 14px}
+.rule-item{display:flex;gap:12px;align-items:baseline}
+.rule-item .n{font-family:var(--hz);color:var(--vermilion);font-size:14px;min-width:1.4em}
+.rule-item .t i{display:block;font-style:normal;color:var(--ink-soft);font-size:14px}
+
+.chart-note{font-size:14px;color:var(--ink-soft);margin:2px 0 10px}
+.chart-row{margin:0 0 14px}
+.chart-row h4{margin:0 0 7px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+.sounds{display:flex;flex-wrap:wrap;gap:6px}
+.snd{min-width:56px;min-height:56px;padding:5px 7px;border:1px solid var(--rule);background:#fff;border-radius:2px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:var(--tx);color:var(--ink)}
+.snd:hover{border-color:var(--vermilion)}
+.snd .sym{font-family:var(--hz);font-size:19px;line-height:1.1}
+.snd .rom{font-size:11px;color:var(--jade);font-family:var(--hz)}
+.snd .egg{font-family:var(--hz);font-size:11px;color:var(--ink-soft)}
+.snd.playing{border-color:var(--vermilion);background:#FCF3F1}
+
+/* ---------- sticky controls ---------- */
+.sticky{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
+.rail{display:flex;gap:6px;overflow-x:auto;padding:9px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;min-width:var(--tap);min-height:36px;padding:0 12px;border:1px solid var(--rule);background:var(--card);color:var(--ink-soft);border-radius:2px;font-family:var(--tx);font-size:15px;display:flex;align-items:center;gap:7px;cursor:pointer}
+.chip:hover{border-color:var(--jade);color:var(--ink)}
+.chip .done{font-size:11px;color:var(--jade);font-variant-numeric:tabular-nums}
+.chip[aria-current="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.chip[aria-current="true"] .done{color:#B9CDBF}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:0 18px 10px;max-width:1180px;margin:0 auto}
+.search{flex:1 1 170px;min-height:38px;padding:6px 12px;border:1px solid var(--rule);background:var(--card);font-family:var(--tx);font-size:16px;color:var(--ink);border-radius:2px}
+.search::placeholder{color:#8C978F}
+.toggle{min-height:38px;padding:0 12px;border:1px solid var(--rule);background:var(--card);border-radius:2px;font-family:var(--tx);font-size:14px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;gap:7px}
+.toggle .box{width:13px;height:13px;border:1px solid var(--rule);display:inline-block;position:relative;background:#fff}
+.toggle[aria-pressed="true"]{color:var(--ink);border-color:var(--jade)}
+.toggle[aria-pressed="true"] .box{background:var(--jade);border-color:var(--jade)}
+.toggle[aria-pressed="true"] .box::after{content:"";position:absolute;inset:2px 2px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.switch-book{min-height:38px;padding:0 12px;border:1px solid var(--vermilion);background:#fff;color:var(--vermilion);border-radius:2px;font-family:var(--tx);font-size:14px;cursor:pointer}
+.count{margin-left:auto;font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.novoice{background:#FBF3E8;border-top:1px solid #E3CFA8;color:#7A5B14;font-size:13.5px;padding:8px 18px}
+
+/* ---------- lessons ---------- */
+.unit{padding:34px 0 6px;scroll-margin-top:112px}
+.unit-head{border-top:2px solid var(--ink);padding-top:10px;margin-bottom:4px}
+.unit-num{font-family:var(--hz);font-size:13px;letter-spacing:.2em;color:var(--vermilion)}
+.unit-head h2{font-family:var(--hz);font-size:clamp(21px,3.8vw,29px);margin:4px 0 2px;font-weight:600}
+.unit-head .tp{color:var(--jade);font-size:15px;font-style:italic}
+.unit-head .gl{color:var(--ink-soft);font-size:15px;margin-top:2px}
+.part{margin:22px 0 0}
+.part-bar{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.part-bar .label{white-space:nowrap;font-family:var(--hz);text-transform:none;letter-spacing:.06em;font-size:13px;color:var(--ink)}
+.part-bar .line{height:1px;background:var(--rule);flex:1}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+
+/* ---------- word card ---------- */
+.card{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:12px 12px 11px;box-shadow:var(--shadow)}
+.card.on{border-color:var(--jade);background:#F3F7F2}
+.chars{display:flex;flex-wrap:wrap;gap:6px;padding-right:38px}
+.glyph{display:flex;gap:2px;align-items:stretch}
+.sq{width:50px;height:50px;flex:0 0 auto;position:relative;background:#fff;border:1px solid var(--rule);cursor:pointer;padding:0;display:grid;place-items:center;
+  background-image:
+    linear-gradient(to right,transparent calc(50% - .5px),#E7CFC9 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+    linear-gradient(to bottom,transparent calc(50% - .5px),#E7CFC9 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px));}
+.sq span{font-family:var(--hz);font-size:32px;line-height:1;color:var(--ink)}
+.sq:hover{border-color:var(--vermilion)}
+.zy{writing-mode:vertical-rl;text-orientation:upright;font-family:var(--hz);font-size:11px;line-height:1.05;color:var(--jade);font-style:normal;letter-spacing:.02em;padding-top:2px;white-space:nowrap}
+.spk{width:34px;height:34px;flex:0 0 auto;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--jade);cursor:pointer;display:inline-grid;place-items:center;padding:0}
+.spk:hover{border-color:var(--vermilion);color:var(--vermilion)}
+.spk.playing{border-color:var(--vermilion);color:var(--vermilion);background:#FCF3F1}
+.spk.sm{width:28px;height:28px}
+.py{display:flex;align-items:center;gap:8px;margin-top:9px}
+.py .pyt{font-family:var(--hz);color:var(--jade);font-size:16px}
+.simp-note{font-size:12.5px;color:var(--ink-soft);margin-top:1px}
+.simp-note b{font-family:var(--hz);color:var(--ink);font-weight:400}
+.gl-en{margin-top:4px}
+.ex{margin-top:9px;padding-top:8px;border-top:1px dotted var(--rule)}
+.ex .exh{font-family:var(--hz);font-size:19px;line-height:1.45;display:flex;align-items:flex-start;gap:8px}
+.ex .exh span{flex:1}
+.ex .exz{font-family:var(--hz);font-size:12.5px;color:var(--jade);line-height:1.5}
+.ex .exp{font-family:var(--hz);color:var(--jade);font-size:14px;font-style:italic}
+.ex .exe{font-size:14px;color:var(--ink-soft);line-height:1.4}
+.seal{position:absolute;top:9px;right:9px;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--rule);background:transparent;color:#B8C2B6;cursor:pointer;font-family:var(--hz);font-size:15px;display:grid;place-items:center;padding:0}
+.card.on .seal{border-color:var(--vermilion);color:var(--vermilion);background:rgba(176,58,44,.07)}
+
+body.hide-zy .zy,body.hide-zy .exz{display:none}
+body.hide-py .py .pyt,body.hide-py .exp{visibility:hidden}
+body.hide-en .gl-en,body.hide-en .exe{visibility:hidden}
+body.hide-ex .ex{display:none}
+
+/* ---------- practice sheet ---------- */
+.sheet{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(22,30,26,.42);padding:16px}
+.panel{background:var(--card);border:1px solid var(--ink);border-radius:2px;width:min(540px,100%);max-height:min(92vh,820px);overflow:auto;padding:16px 18px 20px;box-shadow:0 30px 60px -30px rgba(22,30,26,.6)}
+.panel-top{display:flex;gap:12px;align-items:flex-start}
+.panel-top h3{font-family:var(--hz);font-size:26px;margin:0;font-weight:600;display:flex;align-items:center;gap:10px}
+.panel-top .sub{color:var(--jade);font-family:var(--hz);font-size:15px}
+.panel-top .sub2{color:var(--ink-soft);font-size:14px}
+.x{margin-left:auto;min-width:var(--tap);min-height:var(--tap);border:1px solid var(--rule);background:#fff;font-size:19px;cursor:pointer;border-radius:2px;color:var(--ink-soft)}
+.tabs{display:flex;gap:6px;margin:14px 0 10px;flex-wrap:wrap}
+.tab{min-width:var(--tap);min-height:var(--tap);border:1px solid var(--rule);background:#fff;cursor:pointer;font-family:var(--hz);font-size:22px;color:var(--ink);border-radius:2px}
+.tab[aria-selected="true"]{border-color:var(--vermilion);box-shadow:inset 0 0 0 1px var(--vermilion)}
+.stage-row{display:flex;gap:10px;justify-content:center;align-items:stretch}
+.stage{width:min(300px,72vw);aspect-ratio:1/1;position:relative;background:#fff;border:1px solid var(--rule);touch-action:none;
+  background-image:
+    linear-gradient(to right,transparent calc(50% - .5px),#E7CFC9 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+    linear-gradient(to bottom,transparent calc(50% - .5px),#E7CFC9 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+    linear-gradient(to bottom right,transparent calc(50% - .4px),#F0DDD9 calc(50% - .4px) calc(50% + .4px),transparent calc(50% + .4px)),
+    linear-gradient(to bottom left,transparent calc(50% - .4px),#F0DDD9 calc(50% - .4px) calc(50% + .4px),transparent calc(50% + .4px));}
+.stage>div{position:absolute;inset:0}
+.stage .ghost{display:grid;place-items:center;font-family:var(--hz);font-size:min(200px,48vw);color:#E4E9E1;pointer-events:none}
+.stage-zy{writing-mode:vertical-rl;text-orientation:upright;font-family:var(--hz);font-size:20px;line-height:1.1;color:var(--vermilion);align-self:center;white-space:nowrap}
+body.hide-zy .stage-zy{visibility:hidden}
+.meta{text-align:center;margin:10px 0 0;font-size:14px;color:var(--ink-soft)}
+.meta b{color:var(--vermilion);font-weight:600}
+.acts{display:flex;gap:8px;margin:14px 0 0;flex-wrap:wrap}
+.btn{flex:1 1 auto;min-height:var(--tap);padding:0 14px;border:1px solid var(--ink);background:var(--ink);color:var(--card);font-family:var(--tx);font-size:15px;cursor:pointer;border-radius:2px}
+.btn.ghost{background:#fff;color:var(--ink)}
+.btn.warn{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+.btn.jade{background:var(--jade);border-color:var(--jade);color:#fff}
+.panel .note{margin:14px 0 0;padding-top:12px;border-top:1px dotted var(--rule);font-size:15px}
+.panel .note .exh{font-family:var(--hz);font-size:20px;display:flex;gap:8px;align-items:flex-start}
+.panel .note .exh span{flex:1}
+.panel .note .exz{font-family:var(--hz);font-size:13px;color:var(--jade)}
+.panel .note .exp{font-family:var(--hz);color:var(--jade);font-style:italic;font-size:14px}
+.panel .note .exe{color:var(--ink-soft);font-size:14px}
+.offline{background:#FBF3E8;border:1px solid #E3CFA8;color:#7A5B14;padding:9px 11px;font-size:14px;margin:12px 0 0}
+
+footer{margin:46px 0 0;border-top:1px solid var(--rule);background:var(--card)}
+footer .wrap{padding:20px 18px 40px;color:var(--ink-soft);font-size:14px}
+.empty{padding:40px 0;color:var(--ink-soft)}
+
+@media (max-width:560px){
+  .sheet{padding:0;align-items:flex-end}
+  .panel{max-height:94vh;border-radius:2px 2px 0 0;width:100%}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  .sticky,.sheet,.seal,.spk,.mast p,details.fold,.choose{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .card{break-inside:avoid;box-shadow:none}
+  .grid{grid-template-columns:1fr 1fr}
+  .unit{padding-top:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. which book? ============ -->
+<section class="choose" id="choose">
+  <div class="choose-in">
+    <span class="label">Start here · 開始 · 开始</span>
+    <h1>Which textbook are you following?<span class="cn">你用的是哪一本課本？</span></h1>
+    <p>These share the same English name but are different books with different characters and content. Pick the one on your desk — the big glyphs below are how each book actually prints its characters: <b>bold traditional</b> next to <b>bold simplified</b>. You can switch at any time from the toolbar.</p>
+
+    <div class="choose-grid">
+      <button class="pick" data-book="tw1">
+        <span class="pick-glyphs">
+          <span class="pick-sq"><b style="font-family:'Noto Serif TC',serif">學</b><i>繁體</i></span>
+          <span class="pick-sq"><b style="font-family:'Noto Serif SC',serif">学</b><i>简体</i></span>
+        </span>
+        <span class="t1">當代中文課程 第一冊</span>
+        <span class="t2">A Course in Contemporary Chinese, Book 1</span>
+        <span class="t3">臺灣師大國語教學中心 (NTNU) · Taiwan · <b>Traditional + Simplified</b> shown together · 注音 + pinyin · real 生詞 index, 15 課</span>
+        <span class="go">Open Book 1 →</span>
+      </button>
+      <button class="pick" data-book="tw2">
+        <span class="pick-glyphs">
+          <span class="pick-sq"><b style="font-family:'Noto Serif TC',serif">課</b><i>繁體</i></span>
+          <span class="pick-sq"><b style="font-family:'Noto Serif SC',serif">课</b><i>简体</i></span>
+        </span>
+        <span class="t1">當代中文課程 第二冊</span>
+        <span class="t2">A Course in Contemporary Chinese, Book 2</span>
+        <span class="t3">臺灣師大國語教學中心 (NTNU) · Taiwan · <b>Traditional + Simplified</b> shown together · 注音 + pinyin · real 生詞 index, 15 課</span>
+        <span class="go">Open Book 2 →</span>
+      </button>
+      <button class="pick" data-book="cn">
+        <span class="pick-glyphs">
+          <span class="pick-sq"><b style="font-family:'Noto Serif SC',serif">课</b><i>简体</i></span>
+        </span>
+        <span class="t1">当代中文 第一册</span>
+        <span class="t2">Contemporary Chinese, Book 1 — Wu Zhongwei</span>
+        <span class="t3">Sinolingua · mainland · <b>Simplified only</b> · pinyin · reconstructed word list, 15 units</span>
+        <span class="go">Open this book →</span>
+      </button>
+    </div>
+
+    <p class="fine">The two NTNU books' vocabulary was extracted directly from the textbook's own 生詞索引 (vocabulary index) pages and checked against a Chinese-English dictionary, so the characters, readings, and lesson placement are the real thing — not a reconstruction. Coverage is <b>partial</b>: about 400–430 of each book's roughly 500–600 words came through clean; the rest were dropped rather than guessed at, so nothing on the page is invented. English glosses come from that same dictionary and occasionally show a less common sense of a word; flag anything that looks off. The Wu Zhongwei book is a reconstruction from memory, as before.</p>
+  </div>
+</section>
+
+<!-- ============ 2. the workbook ============ -->
+<div id="app" hidden>
+<header class="mast">
+  <div class="mast-in" id="mastIn"></div>
+</header>
+
+<nav class="sticky" aria-label="Lessons and display options">
+  <div class="rail" id="rail"></div>
+  <div class="tools">
+    <input id="q" class="search" type="search" placeholder="Search characters, sound, English…" aria-label="Search vocabulary">
+    <button class="toggle" id="t-zy" aria-pressed="true"><span class="box"></span>注音</button>
+    <button class="toggle" id="t-py" aria-pressed="true"><span class="box"></span>Pinyin</button>
+    <button class="toggle" id="t-en" aria-pressed="true"><span class="box"></span>English</button>
+    <button class="toggle" id="t-ex" aria-pressed="true"><span class="box"></span>Examples</button>
+    <button class="toggle" id="t-slow" aria-pressed="false"><span class="box"></span>Slow audio</button>
+    <button class="switch-book" id="switch">Change book</button>
+    <span class="count" id="total"></span>
+  </div>
+  <div class="novoice" id="novoice" hidden></div>
+</nav>
+
+<main class="wrap" id="main"></main>
+<p class="wrap empty" id="empty" hidden>No words match that search. Clear the box to see every lesson again.</p>
+
+<footer><div class="wrap" id="foot"></div></footer>
+</div>
+
+<!-- ============ 3. practice square ============ -->
+<div class="sheet" id="sheet" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="panel-top">
+      <div>
+        <h3 id="sheetTitle">字</h3>
+        <div class="sub" id="sheetZy"></div>
+        <div class="sub" id="sheetPy" style="font-style:italic"></div>
+        <div class="sub2" id="sheetGl"></div>
+      </div>
+      <button class="x" id="close" aria-label="Close practice square">✕</button>
+    </div>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Characters in this word"></div>
+    <div class="stage-row">
+      <div class="stage" id="stage"><div class="ghost" id="ghost"></div><div id="writer"></div></div>
+      <div class="stage-zy" id="stageZy"></div>
+    </div>
+    <p class="meta" id="meta"></p>
+    <div class="acts">
+      <button class="btn jade" id="hear">Hear it</button>
+      <button class="btn" id="play">Watch strokes</button>
+      <button class="btn warn" id="quiz">Trace it</button>
+      <button class="btn ghost" id="clear">Clear</button>
+    </div>
+    <div class="offline" id="offline" hidden>Stroke data for this character could not be loaded. Connect to the internet once and it will appear; meanwhile use the eight rules and the faint model character.</div>
+    <div class="note" id="note"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hanzi-writer/3.5.0/hanzi-writer.min.js" onerror="window.__hwFail=1"></script>
+<script>
+const BOOKS=[
+{id:"tw1",units:
+[
+{n:1,t:"歡迎你來臺灣！",tp:"Huānyíng nǐ lái Táiwān!",te:"Welcome to Taiwan!",parts:[
+{n:"生詞 I",w:[
+{h:"我",hs:"我",p:"wǒ",z:"ㄨㄛˇ",e:"I"},
+{h:"租",hs:"租",p:"zū",z:"ㄗㄨ",e:"to hire"},
+{h:"謝謝",hs:"谢谢",p:"xiè xie",z:"ㄒㄧㄝˋ ㄒㄧㄝ˙",e:"to thank"},
+{h:"廚房",hs:"厨房",p:"chú fáng",z:"ㄔㄨˊ ㄈㄤˊ",e:"kitchen"},
+{h:"你",hs:"你",p:"nǐ",z:"ㄋㄧˇ",e:"you (informal, as opposed to courteous 您[nin2])"},
+{h:"左邊",hs:"左边",p:"zuǒ bian",z:"ㄗㄨㄛˇ ㄅㄧㄢ˙",e:"left"},
+{h:"小姐",hs:"小姐",p:"xiǎo jie",z:"ㄒㄧㄠˇ ㄐㄧㄝ˙",e:"young lady"},
+{h:"浴室",hs:"浴室",p:"yù shì",z:"ㄩˋ ㄕˋ",e:"bathroom (room used for bathing)"},
+{h:"接",hs:"接",p:"jiē",z:"ㄐㄧㄝ",e:"to receive"},
+{h:"我們",hs:"我们",p:"wǒ men",z:"ㄨㄛˇ ㄇㄣ˙",e:"we"},
+{h:"到",hs:"到",p:"dào",z:"ㄉㄠˋ",e:"to (a place)"},
+{h:"六",hs:"六",p:"liù",z:"ㄌㄧㄡˋ",e:"six"},
+{h:"先生",hs:"先生",p:"xiān sheng",z:"ㄒㄧㄢ ㄕㄥ˙",e:"teacher"},
+{h:"姓",hs:"姓",p:"xìng",z:"ㄒㄧㄥˋ",e:"family name"},
+{h:"回去",hs:"回去",p:"huí qu",z:"ㄏㄨㄟˊ ㄑㄩ˙",e:"to return"},
+{h:"你們",hs:"你们",p:"nǐ men",z:"ㄋㄧˇ ㄇㄣ˙",e:"you (plural)"},
+{h:"臺灣",hs:"台湾",p:"Tái wān",z:"ㄊㄞˊ ㄨㄢ",e:"Taiwan"},
+{h:"歡迎",hs:"欢迎",p:"huān yíng",z:"ㄏㄨㄢ ㄧㄥˊ",e:"to welcome"},
+{h:"請問",hs:"请问",p:"qǐng wèn",z:"ㄑㄧㄥˇ ㄨㄣˋ",e:"Excuse me, may I ask...?"},
+{h:"是的",hs:"是的",p:"shì de",z:"ㄕˋ ㄉㄜ˙",e:"yes, that's right"},
+{h:"不客氣",hs:"不客气",p:"bù kè qi",z:"ㄅㄨˋ ㄎㄜˋ ㄑㄧ˙",e:"you're welcome"},
+{h:"你好",hs:"你好",p:"nǐ hǎo",z:"ㄋㄧˇ ㄏㄠˇ",e:"hello"},
+]},
+{n:"生詞 II",w:[
+{h:"請",hs:"请",p:"qǐng",z:"ㄑㄧㄥˇ",e:"to ask"},
+{h:"剛",hs:"刚",p:"gāng",z:"ㄍㄤ",e:"hard"},
+{h:"很",hs:"很",p:"hěn",z:"ㄏㄣˇ",e:"(adverb of degree)"},
+{h:"好喝",hs:"好喝",p:"hǎo hē",z:"ㄏㄠˇ ㄏㄜ",e:"tasty (drinks)"},
+{h:"什麼",hs:"什么",p:"shén me",z:"ㄕㄣˊ ㄇㄜ˙",e:"what?"},
+{h:"人",hs:"人",p:"rén",z:"ㄖㄣˊ",e:"man"},
+{h:"喜歡",hs:"喜欢",p:"xǐ huan",z:"ㄒㄧˇ ㄏㄨㄢ˙",e:"to like"},
+{h:"呢",hs:"呢",p:"ne",z:"ㄋㄜ˙",e:"particle indicating that a previously asked question is to be applied to the preceding word ('What about ...?', 'And ...?')"},
+{h:"他",hs:"他",p:"tā",z:"ㄊㄚ",e:"he or him"},
+{h:"要",hs:"要",p:"yào",z:"ㄧㄠˋ",e:"important"},
+{h:"咖啡",hs:"咖啡",p:"kā fēi",z:"ㄎㄚ ㄈㄟ",e:"coffee (loanword)"},
+{h:"烏龍茶",hs:"乌龙茶",p:"wū lóng chá",z:"ㄨ ㄌㄨㄥˊ ㄔㄚˊ",e:"oolong tea"},
+{h:"日本",hs:"日本",p:"Rì běn",z:"ㄖˋ ㄅㄣˇ",e:"Japan"},
+{h:"美國",hs:"美国",p:"Měi guó",z:"ㄇㄟˇ ㄍㄨㄛˊ",e:"United States"},
+{h:"有線電視",hs:"有线电视",p:"yǒu xiàn diàn shì",z:"ㄧㄡˇ ㄒㄧㄢˋ ㄉㄧㄢˋ ㄕˋ",e:"cable television"},
+{h:"對不起",hs:"对不起",p:"duì bu qǐ",z:"ㄉㄨㄟˋ ㄅㄨ˙ ㄑㄧˇ",e:"unworthy"},
+]},
+]},
+{n:2,t:"我的家人",tp:"Wǒ de jiārén",te:"My Family",parts:[
+{n:"生詞 I",w:[
+{h:"成績",hs:"成绩",p:"chéng jì",z:"ㄔㄥˊ ㄐㄧˋ",e:"achievement"},
+{h:"的",hs:"的",p:"de",z:"ㄉㄜ˙",e:"of"},
+{h:"家人",hs:"家人",p:"jiā rén",z:"ㄐㄧㄚ ㄖㄣˊ",e:"household"},
+{h:"家",hs:"家",p:"jiā",z:"ㄐㄧㄚ",e:"home"},
+{h:"漂亮",hs:"漂亮",p:"piào liang",z:"ㄆㄧㄠˋ ㄌㄧㄤ˙",e:"pretty"},
+{h:"房子",hs:"房子",p:"fáng zi",z:"ㄈㄤˊ ㄗ˙",e:"house"},
+{h:"從",hs:"从",p:"cóng",z:"ㄘㄨㄥˊ",e:"from"},
+{h:"好",hs:"好",p:"hǎo",z:"ㄏㄠˇ",e:"good"},
+{h:"有",hs:"有",p:"yǒu",z:"ㄧㄡˇ",e:"to have"},
+{h:"多",hs:"多",p:"duō",z:"ㄉㄨㄛ",e:"many"},
+{h:"照片",hs:"照片",p:"zhào piàn",z:"ㄓㄠˋ ㄆㄧㄢˋ",e:"photograph"},
+{h:"都",hs:"都",p:"dōu",z:"ㄉㄡ",e:"all"},
+{h:"照相",hs:"照相",p:"zhào xiàng",z:"ㄓㄠˋ ㄒㄧㄤˋ",e:"to take a photograph"},
+{h:"張",hs:"张",p:"zhāng",z:"ㄓㄤ",e:"to open up"},
+{h:"好看",hs:"好看",p:"hǎo kàn",z:"ㄏㄠˇ ㄎㄢˋ",e:"good-looking"},
+{h:"誰",hs:"谁",p:"shéi",z:"ㄕㄟˊ",e:"who"},
+{h:"姐姐",hs:"姐姐",p:"jiě jie",z:"ㄐㄧㄝˇ ㄐㄧㄝ˙",e:"older sister"},
+{h:"妹妹",hs:"妹妹",p:"mèi mei",z:"ㄇㄟˋ ㄇㄟ˙",e:"younger sister"},
+{h:"媽媽",hs:"妈妈",p:"mā ma",z:"ㄇㄚ ㄇㄚ˙",e:"mama"},
+]},
+{n:"生詞 II",w:[
+{h:"伯母",hs:"伯母",p:"bó mǔ",z:"ㄅㄛˊ ㄇㄨˇ",e:"wife of father's elder brother"},
+{h:"您",hs:"您",p:"nín",z:"ㄋㄧㄣˊ",e:"you (courteous, as opposed to informal 你[ni3])"},
+{h:"做",hs:"做",p:"zuò",z:"ㄗㄨㄛˋ",e:"to do"},
+{h:"名字",hs:"名字",p:"míng zi",z:"ㄇㄧㄥˊ ㄗ˙",e:"name (of a person or thing)"},
+{h:"以後",hs:"以后",p:"yǐ hòu",z:"ㄧˇ ㄏㄡˋ",e:"after"},
+{h:"看書",hs:"看书",p:"kàn shū",z:"ㄎㄢˋ ㄕㄨ",e:"to read"},
+{h:"幾",hs:"几",p:"jǐ",z:"ㄐㄧˇ",e:"how much"},
+{h:"個",hs:"个",p:"gè",z:"ㄍㄜˋ",e:"individual"},
+{h:"沒",hs:"没",p:"mò",z:"ㄇㄛˋ",e:"drowned"},
+{h:"兄弟",hs:"兄弟",p:"xiōng dì",z:"ㄒㄩㄥ ㄉㄧˋ",e:"brothers"},
+{h:"姐妹",hs:"姐妹",p:"jiě mèi",z:"ㄐㄧㄝˇ ㄇㄟˋ",e:"sisters"},
+{h:"那麼",hs:"那么",p:"nà me",z:"ㄋㄚˋ ㄇㄜ˙",e:"like that"},
+{h:"兩",hs:"两",p:"liǎng",z:"ㄌㄧㄤˇ",e:"two"},
+]},
+]},
+{n:3,t:"週末做什麼？",tp:"Zhōumò zuò shénme?",te:"What Are You Doing Over the Weekend?",parts:[
+{n:"生詞 I",w:[
+{h:"籃球",hs:"篮球",p:"lán qiú",z:"ㄌㄢˊ ㄑㄧㄡˊ",e:"basketball"},
+{h:"週末",hs:"周末",p:"zhōu mò",z:"ㄓㄡ ㄇㄛˋ",e:"weekend"},
+{h:"音樂",hs:"音乐",p:"yīn yuè",z:"ㄧㄣ ㄩㄝˋ",e:"music"},
+{h:"連動",hs:"连动",p:"lián dòng",z:"ㄌㄧㄢˊ ㄉㄨㄥˋ",e:"to link"},
+{h:"網球",hs:"网球",p:"wǎng qiú",z:"ㄨㄤˇ ㄑㄧㄡˊ",e:"tennis"},
+{h:"棒球",hs:"棒球",p:"bàng qiú",z:"ㄅㄤˋ ㄑㄧㄡˊ",e:"baseball"},
+{h:"游泳",hs:"游泳",p:"yóu yǒng",z:"ㄧㄡˊ ㄩㄥˇ",e:"swimming"},
+{h:"常",hs:"常",p:"cháng",z:"ㄔㄤˊ",e:"always"},
+{h:"也",hs:"也",p:"yě",z:"ㄧㄝˇ",e:"also"},
+{h:"踢",hs:"踢",p:"tī",z:"ㄊㄧ",e:"to kick"},
+{h:"足球",hs:"足球",p:"zú qiú",z:"ㄗㄨˊ ㄑㄧㄡˊ",e:"soccer ball"},
+{h:"覺得",hs:"觉得",p:"jué de",z:"ㄐㄩㄝˊ ㄉㄜ˙",e:"to think"},
+{h:"好玩",hs:"好玩",p:"hǎo wán",z:"ㄏㄠˇ ㄨㄢˊ",e:"amusing"},
+{h:"明天",hs:"明天",p:"míng tiān",z:"ㄇㄧㄥˊ ㄊㄧㄢ",e:"tomorrow"},
+{h:"去",hs:"去",p:"qù",z:"ㄑㄩˋ",e:"to go"},
+{h:"怎麼樣",hs:"怎么样",p:"zěn me yàng",z:"ㄗㄣˇ ㄇㄜ˙ ㄧㄤˋ",e:"how?"},
+{h:"啊",hs:"啊",p:"à",z:"ㄚˋ",e:"interjection or grunt of agreement"},
+]},
+{n:"生詞 II",w:[
+{h:"今天",hs:"今天",p:"jīn tiān",z:"ㄐㄧㄣ ㄊㄧㄢ",e:"today"},
+{h:"看",hs:"看",p:"kàn",z:"ㄎㄢˋ",e:"to see"},
+{h:"電影",hs:"电影",p:"diàn yǐng",z:"ㄉㄧㄢˋ ㄧㄥˇ",e:"movie"},
+{h:"媳",hs:"媳",p:"xí",z:"ㄒㄧˊ",e:"daughter-in-law"},
+{h:"還是",hs:"还是",p:"hái shi",z:"ㄏㄞˊ ㄕ˙",e:"or"},
+{h:"一點",hs:"一点",p:"yī diǎn",z:"ㄧ ㄉㄧㄢˇ",e:"a bit"},
+{h:"可以",hs:"可以",p:"kě yǐ",z:"ㄎㄜˇ ㄧˇ",e:"can"},
+{h:"中文",hs:"中文",p:"Zhōng wén",z:"ㄓㄨㄥ ㄨㄣˊ",e:"Chinese language"},
+{h:"一起",hs:"一起",p:"yī qǐ",z:"ㄧ ㄑㄧˇ",e:"in the same place"},
+{h:"吃",hs:"吃",p:"chī",z:"ㄔ",e:"to eat"},
+{h:"晚飯",hs:"晚饭",p:"wǎn fàn",z:"ㄨㄢˇ ㄈㄢˋ",e:"evening meal"},
+{h:"菜",hs:"菜",p:"cài",z:"ㄘㄞˋ",e:"dish (type of food)"},
+{h:"越南",hs:"越南",p:"Yuè nán",z:"ㄩㄝˋ ㄋㄢˊ",e:"Vietnam"},
+{h:"好不好",hs:"好不好",p:"hǎo bu hǎo",z:"ㄏㄠˇ ㄅㄨ˙ ㄏㄠˇ",e:"(coll.) all right?"},
+]},
+]},
+{n:4,t:"請問一共多少錢？",tp:"Qǐngwèn yígòng duōshǎo qián?",te:"Excuse me. How Much Does That Cost in Total?",parts:[
+{n:"生詞 I",w:[
+{h:"多少",hs:"多少",p:"duō shǎo",z:"ㄉㄨㄛ ㄕㄠˇ",e:"number"},
+{h:"錢",hs:"钱",p:"qián",z:"ㄑㄧㄢˊ",e:"coin"},
+{h:"買",hs:"买",p:"mǎi",z:"ㄇㄞˇ",e:"to buy"},
+{h:"熱",hs:"热",p:"rè",z:"ㄖㄜˋ",e:"to warm up"},
+{h:"包子",hs:"包子",p:"bāo zi",z:"ㄅㄠ ㄗ˙",e:"steamed stuffed bun"},
+{h:"中",hs:"中",p:"zhōng",z:"ㄓㄨㄥ",e:"within"},
+{h:"小",hs:"小",p:"xiǎo",z:"ㄒㄧㄠˇ",e:"small"},
+{h:"微波",hs:"微波",p:"wēi bō",z:"ㄨㄟ ㄅㄛ",e:"ripple"},
+{h:"百",hs:"百",p:"bǎi",z:"ㄅㄞˇ",e:"hundred"},
+{h:"塊",hs:"块",p:"kuài",z:"ㄎㄨㄞˋ",e:"lump (of earth)"},
+{h:"外帶",hs:"外带",p:"wài dài",z:"ㄨㄞˋ ㄉㄞˋ",e:"take-out (fast food)"},
+{h:"內用",hs:"内用",p:"nèi yòng",z:"ㄋㄟˋ ㄩㄥˋ",e:"to eat in (at a restaurant) (Tw)"},
+]},
+{n:"生詞 II",w:[
+{h:"新",hs:"新",p:"xīn",z:"ㄒㄧㄣ",e:"new"},
+{h:"手機",hs:"手机",p:"shǒu jī",z:"ㄕㄡˇ ㄐㄧ",e:"cell phone"},
+{h:"舊",hs:"旧",p:"jiù",z:"ㄐㄧㄡˋ",e:"old"},
+{h:"了",hs:"了",p:"liǎo",z:"ㄌㄧㄠˇ",e:"to finish"},
+{h:"種",hs:"种",p:"zhǒng",z:"ㄓㄨㄥˇ",e:"seed"},
+{h:"能",hs:"能",p:"néng",z:"ㄋㄥˊ",e:"can"},
+{h:"上網",hs:"上网",p:"shàng wǎng",z:"ㄕㄤˋ ㄨㄤˇ",e:"to go online"},
+{h:"那",hs:"那",p:"nà",z:"ㄋㄚˋ",e:"that"},
+{h:"不",hs:"不",p:"bù",z:"ㄅㄨˋ",e:"(negative prefix)"},
+{h:"中",hs:"中",p:"zhōng",z:"ㄓㄨㄥ",e:"within"},
+{h:"賣",hs:"卖",p:"mài",z:"ㄇㄞˋ",e:"to sell"},
+{h:"要",hs:"要",p:"yào",z:"ㄧㄠˋ",e:"important"},
+{h:"萬",hs:"万",p:"wàn",z:"ㄨㄢˋ",e:"ten thousand"},
+{h:"幹",hs:"干",p:"gàn",z:"ㄍㄢˋ",e:"tree trunk"},
+{h:"為什麼",hs:"为什么",p:"wèi shén me",z:"ㄨㄟˋ ㄕㄣˊ ㄇㄜ˙",e:"why?"},
+]},
+]},
+{n:5,t:"牛肉麵真好吃",tp:"Niúròumiàn zhēn hǎochī",te:"Beef Noodles Are Really Delicious",parts:[
+{n:"生詞 I",w:[
+{h:"牛肉",hs:"牛肉",p:"niú ròu",z:"ㄋㄧㄡˊ ㄖㄡˋ",e:"beef"},
+{h:"這麼",hs:"这么",p:"zhè me",z:"ㄓㄜˋ ㄇㄜ˙",e:"so much"},
+{h:"真",hs:"真",p:"zhēn",z:"ㄓㄣ",e:"really"},
+{h:"好吃",hs:"好吃",p:"hǎo chī",z:"ㄏㄠˇ ㄔ",e:"tasty"},
+{h:"說",hs:"说",p:"shuō",z:"ㄕㄨㄛ",e:"to speak"},
+{h:"有名",hs:"有名",p:"yǒu míng",z:"ㄧㄡˇ ㄇㄧㄥˊ",e:"famous"},
+{h:"小吃",hs:"小吃",p:"xiǎo chī",z:"ㄒㄧㄠˇ ㄔ",e:"snack"},
+{h:"最",hs:"最",p:"zuì",z:"ㄗㄨㄟˋ",e:"most"},
+{h:"知道",hs:"知道",p:"zhī dào",z:"ㄓ ㄉㄠˋ",e:"to know"},
+{h:"家",hs:"家",p:"jiā",z:"ㄐㄧㄚ",e:"home"},
+{h:"小籠包",hs:"小笼包",p:"xiǎo lóng bāo",z:"ㄒㄧㄠˇ ㄌㄨㄥˊ ㄅㄠ",e:"steamed dumpling"},
+]},
+{n:"生詞 II",w:[
+{h:"甜點",hs:"甜点",p:"tián diǎn",z:"ㄊㄧㄢˊ ㄉㄧㄢˇ",e:"dessert"},
+{h:"昨天",hs:"昨天",p:"zuó tiān",z:"ㄗㄨㄛˊ ㄊㄧㄢ",e:"yesterday"},
+{h:"餐廳",hs:"餐厅",p:"cān tīng",z:"ㄘㄢ ㄊㄧㄥ",e:"dining hall"},
+{h:"可是",hs:"可是",p:"kě shì",z:"ㄎㄜˇ ㄕˋ",e:"but"},
+{h:"辣",hs:"辣",p:"là",z:"ㄌㄚˋ",e:"hot (spicy)"},
+{h:"人",hs:"人",p:"rén",z:"ㄖㄣˊ",e:"man"},
+{h:"所以",hs:"所以",p:"suǒ yǐ",z:"ㄙㄨㄛˇ ㄧˇ",e:"therefore"},
+{h:"自己",hs:"自己",p:"zì jǐ",z:"ㄗˋ ㄐㄧˇ",e:"oneself"},
+{h:"做飯",hs:"做饭",p:"zuò fàn",z:"ㄗㄨㄛˋ ㄈㄢˋ",e:"to prepare a meal"},
+{h:"得",hs:"得",p:"dé",z:"ㄉㄜˊ",e:"to obtain"},
+{h:"會",hs:"会",p:"huì",z:"ㄏㄨㄟˋ",e:"can"},
+{h:"可以",hs:"可以",p:"kě yǐ",z:"ㄎㄜˇ ㄧˇ",e:"can"},
+{h:"教",hs:"教",p:"jiào",z:"ㄐㄧㄠˋ",e:"religion"},
+{h:"有一點",hs:"有一点",p:"yǒu yī diǎn",z:"ㄧㄡˇ ㄧ ㄉㄧㄢˇ",e:"a little"},
+{h:"不好",hs:"不好",p:"bù hǎo",z:"ㄅㄨˋ ㄏㄠˇ",e:"no good"},
+]},
+]},
+{n:6,t:"他們學校在山上",tp:"Tāmen xuéxiào zài shānshàng",te:"Their School Is Up in the Mountains",parts:[
+{n:"生詞 I",w:[
+{h:"他們",hs:"他们",p:"tā men",z:"ㄊㄚ ㄇㄣ˙",e:"they"},
+{h:"花蓮",hs:"花莲",p:"Huā lián",z:"ㄏㄨㄚ ㄌㄧㄢˊ",e:"Hualien, city and county on the east coast of Taiwan"},
+{h:"學校",hs:"学校",p:"xué xiào",z:"ㄒㄩㄝˊ ㄒㄧㄠˋ",e:"school"},
+{h:"在",hs:"在",p:"zài",z:"ㄗㄞˋ",e:"(located) at"},
+{h:"山上",hs:"山上",p:"Shān shàng",z:"ㄕㄢ ㄕㄤˋ",e:"Shanshang township in Tainan county 台南縣|台南县[Tai2 nan2 xian4], Taiwan"},
+{h:"哪裏",hs:"哪里",p:"nǎ lǐ",z:"ㄋㄚˇ ㄌㄧˇ",e:"where?"},
+{h:"遠",hs:"远",p:"yuǎn",z:"ㄩㄢˇ",e:"far"},
+{h:"那裏",hs:"那里",p:"nà li",z:"ㄋㄚˋ ㄌㄧ˙",e:"there"},
+{h:"美",hs:"美",p:"měi",z:"ㄇㄟˇ",e:"beautiful"},
+{h:"前面",hs:"前面",p:"qián miàn",z:"ㄑㄧㄢˊ ㄇㄧㄢˋ",e:"ahead"},
+{h:"後面",hs:"后面",p:"hòu miàn",z:"ㄏㄡˋ ㄇㄧㄢˋ",e:"rear"},
+{h:"山",hs:"山",p:"shān",z:"ㄕㄢ",e:"mountain"},
+{h:"地方",hs:"地方",p:"dì fang",z:"ㄉㄧˋ ㄈㄤ˙",e:"area"},
+{h:"現在",hs:"现在",p:"xiàn zài",z:"ㄒㄧㄢˋ ㄗㄞˋ",e:"now"},
+{h:"附近",hs:"附近",p:"fù jìn",z:"ㄈㄨˋ ㄐㄧㄣˋ",e:"(in the) vicinity"},
+{h:"樓下",hs:"楼下",p:"lóu xià",z:"ㄌㄡˊ ㄒㄧㄚˋ",e:"downstairs"},
+{h:"找",hs:"找",p:"zhǎo",z:"ㄓㄠˇ",e:"to try to find"},
+{h:"朋友",hs:"朋友",p:"péng you",z:"ㄆㄥˊ ㄧㄡ˙",e:"friend"},
+{h:"上課",hs:"上课",p:"shàng kè",z:"ㄕㄤˋ ㄎㄜˋ",e:"to go to class"},
+{h:"聽說",hs:"听说",p:"tīng shuō",z:"ㄊㄧㄥ ㄕㄨㄛ",e:"to hear (sth said)"},
+]},
+{n:"生詞 II",w:[
+{h:"近",hs:"近",p:"jìn",z:"ㄐㄧㄣˋ",e:"near"},
+{h:"宿舍",hs:"宿舍",p:"sù shè",z:"ㄙㄨˋ ㄕㄜˋ",e:"dormitory"},
+{h:"方便",hs:"方便",p:"fāng biàn",z:"ㄈㄤ ㄅㄧㄢˋ",e:"convenient"},
+{h:"這裡",hs:"这里",p:"zhè lǐ",z:"ㄓㄜˋ ㄌㄧˇ",e:"here"},
+{h:"在",hs:"在",p:"zài",z:"ㄗㄞˋ",e:"(located) at"},
+{h:"東西",hs:"东西",p:"dōng xi",z:"ㄉㄨㄥ ㄒㄧ˙",e:"thing"},
+{h:"外面",hs:"外面",p:"wài miàn",z:"ㄨㄞˋ ㄇㄧㄢˋ",e:"outside (also pr. [wai4 mian5] for this sense)"},
+{h:"裡面",hs:"里面",p:"lǐ miàn",z:"ㄌㄧˇ ㄇㄧㄢˋ",e:"inside"},
+{h:"商店",hs:"商店",p:"shāng diàn",z:"ㄕㄤ ㄉㄧㄢˋ",e:"store"},
+{h:"吃飯",hs:"吃饭",p:"chī fàn",z:"ㄔ ㄈㄢˋ",e:"to have a meal"},
+{h:"樓",hs:"楼",p:"lóu",z:"ㄌㄡˊ",e:"house with more than 1 story"},
+{h:"大樓",hs:"大楼",p:"dà lóu",z:"ㄉㄚˋ ㄌㄡˊ",e:"building (a relatively large, multi-storey one)"},
+{h:"書館",hs:"书馆",p:"shū guǎn",z:"ㄕㄨ ㄍㄨㄢˇ",e:"teashop with performance by 評書|评书 story tellers"},
+{h:"旁邊",hs:"旁边",p:"páng biān",z:"ㄆㄤˊ ㄅㄧㄢ",e:"lateral"},
+{h:"教室",hs:"教室",p:"jiào shì",z:"ㄐㄧㄠˋ ㄕˋ",e:"classroom"},
+{h:"游泳池",hs:"游泳池",p:"yóu yǒng chí",z:"ㄧㄡˊ ㄩㄥˇ ㄔˊ",e:"swimming pool"},
+]},
+]},
+{n:7,t:"早上九點去KTV",tp:"Zǎoshàng jiǔ diǎn qù KTV",te:"Going to KTV at 9 O'clock in the Morning",parts:[
+{n:"生詞 I",w:[
+{h:"後天",hs:"后天",p:"hòu tiān",z:"ㄏㄡˋ ㄊㄧㄢ",e:"the day after tomorrow"},
+{h:"唱歌",hs:"唱歌",p:"chàng gē",z:"ㄔㄤˋ ㄍㄜ",e:"to sing a song"},
+{h:"分",hs:"分",p:"fēn",z:"ㄈㄣ",e:"to divide"},
+{h:"見面",hs:"见面",p:"jiàn miàn",z:"ㄐㄧㄢˋ ㄇㄧㄢˋ",e:"to meet"},
+{h:"得",hs:"得",p:"dé",z:"ㄉㄜˊ",e:"to obtain"},
+{h:"銀行",hs:"银行",p:"yín háng",z:"ㄧㄣˊ ㄏㄤˊ",e:"bank"},
+{h:"時候",hs:"时候",p:"shí hou",z:"ㄕˊ ㄏㄡ˙",e:"time"},
+{h:"下次",hs:"下次",p:"xià cì",z:"ㄒㄧㄚˋ ㄘˋ",e:"next time"},
+{h:"沒問題",hs:"没问题",p:"méi wèn tí",z:"ㄇㄟˊ ㄨㄣˋ ㄊㄧˊ",e:"no problem"},
+{h:"對了",hs:"对了",p:"duì le",z:"ㄉㄨㄟˋ ㄌㄜ˙",e:"Correct!"},
+{h:"有空",hs:"有空",p:"yǒu kòng",z:"ㄧㄡˇ ㄎㄨㄥˋ",e:"to have time (to do sth)"},
+{h:"再見",hs:"再见",p:"zài jiàn",z:"ㄗㄞˋ ㄐㄧㄢˋ",e:"goodbye"},
+]},
+{n:"生詞 II",w:[
+{h:"每",hs:"每",p:"měi",z:"ㄇㄟˇ",e:"each"},
+{h:"在",hs:"在",p:"zài",z:"ㄗㄞˋ",e:"(located) at"},
+{h:"午餐",hs:"午餐",p:"wǔ cān",z:"ㄨˇ ㄘㄢ",e:"lunch"},
+{h:"有事",hs:"有事",p:"yǒu shì",z:"ㄧㄡˇ ㄕˋ",e:"to be occupied with sth"},
+{h:"下課",hs:"下课",p:"xià kè",z:"ㄒㄧㄚˋ ㄎㄜˋ",e:"to finish class"},
+{h:"下午",hs:"下午",p:"xià wǔ",z:"ㄒㄧㄚˋ ㄨˇ",e:"afternoon"},
+{h:"比賽",hs:"比赛",p:"bǐ sài",z:"ㄅㄧˇ ㄙㄞˋ",e:"competition (sports etc)"},
+{h:"結束",hs:"结束",p:"jié shù",z:"ㄐㄧㄝˊ ㄕㄨˋ",e:"termination"},
+{h:"最近",hs:"最近",p:"zuì jìn",z:"ㄗㄨㄟˋ ㄐㄧㄣˋ",e:"recently"},
+{h:"忙",hs:"忙",p:"máng",z:"ㄇㄤˊ",e:"busy"},
+{h:"書法",hs:"书法",p:"shū fǎ",z:"ㄕㄨ ㄈㄚˇ",e:"calligraphy"},
+{h:"課",hs:"课",p:"kè",z:"ㄎㄜˋ",e:"subject"},
+{h:"開始",hs:"开始",p:"kāi shǐ",z:"ㄎㄞ ㄕˇ",e:"to begin"},
+{h:"字",hs:"字",p:"zì",z:"ㄗˋ",e:"letter"},
+{h:"可以",hs:"可以",p:"kě yǐ",z:"ㄎㄜˇ ㄧˇ",e:"can"},
+{h:"等一下",hs:"等一下",p:"děng yī xià",z:"ㄉㄥˇ ㄧ ㄒㄧㄚˋ",e:"to wait a moment"},
+{h:"有意思",hs:"有意思",p:"yǒu yì si",z:"ㄧㄡˇ ㄧˋ ㄙ˙",e:"interesting"},
+]},
+]},
+{n:8,t:"坐火車去臺南",tp:"Zuò huǒchē qù Táinán",te:"Taking a Train to Tainan",parts:[
+{n:"生詞 I",w:[
+{h:"非常",hs:"非常",p:"fēi cháng",z:"ㄈㄟ ㄔㄤˊ",e:"very"},
+{h:"坐",hs:"坐",p:"zuò",z:"ㄗㄨㄛˋ",e:"to sit"},
+{h:"火車",hs:"火车",p:"huǒ chē",z:"ㄏㄨㄛˇ ㄔㄜ",e:"train"},
+{h:"跟",hs:"跟",p:"gēn",z:"ㄍㄣ",e:"heel"},
+{h:"慢",hs:"慢",p:"màn",z:"ㄇㄢˋ",e:"slow"},
+{h:"鐘頭",hs:"钟头",p:"zhōng tóu",z:"ㄓㄨㄥ ㄊㄡˊ",e:"hour"},
+{h:"比較",hs:"比较",p:"bǐ jiào",z:"ㄅㄧˇ ㄐㄧㄠˋ",e:"to compare"},
+{h:"車票",hs:"车票",p:"chē piào",z:"ㄔㄜ ㄆㄧㄠˋ",e:"ticket (for a bus or train)"},
+{h:"舒服",hs:"舒服",p:"shū fu",z:"ㄕㄨ ㄈㄨ˙",e:"comfortable"},
+{h:"或是",hs:"或是",p:"huò shì",z:"ㄏㄨㄛˋ ㄕˋ",e:"or"},
+{h:"台南",hs:"台南",p:"Tái nán",z:"ㄊㄞˊ ㄋㄢˊ",e:"Tainan (city and county in Taiwan)"},
+{h:"高鐵",hs:"高铁",p:"gāo tiě",z:"ㄍㄠ ㄊㄧㄝˇ",e:"high speed rail"},
+{h:"便利商店",hs:"便利商店",p:"biàn lì shāng diàn",z:"ㄅㄧㄢˋ ㄌㄧˋ ㄕㄤ ㄉㄧㄢˋ",e:"convenience store (Tw)"},
+]},
+{n:"生詞 II",w:[
+{h:"公共汽車",hs:"公共汽车",p:"gōng gòng qì chē",z:"ㄍㄨㄥ ㄍㄨㄥˋ ㄑㄧˋ ㄔㄜ",e:"bus"},
+{h:"參觀",hs:"参观",p:"cān guān",z:"ㄘㄢ ㄍㄨㄢ",e:"to look around"},
+{h:"古代",hs:"古代",p:"gǔ dài",z:"ㄍㄨˇ ㄉㄞˋ",e:"ancient times"},
+{h:"機車",hs:"机车",p:"jī chē",z:"ㄐㄧ ㄔㄜ",e:"locomotive"},
+{h:"載",hs:"载",p:"zài",z:"ㄗㄞˋ",e:"to carry"},
+{h:"捷運",hs:"捷运",p:"jié yùn",z:"ㄐㄧㄝˊ ㄩㄣˋ",e:"rapid transit"},
+{h:"比",hs:"比",p:"bǐ",z:"ㄅㄧˇ",e:"to compare"},
+{h:"中國",hs:"中国",p:"Zhōng guó",z:"ㄓㄨㄥ ㄍㄨㄛˊ",e:"China"},
+{h:"不行",hs:"不行",p:"bù xíng",z:"ㄅㄨˋ ㄒㄧㄥˊ",e:"won't do"},
+{h:"計程車",hs:"计程车",p:"jì chéng chē",z:"ㄐㄧˋ ㄔㄥˊ ㄔㄜ",e:"(Tw) taxi"},
+{h:"差不多",hs:"差不多",p:"chà bu duō",z:"ㄔㄚˋ ㄅㄨ˙ ㄉㄨㄛ",e:"almost"},
+]},
+]},
+{n:9,t:"放假去哪裡玩？",tp:"Fàngjià qù nǎlǐ wán?",te:"Where Will You Go for the Holidays?",parts:[
+{n:"生詞 I",w:[
+{h:"下個星期",hs:"下个星期",p:"xià gè xīng qī",z:"ㄒㄧㄚˋ ㄍㄜˋ ㄒㄧㄥ ㄑㄧ",e:"next week"},
+{h:"星期",hs:"星期",p:"xīng qī",z:"ㄒㄧㄥ ㄑㄧ",e:"week"},
+{h:"回國",hs:"回国",p:"huí guó",z:"ㄏㄨㄟˊ ㄍㄨㄛˊ",e:"to return to one's home country"},
+{h:"打算",hs:"打算",p:"dǎ suàn",z:"ㄉㄚˇ ㄙㄨㄢˋ",e:"to plan"},
+{h:"電視",hs:"电视",p:"diàn shì",z:"ㄉㄧㄢˋ ㄕˋ",e:"television"},
+{h:"影片",hs:"影片",p:"yǐng piàn",z:"ㄧㄥˇ ㄆㄧㄢˋ",e:"film"},
+{h:"旅行",hs:"旅行",p:"lu:3 xíng",z:"ㄌㄨ˙:3 ㄒㄧㄥˊ",e:"to travel"},
+{h:"功課",hs:"功课",p:"gōng kè",z:"ㄍㄨㄥ ㄎㄜˋ",e:"homework"},
+{h:"出去",hs:"出去",p:"chū qù",z:"ㄔㄨ ㄑㄩˋ",e:"to go out"},
+{h:"大概",hs:"大概",p:"dà gài",z:"ㄉㄚˋ ㄍㄞˋ",e:"roughly"},
+{h:"放假",hs:"放假",p:"fàng jià",z:"ㄈㄤˋ ㄐㄧㄚˋ",e:"to have a holiday or vacation"},
+{h:"有時候",hs:"有时候",p:"yǒu shí hou",z:"ㄧㄡˇ ㄕˊ ㄏㄡ˙",e:"sometimes"},
+{h:"多久",hs:"多久",p:"duō jiǔ",z:"ㄉㄨㄛ ㄐㄧㄡˇ",e:"how long?"},
+{h:"台東",hs:"台东",p:"Tái dōng",z:"ㄊㄞˊ ㄉㄨㄥ",e:"Taidong or Taitung city and county in Taiwan"},
+]},
+{n:"生詞 II",w:[
+{h:"女",hs:"女",p:"nu:3",z:"ㄋㄨ˙:3",e:"female"},
+{h:"特別",hs:"特别",p:"tè bié",z:"ㄊㄜˋ ㄅㄧㄝˊ",e:"especially"},
+{h:"月",hs:"月",p:"yuè",z:"ㄩㄝˋ",e:"moon"},
+{h:"號",hs:"号",p:"hào",z:"ㄏㄠˋ",e:"ordinal number"},
+{h:"市",hs:"市",p:"shì",z:"ㄕˋ",e:"market"},
+{h:"她",hs:"她",p:"tā",z:"ㄊㄚ",e:"she"},
+{h:"建議",hs:"建议",p:"jiàn yì",z:"ㄐㄧㄢˋ ㄧˋ",e:"to propose"},
+{h:"夜市",hs:"夜市",p:"yè shì",z:"ㄧㄝˋ ㄕˋ",e:"night market"},
+{h:"應該",hs:"应该",p:"yīng gāi",z:"ㄧㄥ ㄍㄞ",e:"ought to"},
+{h:"茶館",hs:"茶馆",p:"chá guǎn",z:"ㄔㄚˊ ㄍㄨㄢˇ",e:"teahouse"},
+{h:"決定",hs:"决定",p:"jué dìng",z:"ㄐㄩㄝˊ ㄉㄧㄥˋ",e:"to decide (to do something)"},
+{h:"要是",hs:"要是",p:"yào shi",z:"ㄧㄠˋ ㄕ˙",e:"(coll.) if"},
+{h:"就",hs:"就",p:"jiù",z:"ㄐㄧㄡˋ",e:"at once"},
+]},
+]},
+{n:10,t:"臺灣的水果很好吃",tp:"Táiwān de shuǐguǒ hěn hǎochī",te:"The Fruit in Taiwan Tastes Really Good",parts:[
+{n:"生詞 I",w:[
+{h:"黃色",hs:"黄色",p:"huáng sè",z:"ㄏㄨㄤˊ ㄙㄜˋ",e:"yellow (color)"},
+{h:"芒果",hs:"芒果",p:"máng guǒ",z:"ㄇㄤˊ ㄍㄨㄛˇ",e:"mango (loanword)"},
+{h:"給",hs:"给",p:"gěi",z:"ㄍㄟˇ",e:"to"},
+{h:"甜",hs:"甜",p:"tián",z:"ㄊㄧㄢˊ",e:"sweet"},
+{h:"紅色",hs:"红色",p:"hóng sè",z:"ㄏㄨㄥˊ ㄙㄜˋ",e:"red (color)"},
+{h:"對",hs:"对",p:"duì",z:"ㄉㄨㄟˋ",e:"right"},
+{h:"以前",hs:"以前",p:"yǐ qián",z:"ㄧˇ ㄑㄧㄢˊ",e:"before"},
+{h:"請",hs:"请",p:"qǐng",z:"ㄑㄧㄥˇ",e:"to ask"},
+]},
+{n:"生詞 II",w:[
+{h:"提",hs:"提",p:"tí",z:"ㄊㄧˊ",e:"to carry (hanging down from the hand)"},
+{h:"笑",hs:"笑",p:"xiào",z:"ㄒㄧㄠˋ",e:"laugh"},
+{h:"開心",hs:"开心",p:"kāi xīn",z:"ㄎㄞ ㄒㄧㄣ",e:"to feel happy"},
+{h:"穿",hs:"穿",p:"chuān",z:"ㄔㄨㄢ",e:"to wear"},
+{h:"衣服",hs:"衣服",p:"yī fu",z:"ㄧ ㄈㄨ˙",e:"clothes"},
+{h:"旅館",hs:"旅馆",p:"lu:3 guǎn",z:"ㄌㄨ˙:3 ㄍㄨㄢˇ",e:"hotel"},
+{h:"乾淨",hs:"干净",p:"gān jìng",z:"ㄍㄢ ㄐㄧㄥˋ",e:"clean"},
+{h:"往",hs:"往",p:"wǎng",z:"ㄨㄤˇ",e:"to go (in a direction)"},
+{h:"藍色",hs:"蓝色",p:"lán sè",z:"ㄌㄢˊ ㄙㄜˋ",e:"blue (color)"},
+{h:"住",hs:"住",p:"zhù",z:"ㄓㄨˋ",e:"to live"},
+{h:"上個月",hs:"上个月",p:"shàng gè yuè",z:"ㄕㄤˋ ㄍㄜˋ ㄩㄝˋ",e:"last month"},
+]},
+]},
+{n:11,t:"我要租房子",tp:"Wǒ yào zū fángzi",te:"I Would Like to Rent a Place",parts:[
+{n:"生詞 I",w:[
+{h:"客廳",hs:"客厅",p:"kè tīng",z:"ㄎㄜˋ ㄊㄧㄥ",e:"drawing room (room for arriving guests)"},
+{h:"右邊",hs:"右边",p:"yòu bian",z:"ㄧㄡˋ ㄅㄧㄢ˙",e:"right side"},
+{h:"超市",hs:"超市",p:"chāo shì",z:"ㄔㄠ ㄕˋ",e:"supermarket"},
+{h:"走路",hs:"走路",p:"zǒu lù",z:"ㄗㄡˇ ㄌㄨˋ",e:"to walk"},
+{h:"分鐘",hs:"分钟",p:"fēn zhōng",z:"ㄈㄣ ㄓㄨㄥ",e:"minute"},
+{h:"間",hs:"间",p:"jiān",z:"ㄐㄧㄢ",e:"between"},
+{h:"空",hs:"空",p:"kòng",z:"ㄎㄨㄥˋ",e:"to empty"},
+{h:"房間",hs:"房间",p:"fáng jiān",z:"ㄈㄤˊ ㄐㄧㄢ",e:"room"},
+{h:"套房",hs:"套房",p:"tào fáng",z:"ㄊㄠˋ ㄈㄤˊ",e:"suite"},
+{h:"想",hs:"想",p:"xiǎng",z:"ㄒㄧㄤˇ",e:"to think"},
+{h:"電話",hs:"电话",p:"diàn huà",z:"ㄉㄧㄢˋ ㄏㄨㄚˋ",e:"telephone"},
+{h:"給",hs:"给",p:"gěi",z:"ㄍㄟˇ",e:"to"},
+{h:"林",hs:"林",p:"lín",z:"ㄌㄧㄣˊ",e:"woods"},
+{h:"打電話",hs:"打电话",p:"dǎ diàn huà",z:"ㄉㄚˇ ㄉㄧㄢˋ ㄏㄨㄚˋ",e:"to make a telephone call"},
+]},
+{n:"生詞 II",w:[
+{h:"喂",hs:"喂",p:"wèi",z:"ㄨㄟˋ",e:"hey"},
+{h:"房租",hs:"房租",p:"fáng zū",z:"ㄈㄤˊ ㄗㄨ",e:"rent for a room or house"},
+{h:"已經",hs:"已经",p:"yǐ jīng",z:"ㄧˇ ㄐㄧㄥ",e:"already"},
+{h:"習慣",hs:"习惯",p:"xí guàn",z:"ㄒㄧˊ ㄍㄨㄢˋ",e:"habit"},
+{h:"問題",hs:"问题",p:"wèn tí",z:"ㄨㄣˋ ㄊㄧˊ",e:"question"},
+{h:"熱水器",hs:"热水器",p:"rè shuǐ qì",z:"ㄖㄜˋ ㄕㄨㄟˇ ㄑㄧˋ",e:"water heater"},
+{h:"不過",hs:"不过",p:"bù guò",z:"ㄅㄨˋ ㄍㄨㄛˋ",e:"only"},
+{h:"付",hs:"付",p:"fù",z:"ㄈㄨˋ",e:"to pay"},
+{h:"收到",hs:"收到",p:"shōu dào",z:"ㄕㄡ ㄉㄠˋ",e:"to receive"},
+{h:"不好意思",hs:"不好意思",p:"bù hǎo yì si",z:"ㄅㄨˋ ㄏㄠˇ ㄧˋ ㄙ˙",e:"to feel embarrassed"},
+{h:"沒關係",hs:"没关系",p:"méi guān xi",z:"ㄇㄟˊ ㄍㄨㄢ ㄒㄧ˙",e:"it doesn't matter"},
+]},
+]},
+{n:12,t:"你計畫在臺灣學多久的中文？",tp:"Nǐ jìhuà zài Táiwān xué duōjiǔ de Zhōngwén?",te:"How Long Will You Be Studying Chinese in Taiwan?",parts:[
+{n:"生詞 I",w:[
+{h:"計畫",hs:"计画",p:"jì huà",z:"ㄐㄧˋ ㄏㄨㄚˋ",e:"variant of 計劃|计划[ji4 hua4]"},
+{h:"秊",hs:"年",p:"nián",z:"ㄋㄧㄢˊ",e:"grain"},
+{h:"時間",hs:"时间",p:"shí jiān",z:"ㄕˊ ㄐㄧㄢ",e:"time"},
+{h:"大學",hs:"大学",p:"dà xué",z:"ㄉㄚˋ ㄒㄩㄝˊ",e:"university"},
+{h:"花",hs:"花",p:"huā",z:"ㄏㄨㄚ",e:"flower"},
+{h:"學費",hs:"学费",p:"xué fèi",z:"ㄒㄩㄝˊ ㄈㄟˋ",e:"tuition fee"},
+{h:"公司",hs:"公司",p:"gōng sī",z:"ㄍㄨㄥ ㄙ",e:"(business) company"},
+{h:"以後",hs:"以后",p:"yǐ hòu",z:"ㄧˇ ㄏㄡˋ",e:"after"},
+{h:"到",hs:"到",p:"dào",z:"ㄉㄠˋ",e:"to (a place)"},
+{h:"上班",hs:"上班",p:"shàng bān",z:"ㄕㄤˋ ㄅㄢ",e:"to go to work"},
+{h:"念書",hs:"念书",p:"niàn shū",z:"ㄋㄧㄢˋ ㄕㄨ",e:"to read"},
+{h:"村",hs:"村",p:"cūn",z:"ㄘㄨㄣ",e:"village"},
+]},
+{n:"生詞 II",w:[
+{h:"工作",hs:"工作",p:"gōng zuò",z:"ㄍㄨㄥ ㄗㄨㄛˋ",e:"to work"},
+{h:"試",hs:"试",p:"shì",z:"ㄕˋ",e:"to test"},
+{h:"去年",hs:"去年",p:"qù nián",z:"ㄑㄩˋ ㄋㄧㄢˊ",e:"last year"},
+{h:"生意",hs:"生意",p:"shēng yì",z:"ㄕㄥ ㄧˋ",e:"life force"},
+{h:"好",hs:"好",p:"hǎo",z:"ㄏㄠˇ",e:"good"},
+{h:"找",hs:"找",p:"zhǎo",z:"ㄓㄠˇ",e:"to try to find"},
+{h:"工作",hs:"工作",p:"gōng zuò",z:"ㄍㄨㄥ ㄗㄨㄛˋ",e:"to work"},
+{h:"這樣",hs:"这样",p:"zhè yàng",z:"ㄓㄜˋ ㄧㄤˋ",e:"this kind of"},
+{h:"國家",hs:"国家",p:"guó jiā",z:"ㄍㄨㄛˊ ㄐㄧㄚ",e:"country"},
+{h:"難",hs:"难",p:"nán",z:"ㄋㄢˊ",e:"difficult (to...)"},
+{h:"試試看",hs:"试试看",p:"shì shì kàn",z:"ㄕˋ ㄕˋ ㄎㄢˋ",e:"to give it a try"},
+]},
+]},
+{n:13,t:"生日快樂",tp:"Shēngrì kuàilè",te:"Happy Birthday",parts:[
+{n:"生詞 I",w:[
+{h:"生日",hs:"生日",p:"shēng rì",z:"ㄕㄥ ㄖˋ",e:"birthday"},
+{h:"快樂",hs:"快乐",p:"kuài lè",z:"ㄎㄨㄞˋ ㄌㄜˋ",e:"happy"},
+{h:"回來",hs:"回来",p:"huí lai",z:"ㄏㄨㄟˊ ㄌㄞ˙",e:"to return"},
+{h:"啊",hs:"啊",p:"à",z:"ㄚˋ",e:"interjection or grunt of agreement"},
+{h:"打",hs:"打",p:"dǎ",z:"ㄉㄚˇ",e:"to beat"},
+{h:"記得",hs:"记得",p:"jì de",z:"ㄐㄧˋ ㄉㄜ˙",e:"to remember"},
+{h:"語言",hs:"语言",p:"yǔ yán",z:"ㄩˇ ㄧㄢˊ",e:"language"},
+{h:"那麼",hs:"那么",p:"nà me",z:"ㄋㄚˋ ㄇㄜ˙",e:"like that"},
+{h:"熱心",hs:"热心",p:"rè xīn",z:"ㄖㄜˋ ㄒㄧㄣ",e:"enthusiasm"},
+{h:"西班牙文",hs:"西班牙文",p:"Xī bān yá wén",z:"ㄒㄧ ㄅㄢ ㄧㄚˊ ㄨㄣˊ",e:"Spanish (language)"},
+{h:"一樣",hs:"一样",p:"yī yàng",z:"ㄧ ㄧㄤˋ",e:"same"},
+{h:"門口",hs:"门口",p:"mén kǒu",z:"ㄇㄣˊ ㄎㄡˇ",e:"doorway"},
+{h:"西班牙",hs:"西班牙",p:"Xī bān yá",z:"ㄒㄧ ㄅㄢ ㄧㄚˊ",e:"Spain"},
+{h:"生日快樂",hs:"生日快乐",p:"shēng rì kuài lè",z:"ㄕㄥ ㄖˋ ㄎㄨㄞˋ ㄌㄜˋ",e:"Happy birthday"},
+{h:"好久不見",hs:"好久不见",p:"hǎo jiǔ bu jiàn",z:"ㄏㄠˇ ㄐㄧㄡˇ ㄅㄨ˙ ㄐㄧㄢˋ",e:"long time no see"},
+]},
+{n:"生詞 II",w:[
+{h:"今年",hs:"今年",p:"jīn nián",z:"ㄐㄧㄣ ㄋㄧㄢˊ",e:"this year"},
+{h:"訂",hs:"订",p:"dìng",z:"ㄉㄧㄥˋ",e:"to agree"},
+{h:"了",hs:"了",p:"liǎo",z:"ㄌㄧㄠˇ",e:"to finish"},
+{h:"對",hs:"对",p:"duì",z:"ㄉㄨㄟˋ",e:"right"},
+{h:"大部分",hs:"大部分",p:"dà bù fen",z:"ㄉㄚˋ ㄅㄨˋ ㄈㄣ˙",e:"in large part"},
+{h:"萬事如意",hs:"万事如意",p:"wàn shì rú yì",z:"ㄨㄢˋ ㄕˋ ㄖㄨˊ ㄧˋ",e:"to have all one's wishes (idiom)"},
+{h:"心想事成",hs:"心想事成",p:"xīn xiǎng shì chéng",z:"ㄒㄧㄣ ㄒㄧㄤˇ ㄕˋ ㄔㄥˊ",e:"to have one's wishes come true"},
+]},
+]},
+{n:14,t:"天氣這麼冷！",tp:"Tiānqì zhème lěng!",te:"It's So Cold!",parts:[
+{n:"生詞 I",w:[
+{h:"天氣",hs:"天气",p:"tiān qì",z:"ㄊㄧㄢ ㄑㄧˋ",e:"weather"},
+{h:"淮",hs:"淮",p:"Huái",z:"ㄏㄨㄞˊ",e:"name of a river"},
+{h:"風",hs:"风",p:"fēng",z:"ㄈㄥ",e:"wind"},
+{h:"滑雪",hs:"滑雪",p:"huá xuě",z:"ㄏㄨㄚˊ ㄒㄩㄝˇ",e:"to ski"},
+{h:"春天",hs:"春天",p:"chūn tiān",z:"ㄔㄨㄣ ㄊㄧㄢ",e:"spring (season)"},
+{h:"想",hs:"想",p:"xiǎng",z:"ㄒㄧㄤˇ",e:"to think"},
+{h:"新年",hs:"新年",p:"xīn nián",z:"ㄒㄧㄣ ㄋㄧㄢˊ",e:"New Year"},
+{h:"快",hs:"快",p:"kuài",z:"ㄎㄨㄞˋ",e:"rapid"},
+{h:"父母",hs:"父母",p:"fù mǔ",z:"ㄈㄨˋ ㄇㄨˇ",e:"father and mother"},
+{h:"冬天",hs:"冬天",p:"dōng tiān",z:"ㄉㄨㄥ ㄊㄧㄢ",e:"winter"},
+{h:"明年",hs:"明年",p:"míng nián",z:"ㄇㄧㄥˊ ㄋㄧㄢˊ",e:"next year"},
+{h:"秋天",hs:"秋天",p:"qiū tiān",z:"ㄑㄧㄡ ㄊㄧㄢ",e:"autumn"},
+{h:"紅葉",hs:"红叶",p:"hóng yè",z:"ㄏㄨㄥˊ ㄧㄝˋ",e:"red autumnal leaves"},
+{h:"過",hs:"过",p:"guò",z:"ㄍㄨㄛˋ",e:"to cross"},
+{h:"玉山",hs:"玉山",p:"Yù Shān",z:"ㄩˋ ㄕㄢ",e:"Mount Yu, the highest mountain in Taiwan (3952 m)"},
+{h:"下雪",hs:"下雪",p:"xià xuě",z:"ㄒㄧㄚˋ ㄒㄩㄝˇ",e:"to snow"},
+]},
+{n:"生詞 II",w:[
+{h:"企",hs:"企",p:"qǐ",z:"ㄑㄧˇ",e:"to plan a project"},
+{h:"要",hs:"要",p:"yào",z:"ㄧㄠˋ",e:"important"},
+{h:"夏天",hs:"夏天",p:"xià tiān",z:"ㄒㄧㄚˋ ㄊㄧㄢ",e:"summer"},
+{h:"討厭",hs:"讨厌",p:"tǎo yàn",z:"ㄊㄠˇ ㄧㄢˋ",e:"to dislike"},
+{h:"大家",hs:"大家",p:"dà jiā",z:"ㄉㄚˋ ㄐㄧㄚ",e:"everyone"},
+{h:"小心",hs:"小心",p:"xiǎo xīn",z:"ㄒㄧㄠˇ ㄒㄧㄣ",e:"to be careful"},
+{h:"可怕",hs:"可怕",p:"kě pà",z:"ㄎㄜˇ ㄆㄚˋ",e:"awful"},
+{h:"信",hs:"信",p:"xìn",z:"ㄒㄧㄣˋ",e:"letter"},
+{h:"上次",hs:"上次",p:"shàng cì",z:"ㄕㄤˋ ㄘˋ",e:"last time"},
+{h:"慢走",hs:"慢走",p:"màn zǒu",z:"ㄇㄢˋ ㄗㄡˇ",e:"Stay a bit!"},
+]},
+]},
+{n:15,t:"我很不舒服",tp:"Wǒ hěn bù shūfú",te:"I Don't Feel Well",parts:[
+{n:"生詞 I",w:[
+{h:"生病",hs:"生病",p:"shēng bìng",z:"ㄕㄥ ㄅㄧㄥˋ",e:"to fall ill"},
+{h:"醫生",hs:"医生",p:"yī shēng",z:"ㄧ ㄕㄥ",e:"doctor"},
+{h:"一直",hs:"一直",p:"yī zhí",z:"ㄧ ㄓˊ",e:"straight (in a straight line)"},
+{h:"流",hs:"流",p:"liú",z:"ㄌㄧㄡˊ",e:"to flow"},
+{h:"頭",hs:"头",p:"tóu",z:"ㄊㄡˊ",e:"head"},
+{h:"痛",hs:"痛",p:"tòng",z:"ㄊㄨㄥˋ",e:"ache"},
+{h:"差",hs:"差",p:"chā",z:"ㄔㄚ",e:"difference"},
+{h:"發炎",hs:"发炎",p:"fā yán",z:"ㄈㄚ ㄧㄢˊ",e:"to become inflamed"},
+{h:"發燒",hs:"发烧",p:"fā shāo",z:"ㄈㄚ ㄕㄠ",e:"to have a high temperature (from illness)"},
+{h:"感冒",hs:"感冒",p:"gǎn mào",z:"ㄍㄢˇ ㄇㄠˋ",e:"to catch cold"},
+{h:"藥局",hs:"药局",p:"yào jú",z:"ㄧㄠˋ ㄐㄩˊ",e:"pharmacy"},
+{h:"拿",hs:"拿",p:"ná",z:"ㄋㄚˊ",e:"to hold"},
+{h:"把",hs:"把",p:"bǎ",z:"ㄅㄚˇ",e:"to hold"},
+{h:"水",hs:"水",p:"shuǐ",z:"ㄕㄨㄟˇ",e:"water"},
+{h:"休息",hs:"休息",p:"xiū xi",z:"ㄒㄧㄡ ㄒㄧ˙",e:"rest"},
+{h:"睡覺",hs:"睡觉",p:"shuì jiào",z:"ㄕㄨㄟˋ ㄐㄧㄠˋ",e:"to go to bed"},
+]},
+{n:"生詞 II",w:[
+{h:"臉色",hs:"脸色",p:"liǎn sè",z:"ㄌㄧㄢˇ ㄙㄜˋ",e:"complexion"},
+{h:"難看",hs:"难看",p:"nán kàn",z:"ㄋㄢˊ ㄎㄢˋ",e:"ugly"},
+{h:"肚子",hs:"肚子",p:"dù zi",z:"ㄉㄨˋ ㄗ˙",e:"belly"},
+{h:"幾",hs:"几",p:"jǐ",z:"ㄐㄧˇ",e:"how much"},
+{h:"陪",hs:"陪",p:"péi",z:"ㄆㄟˊ",e:"to accompany"},
+{h:"看病",hs:"看病",p:"kàn bìng",z:"ㄎㄢˋ ㄅㄧㄥˋ",e:"to visit a doctor"},
+{h:"健康",hs:"健康",p:"jiàn kāng",z:"ㄐㄧㄢˋ ㄎㄤ",e:"health"},
+{h:"跟",hs:"跟",p:"gēn",z:"ㄍㄣ",e:"heel"},
+{h:"油",hs:"油",p:"yóu",z:"ㄧㄡˊ",e:"oil"},
+{h:"關心",hs:"关心",p:"guān xīn",z:"ㄍㄨㄢ ㄒㄧㄣ",e:"to be concerned about"},
+{h:"小時",hs:"小时",p:"xiǎo shí",z:"ㄒㄧㄠˇ ㄕˊ",e:"hour"},
+{h:"怎麼了",hs:"怎么了",p:"zěn me le",z:"ㄗㄣˇ ㄇㄜ˙ ㄌㄜ˙",e:"What's up?"},
+{h:"最好",hs:"最好",p:"zuì hǎo",z:"ㄗㄨㄟˋ ㄏㄠˇ",e:"best"},
+]},
+]},
+]},
+{id:"tw2",units:
+[
+{n:1,t:"請問，到師大怎麼走？",tp:"Qǐngwèn, dào Shīdà zěnme zǒu?",te:"Excuse Me, How Do I Get to Shida?",parts:[
+{n:"生詞 I",w:[
+{h:"路人",hs:"路人",p:"lù rén",z:"ㄌㄨˋ ㄖㄣˊ",e:"passer-by"},
+{h:"右轉",hs:"右转",p:"yòu zhuǎn",z:"ㄧㄡˋ ㄓㄨㄢˇ",e:"to turn right"},
+{h:"幫忙",hs:"帮忙",p:"bāng máng",z:"ㄅㄤ ㄇㄤˊ",e:"to help"},
+{h:"溫泉",hs:"温泉",p:"wēn quán",z:"ㄨㄣ ㄑㄩㄢˊ",e:"hot spring"},
+{h:"主任",hs:"主任",p:"zhǔ rèn",z:"ㄓㄨˇ ㄖㄣˋ",e:"director"},
+{h:"是",hs:"是",p:"shì",z:"ㄕˋ",e:"is"},
+{h:"考慮",hs:"考虑",p:"kǎo lu:4",z:"ㄎㄠˇ ㄌㄨ˙:4",e:"to think over"},
+{h:"路口",hs:"路口",p:"lù kǒu",z:"ㄌㄨˋ ㄎㄡˇ",e:"crossing"},
+{h:"順便",hs:"顺便",p:"shùn biàn",z:"ㄕㄨㄣˋ ㄅㄧㄢˋ",e:"conveniently"},
+{h:"過",hs:"过",p:"guò",z:"ㄍㄨㄛˋ",e:"to cross"},
+{h:"第",hs:"第",p:"dì",z:"ㄉㄧˋ",e:"(prefix indicating ordinal number, e.g. first, number two etc)"},
+{h:"紅綠燈",hs:"红绿灯",p:"hóng lu:4 dēng",z:"ㄏㄨㄥˊ ㄌㄨ˙:4 ㄉㄥ",e:"traffic light"},
+{h:"主意",hs:"主意",p:"zhǔ yi",z:"ㄓㄨˇ ㄧ˙",e:"plan"},
+{h:"超商",hs:"超商",p:"chāo shāng",z:"ㄔㄠ ㄕㄤ",e:"convenience store"},
+{h:"不見",hs:"不见",p:"bù jiàn",z:"ㄅㄨˋ ㄐㄧㄢˋ",e:"not to see"},
+{h:"郵局",hs:"邮局",p:"yóu jú",z:"ㄧㄡˊ ㄐㄩˊ",e:"post office"},
+{h:"提",hs:"提",p:"tí",z:"ㄊㄧˊ",e:"to carry (hanging down from the hand)"},
+{h:"那邊",hs:"那边",p:"nà bian",z:"ㄋㄚˋ ㄅㄧㄢ˙",e:"over there"},
+{h:"往前",hs:"往前",p:"wǎng qián",z:"ㄨㄤˇ ㄑㄧㄢˊ",e:"to move forwards"},
+{h:"運氣",hs:"运气",p:"yùn qi",z:"ㄩㄣˋ ㄑㄧ˙",e:"luck (good or bad)"},
+]},
+{n:"生詞 II",w:[
+{h:"離",hs:"离",p:"lí",z:"ㄌㄧˊ",e:"to leave"},
+{h:"下載",hs:"下载",p:"xià zǎi",z:"ㄒㄧㄚˋ ㄗㄞˇ",e:"to download"},
+{h:"地圖",hs:"地图",p:"dì tú",z:"ㄉㄧˋ ㄊㄨˊ",e:"map"},
+{h:"好用",hs:"好用",p:"hǎo yòng",z:"ㄏㄠˇ ㄩㄥˋ",e:"useful"},
+{h:"著",hs:"着",p:"zháo",z:"ㄓㄠˊ",e:"to touch"},
+{h:"日用品",hs:"日用品",p:"rì yòng pǐn",z:"ㄖˋ ㄩㄥˋ ㄆㄧㄣˇ",e:"articles for daily use"},
+{h:"巷子",hs:"巷子",p:"xiàng zi",z:"ㄒㄧㄤˋ ㄗ˙",e:"alley"},
+{h:"適合",hs:"适合",p:"shì hé",z:"ㄕˋ ㄏㄜˊ",e:"to fit"},
+{h:"和",hs:"和",p:"hé",z:"ㄏㄜˊ",e:"and"},
+{h:"發現",hs:"发现",p:"fā xiàn",z:"ㄈㄚ ㄒㄧㄢˋ",e:"to find"},
+{h:"背包",hs:"背包",p:"bēi bāo",z:"ㄅㄟ ㄅㄠ",e:"knapsack"},
+{h:"開",hs:"开",p:"kāi",z:"ㄎㄞ",e:"to open"},
+{h:"正好",hs:"正好",p:"zhèng hǎo",z:"ㄓㄥˋ ㄏㄠˇ",e:"just (in time)"},
+{h:"筆",hs:"笔",p:"bǐ",z:"ㄅㄧˇ",e:"pen"},
+{h:"本子",hs:"本子",p:"běn zi",z:"ㄅㄣˇ ㄗ˙",e:"book"},
+]},
+]},
+{n:2,t:"還是坐捷運吧！",tp:"Háishì zuò jiéyùn ba!",te:"Let's Just Take the MRT!",parts:[
+{n:"生詞 I",w:[
+{h:"還是",hs:"还是",p:"hái shi",z:"ㄏㄞˊ ㄕ˙",e:"or"},
+{h:"新",hs:"新",p:"xīn",z:"ㄒㄧㄣ",e:"new"},
+{h:"約",hs:"约",p:"yuē",z:"ㄩㄝ",e:"to make an appointment"},
+{h:"對面",hs:"对面",p:"duì miàn",z:"ㄉㄨㄟˋ ㄇㄧㄢˋ",e:"(sitting) opposite"},
+{h:"直接",hs:"直接",p:"zhí jiē",z:"ㄓˊ ㄐㄧㄝ",e:"direct (opposite: indirect 間接|间接[jian4 jie1])"},
+{h:"不必",hs:"不必",p:"bù bì",z:"ㄅㄨˋ ㄅㄧˋ",e:"need not"},
+{h:"換",hs:"换",p:"huàn",z:"ㄏㄨㄢˋ",e:"to exchange"},
+{h:"車站",hs:"车站",p:"chē zhàn",z:"ㄔㄜ ㄓㄢˋ",e:"rail station"},
+{h:"麻煩",hs:"麻烦",p:"má fan",z:"ㄇㄚˊ ㄈㄢ˙",e:"inconvenient"},
+{h:"趕快",hs:"赶快",p:"gǎn kuài",z:"ㄍㄢˇ ㄎㄨㄞˋ",e:"at once"},
+{h:"班次",hs:"班次",p:"bān cì",z:"ㄅㄢ ㄘˋ",e:"grade"},
+{h:"禮拜",hs:"礼拜",p:"lǐ bài",z:"ㄌㄧˇ ㄅㄞˋ",e:"week"},
+{h:"見",hs:"见",p:"jiàn",z:"ㄐㄧㄢˋ",e:"to see"},
+{h:"展覽館",hs:"展览馆",p:"zhǎn lǎn guǎn",z:"ㄓㄢˇ ㄌㄢˇ ㄍㄨㄢˇ",e:"exhibition hall"},
+{h:"台北",hs:"台北",p:"Tái běi",z:"ㄊㄞˊ ㄅㄟˇ",e:"Taibei or Taipei, capital of Taiwan"},
+{h:"台北",hs:"台北",p:"Tái běi",z:"ㄊㄞˊ ㄅㄟˇ",e:"Taibei or Taipei, capital of Taiwan"},
+{h:"室友",hs:"室友",p:"shì yǒu",z:"ㄕˋ ㄧㄡˇ",e:"roommate"},
+]},
+{n:"生詞 II",w:[
+{h:"機場",hs:"机场",p:"jī chǎng",z:"ㄐㄧ ㄔㄤˇ",e:"airport"},
+{h:"巴士",hs:"巴士",p:"bā shì",z:"ㄅㄚ ㄕˋ",e:"bus (loanword)"},
+{h:"下",hs:"下",p:"xià",z:"ㄒㄧㄚˋ",e:"down"},
+{h:"便利",hs:"便利",p:"biàn lì",z:"ㄅㄧㄢˋ ㄌㄧˋ",e:"convenient"},
+{h:"到處",hs:"到处",p:"dào chù",z:"ㄉㄠˋ ㄔㄨˋ",e:"everywhere"},
+{h:"路線",hs:"路线",p:"lù xiàn",z:"ㄌㄨˋ ㄒㄧㄢˋ",e:"itinerary"},
+{h:"複雜",hs:"复杂",p:"fù zá",z:"ㄈㄨˋ ㄗㄚˊ",e:"complicated"},
+{h:"輕鬆",hs:"轻松",p:"qīng sōng",z:"ㄑㄧㄥ ㄙㄨㄥ",e:"light"},
+{h:"海邊",hs:"海边",p:"hǎi biān",z:"ㄏㄞˇ ㄅㄧㄢ",e:"coast"},
+{h:"地",hs:"地",p:"dì",z:"ㄉㄧˋ",e:"earth"},
+{h:"法國",hs:"法国",p:"Fǎ guó",z:"ㄈㄚˇ ㄍㄨㄛˊ",e:"France"},
+]},
+]},
+{n:3,t:"你的中文進步了！",tp:"Nǐ de Zhōngwén jìnbù le!",te:"Your Chinese Has Improved!",parts:[
+{n:"生詞 I",w:[
+{h:"進步",hs:"进步",p:"jìn bù",z:"ㄐㄧㄣˋ ㄅㄨˋ",e:"progress"},
+{h:"掉",hs:"掉",p:"diào",z:"ㄉㄧㄠˋ",e:"to fall"},
+{h:"考試",hs:"考试",p:"kǎo shì",z:"ㄎㄠˇ ㄕˋ",e:"to take an exam"},
+{h:"考",hs:"考",p:"kǎo",z:"ㄎㄠˇ",e:"to check"},
+{h:"聽寫",hs:"听写",p:"tīng xiě",z:"ㄊㄧㄥ ㄒㄧㄝˇ",e:"(of a pupil) to write down (in a dictation exercise)"},
+{h:"岳父",hs:"岳父",p:"yuè fù",z:"ㄩㄝˋ ㄈㄨˋ",e:"wife's father, father-in-law"},
+{h:"小學",hs:"小学",p:"xiǎo xué",z:"ㄒㄧㄠˇ ㄒㄩㄝˊ",e:"elementary school"},
+{h:"漢字",hs:"汉字",p:"hàn zì",z:"ㄏㄢˋ ㄗˋ",e:"Chinese character"},
+{h:"高中",hs:"高中",p:"gāo zhōng",z:"ㄍㄠ ㄓㄨㄥ",e:"senior high school"},
+{h:"說話",hs:"说话",p:"shuō huà",z:"ㄕㄨㄛ ㄏㄨㄚˋ",e:"to speak"},
+{h:"流利",hs:"流利",p:"liú lì",z:"ㄌㄧㄡˊ ㄌㄧˋ",e:"fluent"},
+{h:"雖然",hs:"虽然",p:"suī rán",z:"ㄙㄨㄟ ㄖㄢˊ",e:"although"},
+{h:"同意",hs:"同意",p:"tóng yì",z:"ㄊㄨㄥˊ ㄧˋ",e:"to agree"},
+{h:"報紙",hs:"报纸",p:"bào zhǐ",z:"ㄅㄠˋ ㄓˇ",e:"newspaper"},
+{h:"麵包",hs:"面包",p:"miàn bāo",z:"ㄇㄧㄢˋ ㄅㄠ",e:"bread"},
+{h:"演講",hs:"演讲",p:"yǎn jiǎng",z:"ㄧㄢˇ ㄐㄧㄤˇ",e:"lecture"},
+{h:"活動中心",hs:"活动中心",p:"huó dòng zhōng xīn",z:"ㄏㄨㄛˊ ㄉㄨㄥˋ ㄓㄨㄥ ㄒㄧㄣ",e:"activity center"},
+]},
+{n:"生詞 II",w:[
+{h:"練習",hs:"练习",p:"liàn xí",z:"ㄌㄧㄢˋ ㄒㄧˊ",e:"to practice"},
+{h:"半夜",hs:"半夜",p:"bàn yè",z:"ㄅㄢˋ ㄧㄝˋ",e:"midnight"},
+{h:"高興",hs:"高兴",p:"gāo xìng",z:"ㄍㄠ ㄒㄧㄥˋ",e:"happy"},
+{h:"起床",hs:"起床",p:"qǐ chuáng",z:"ㄑㄧˇ ㄔㄨㄤˊ",e:"to get out of bed"},
+{h:"認識",hs:"认识",p:"rèn shi",z:"ㄖㄣˋ ㄕ˙",e:"to know"},
+{h:"聊天",hs:"聊天",p:"liáo tiān",z:"ㄌㄧㄠˊ ㄊㄧㄢ",e:"to chat"},
+{h:"文化",hs:"文化",p:"wén huà",z:"ㄨㄣˊ ㄏㄨㄚˋ",e:"culture"},
+{h:"位",hs:"位",p:"wèi",z:"ㄨㄟˋ",e:"position"},
+{h:"了解",hs:"了解",p:"liǎo jiě",z:"ㄌㄧㄠˇ ㄐㄧㄝˇ",e:"to understand"},
+{h:"生活",hs:"生活",p:"shēng huó",z:"ㄕㄥ ㄏㄨㄛˊ",e:"life"},
+{h:"陽明山",hs:"阳明山",p:"Yáng míng Shān",z:"ㄧㄤˊ ㄇㄧㄥˊ ㄕㄢ",e:"Mt Yangming in Hunan"},
+{h:"外國人",hs:"外国人",p:"wài guó rén",z:"ㄨㄞˋ ㄍㄨㄛˊ ㄖㄣˊ",e:"foreigner"},
+{h:"一些",hs:"一些",p:"yī xiē",z:"ㄧ ㄒㄧㄝ",e:"some"},
+]},
+]},
+{n:4,t:"我打工，我教法文",tp:"Wǒ dǎgōng, wǒ jiāo Fǎwén",te:"I Have a Part-time Job, I Teach French",parts:[
+{n:"生詞 I",w:[
+{h:"上午",hs:"上午",p:"shàng wǔ",z:"ㄕㄤˋ ㄨˇ",e:"morning"},
+{h:"打工",hs:"打工",p:"dǎ gōng",z:"ㄉㄚˇ ㄍㄨㄥ",e:"to work a temporary or casual job"},
+{h:"聽起來",hs:"听起来",p:"tīng qi lai",z:"ㄊㄧㄥ ㄑㄧ˙ ㄌㄞ˙",e:"to sound like"},
+{h:"徵求",hs:"征求",p:"zhēng qiú",z:"ㄓㄥ ㄑㄧㄡˊ",e:"to solicit"},
+{h:"介紹",hs:"介绍",p:"jiè shào",z:"ㄐㄧㄝˋ ㄕㄠˋ",e:"to introduce (sb to sb)"},
+{h:"畢業",hs:"毕业",p:"bì yè",z:"ㄅㄧˋ ㄧㄝˋ",e:"graduation"},
+{h:"歲",hs:"岁",p:"suì",z:"ㄙㄨㄟˋ",e:"classifier for years (of age)"},
+{h:"語言學",hs:"语言学",p:"yǔ yán xué",z:"ㄩˇ ㄧㄢˊ ㄒㄩㄝˊ",e:"linguistics"},
+{h:"經驗",hs:"经验",p:"jīng yàn",z:"ㄐㄧㄥ ㄧㄢˋ",e:"experience"},
+{h:"當",hs:"当",p:"dāng",z:"ㄉㄤ",e:"to be"},
+{h:"除了",hs:"除了",p:"chú le",z:"ㄔㄨˊ ㄌㄜ˙",e:"besides"},
+{h:"實現",hs:"实现",p:"shí xiàn",z:"ㄕˊ ㄒㄧㄢˋ",e:"to achieve"},
+{h:"暑假",hs:"暑假",p:"shǔ jià",z:"ㄕㄨˇ ㄐㄧㄚˋ",e:"summer vacation"},
+{h:"薪水",hs:"薪水",p:"xīn shuǐ",z:"ㄒㄧㄣ ㄕㄨㄟˇ",e:"salary"},
+{h:"算",hs:"算",p:"suàn",z:"ㄙㄨㄢˋ",e:"to regard as"},
+{h:"按照",hs:"按照",p:"àn zhào",z:"ㄢˋ ㄓㄠˋ",e:"according to"},
+{h:"教授",hs:"教授",p:"jiào shòu",z:"ㄐㄧㄠˋ ㄕㄡˋ",e:"professor"},
+{h:"法文",hs:"法文",p:"Fǎ wén",z:"ㄈㄚˇ ㄨㄣˊ",e:"French language"},
+{h:"亞洲",hs:"亚洲",p:"Yà zhōu",z:"ㄧㄚˋ ㄓㄡ",e:"Asia"},
+{h:"西班牙語",hs:"西班牙语",p:"Xī bān yá yǔ",z:"ㄒㄧ ㄅㄢ ㄧㄚˊ ㄩˇ",e:"Spanish language"},
+{h:"英文",hs:"英文",p:"Yīng wén",z:"ㄧㄥ ㄨㄣˊ",e:"English (language)"},
+]},
+{n:"生詞 II",w:[
+{h:"法律",hs:"法律",p:"fǎ lu:4",z:"ㄈㄚˇ ㄌㄨ˙:4",e:"law"},
+{h:"然後",hs:"然后",p:"rán hòu",z:"ㄖㄢˊ ㄏㄡˋ",e:"after"},
+{h:"夠",hs:"够",p:"gòu",z:"ㄍㄡˋ",e:"enough (sufficient)"},
+{h:"履歷",hs:"履历",p:"lu:3 lì",z:"ㄌㄨ˙:3 ㄌㄧˋ",e:"background (academic and work)"},
+{h:"面談",hs:"面谈",p:"miàn tán",z:"ㄇㄧㄢˋ ㄊㄢˊ",e:"face-to-face meeting"},
+{h:"辦公室",hs:"办公室",p:"bàn gōng shì",z:"ㄅㄢˋ ㄍㄨㄥ ㄕˋ",e:"office"},
+{h:"談話",hs:"谈话",p:"tán huà",z:"ㄊㄢˊ ㄏㄨㄚˋ",e:"to talk (with sb)"},
+{h:"情形",hs:"情形",p:"qíng xing",z:"ㄑㄧㄥˊ ㄒㄧㄥ˙",e:"circumstances"},
+{h:"幫助",hs:"帮助",p:"bāng zhù",z:"ㄅㄤ ㄓㄨˋ",e:"assistance"},
+{h:"說明",hs:"说明",p:"shuō míng",z:"ㄕㄨㄛ ㄇㄧㄥˊ",e:"to explain"},
+{h:"月底",hs:"月底",p:"yuè dǐ",z:"ㄩㄝˋ ㄉㄧˇ",e:"end of the month"},
+{h:"發",hs:"发",p:"fā",z:"ㄈㄚ",e:"to send out"},
+{h:"馬上",hs:"马上",p:"mǎ shàng",z:"ㄇㄚˇ ㄕㄤˋ",e:"at once"},
+{h:"答應",hs:"答应",p:"dā ying",z:"ㄉㄚ ㄧㄥ˙",e:"to answer"},
+{h:"枝",hs:"枝",p:"zhī",z:"ㄓ",e:"branch"},
+{h:"順利",hs:"顺利",p:"shùn lì",z:"ㄕㄨㄣˋ ㄌㄧˋ",e:"smoothly"},
+{h:"本",hs:"本",p:"běn",z:"ㄅㄣˇ",e:"root"},
+{h:"沒想到",hs:"没想到",p:"méi xiǎng dào",z:"ㄇㄟˊ ㄒㄧㄤˇ ㄉㄠˋ",e:"didn't expect"},
+]},
+]},
+{n:5,t:"吃喜酒",tp:"Chī xǐjiǔ",te:"Attending a Wedding Banquet",parts:[
+{n:"生詞 I",w:[
+{h:"合約",hs:"合约",p:"hé yuē",z:"ㄏㄜˊ ㄩㄝ",e:"treaty"},
+{h:"喜酒",hs:"喜酒",p:"xǐ jiǔ",z:"ㄒㄧˇ ㄐㄧㄡˇ",e:"wedding feast"},
+{h:"伯伯",hs:"伯伯",p:"bó bo",z:"ㄅㄛˊ ㄅㄛ˙",e:"father's elder brother"},
+{h:"新娘",hs:"新娘",p:"xīn niáng",z:"ㄒㄧㄣ ㄋㄧㄤˊ",e:"bride"},
+{h:"參加",hs:"参加",p:"cān jiā",z:"ㄘㄢ ㄐㄧㄚ",e:"to participate"},
+{h:"女兒",hs:"女儿",p:"nu:3 ér",z:"ㄋㄨ˙:3 ㄦˊ",e:"daughter"},
+{h:"西裝",hs:"西装",p:"xī zhuāng",z:"ㄒㄧ ㄓㄨㄤ",e:"suit"},
+{h:"正式",hs:"正式",p:"zhèng shì",z:"ㄓㄥˋ ㄕˋ",e:"formal"},
+{h:"客人",hs:"客人",p:"kè rén",z:"ㄎㄜˋ ㄖㄣˊ",e:"visitor"},
+{h:"資料",hs:"资料",p:"zī liào",z:"ㄗ ㄌㄧㄠˋ",e:"material"},
+{h:"手",hs:"手",p:"shǒu",z:"ㄕㄡˇ",e:"hand"},
+{h:"照相機",hs:"照相机",p:"zhào xiàng jī",z:"ㄓㄠˋ ㄒㄧㄤˋ ㄐㄧ",e:"camera"},
+{h:"年紀",hs:"年纪",p:"nián jì",z:"ㄋㄧㄢˊ ㄐㄧˋ",e:"age"},
+{h:"站",hs:"站",p:"zhàn",z:"ㄓㄢˋ",e:"station"},
+{h:"白",hs:"白",p:"bái",z:"ㄅㄞˊ",e:"white"},
+{h:"禮服",hs:"礼服",p:"lǐ fú",z:"ㄌㄧˇ ㄈㄨˊ",e:"ceremonial robe"},
+{h:"重要",hs:"重要",p:"zhòng yào",z:"ㄓㄨㄥˋ ㄧㄠˋ",e:"important"},
+{h:"合適",hs:"合适",p:"hé shì",z:"ㄏㄜˊ ㄕˋ",e:"suitable"},
+]},
+{n:"生詞 II",w:[
+{h:"結婚",hs:"结婚",p:"jié hūn",z:"ㄐㄧㄝˊ ㄏㄨㄣ",e:"to marry"},
+{h:"節日",hs:"节日",p:"jié rì",z:"ㄐㄧㄝˊ ㄖˋ",e:"holiday"},
+{h:"打掃",hs:"打扫",p:"dǎ sǎo",z:"ㄉㄚˇ ㄙㄠˇ",e:"to clean"},
+{h:"日子",hs:"日子",p:"rì zi",z:"ㄖˋ ㄗ˙",e:"day"},
+{h:"慶祝",hs:"庆祝",p:"qìng zhù",z:"ㄑㄧㄥˋ ㄓㄨˋ",e:"to celebrate"},
+{h:"件",hs:"件",p:"jiàn",z:"ㄐㄧㄢˋ",e:"item"},
+{h:"喜事",hs:"喜事",p:"xǐ shì",z:"ㄒㄧˇ ㄕˋ",e:"happy occasion"},
+{h:"請客",hs:"请客",p:"qǐng kè",z:"ㄑㄧㄥˇ ㄎㄜˋ",e:"to give a dinner party"},
+{h:"紅包",hs:"红包",p:"hóng bāo",z:"ㄏㄨㄥˊ ㄅㄠ",e:"money wrapped in red as a gift"},
+{h:"新人",hs:"新人",p:"xīn rén",z:"ㄒㄧㄣ ㄖㄣˊ",e:"newcomer"},
+{h:"安",hs:"安",p:"ān",z:"ㄢ",e:"content"},
+{h:"大人",hs:"大人",p:"dà ren",z:"ㄉㄚˋ ㄖㄣ˙",e:"adult"},
+{h:"社團",hs:"社团",p:"shè tuán",z:"ㄕㄜˋ ㄊㄨㄢˊ",e:"association"},
+{h:"不得了",hs:"不得了",p:"bù dé liǎo",z:"ㄅㄨˋ ㄉㄜˊ ㄌㄧㄠˇ",e:"desperately serious"},
+{h:"失望",hs:"失望",p:"shī wàng",z:"ㄕ ㄨㄤˋ",e:"disappointed"},
+{h:"另外",hs:"另外",p:"lìng wài",z:"ㄌㄧㄥˋ ㄨㄞˋ",e:"additional"},
+{h:"離開",hs:"离开",p:"lí kāi",z:"ㄌㄧˊ ㄎㄞ",e:"to depart"},
+{h:"年年有餘",hs:"年年有余",p:"nián nián yǒu yú",z:"ㄋㄧㄢˊ ㄋㄧㄢˊ ㄧㄡˇ ㄩˊ",e:"lit. (may you) have abundance year after year"},
+{h:"一會兒",hs:"一会儿",p:"yī huì r",z:"ㄧ ㄏㄨㄟˋ r",e:"a moment"},
+{h:"有說有笑",hs:"有说有笑",p:"yǒu shuō yǒu xiào",z:"ㄧㄡˇ ㄕㄨㄛ ㄧㄡˇ ㄒㄧㄠˋ",e:"talking and laughing"},
+{h:"百年好合",hs:"百年好合",p:"bǎi nián hǎo hé",z:"ㄅㄞˇ ㄋㄧㄢˊ ㄏㄠˇ ㄏㄜˊ",e:"may you live a long and happy life together (wedding greeting)"},
+{h:"早生貴子",hs:"早生贵子",p:"zǎo shēng guì zǐ",z:"ㄗㄠˇ ㄕㄥ ㄍㄨㄟˋ ㄗˇ",e:"give birth to a son soon (propitiatory compliment to the newly-weds)"},
+]},
+]},
+{n:6,t:"我打算搬到學校附近",tp:"Wǒ dǎsuàn bān dào xuéxiào fùjìn",te:"I Plan to Move Near School",parts:[
+{n:"生詞 I",w:[
+{h:"搬",hs:"搬",p:"bān",z:"ㄅㄢ",e:"to move (i.e. relocate oneself)"},
+{h:"河邊",hs:"河边",p:"hé biān",z:"ㄏㄜˊ ㄅㄧㄢ",e:"river bank"},
+{h:"公園",hs:"公园",p:"gōng yuán",z:"ㄍㄨㄥ ㄩㄢˊ",e:"park (for public recreation)"},
+{h:"腳踏車",hs:"脚踏车",p:"jiǎo tà chē",z:"ㄐㄧㄠˇ ㄊㄚˋ ㄔㄜ",e:"bicycle"},
+{h:"正在",hs:"正在",p:"zhèng zài",z:"ㄓㄥˋ ㄗㄞˋ",e:"just at (that time)"},
+{h:"網站",hs:"网站",p:"wǎng zhàn",z:"ㄨㄤˇ ㄓㄢˋ",e:"website"},
+{h:"搬家",hs:"搬家",p:"bān jiā",z:"ㄅㄢ ㄐㄧㄚ",e:"to move house"},
+{h:"近",hs:"近",p:"jìn",z:"ㄐㄧㄣˋ",e:"near"},
+{h:"到期",hs:"到期",p:"dào qī",z:"ㄉㄠˋ ㄑㄧ",e:"to fall due (loan etc)"},
+{h:"還好",hs:"还好",p:"hái hǎo",z:"ㄏㄞˊ ㄏㄠˇ",e:"not bad"},
+{h:"光線",hs:"光线",p:"guāng xiàn",z:"ㄍㄨㄤ ㄒㄧㄢˋ",e:"light ray"},
+{h:"如果",hs:"如果",p:"rú guǒ",z:"ㄖㄨˊ ㄍㄨㄛˇ",e:"if"},
+{h:"別的",hs:"别的",p:"bié de",z:"ㄅㄧㄝˊ ㄉㄜ˙",e:"else"},
+{h:"可惜",hs:"可惜",p:"kě xī",z:"ㄎㄜˇ ㄒㄧ",e:"it is a pity"},
+{h:"放",hs:"放",p:"fàng",z:"ㄈㄤˋ",e:"to put"},
+{h:"兩邊",hs:"两边",p:"liǎng bian",z:"ㄌㄧㄤˇ ㄅㄧㄢ˙",e:"either side"},
+{h:"願意",hs:"愿意",p:"yuàn yì",z:"ㄩㄢˋ ㄧˋ",e:"to wish"},
+{h:"開",hs:"开",p:"kāi",z:"ㄎㄞ",e:"to open"},
+{h:"存",hs:"存",p:"cún",z:"ㄘㄨㄣˊ",e:"to exist"},
+{h:"隨身碟",hs:"随身碟",p:"suí shēn dié",z:"ㄙㄨㄟˊ ㄕㄣ ㄉㄧㄝˊ",e:"USB flash drive (Tw)"},
+{h:"慢慢來",hs:"慢慢来",p:"màn màn lái",z:"ㄇㄢˋ ㄇㄢˋ ㄌㄞˊ",e:"take your time"},
+]},
+{n:"生詞 II",w:[
+{h:"相當",hs:"相当",p:"xiāng dāng",z:"ㄒㄧㄤ ㄉㄤ",e:"equivalent to"},
+{h:"椅子",hs:"椅子",p:"yǐ zi",z:"ㄧˇ ㄗ˙",e:"chair"},
+{h:"家具",hs:"家具",p:"jiā jù",z:"ㄐㄧㄚ ㄐㄩˋ",e:"furniture"},
+{h:"而且",hs:"而且",p:"ér qiě",z:"ㄦˊ ㄑㄧㄝˇ",e:"(not only ...) but also"},
+{h:"吵",hs:"吵",p:"chǎo",z:"ㄔㄠˇ",e:"to quarrel"},
+{h:"生活費",hs:"生活费",p:"shēng huó fèi",z:"ㄕㄥ ㄏㄨㄛˊ ㄈㄟˋ",e:"cost of living"},
+{h:"長",hs:"长",p:"zhǎng",z:"ㄓㄤˇ",e:"chief"},
+{h:"討論",hs:"讨论",p:"tǎo lùn",z:"ㄊㄠˇ ㄌㄨㄣˋ",e:"to discuss"},
+{h:"活動",hs:"活动",p:"huó dòng",z:"ㄏㄨㄛˊ ㄉㄨㄥˋ",e:"to exercise"},
+{h:"放心",hs:"放心",p:"fàng xīn",z:"ㄈㄤˋ ㄒㄧㄣ",e:"to feel relieved"},
+{h:"用",hs:"用",p:"yòng",z:"ㄩㄥˋ",e:"to use"},
+{h:"首爾",hs:"首尔",p:"Shǒu ěr",z:"ㄕㄡˇ ㄦˇ",e:"Seoul, capital of South Korea (Chinese name adopted in 2005 to replace 漢城|汉城[Han4 cheng2])"},
+]},
+]},
+{n:7,t:"垃圾車來了！",tp:"Lèsèchē lái le!",te:"The Garbage Truck Is Here!",parts:[
+{n:"生詞 I",w:[
+{h:"垃圾",hs:"垃圾",p:"lā jī",z:"ㄌㄚ ㄐㄧ",e:"trash"},
+{h:"個",hs:"个",p:"gè",z:"ㄍㄜˋ",e:"individual"},
+{h:"收",hs:"收",p:"shōu",z:"ㄕㄡ",e:"to receive"},
+{h:"以為",hs:"以为",p:"yǐ wéi",z:"ㄧˇ ㄨㄟˊ",e:"to think (i.e. to take it to be true that ...) (Usually there is an implication that the notion is mistaken – except when expressing one's own current opinion.)"},
+{h:"要不然",hs:"要不然",p:"yào bù rán",z:"ㄧㄠˋ ㄅㄨˋ ㄖㄢˊ",e:"otherwise"},
+{h:"有趣",hs:"有趣",p:"yǒu qù",z:"ㄧㄡˇ ㄑㄩˋ",e:"interesting"},
+{h:"天天",hs:"天天",p:"tiān tiān",z:"ㄊㄧㄢ ㄊㄧㄢ",e:"every day"},
+{h:"紙杯",hs:"纸杯",p:"zhǐ bēi",z:"ㄓˇ ㄅㄟ",e:"paper cup"},
+{h:"放下",hs:"放下",p:"fàng xià",z:"ㄈㄤˋ ㄒㄧㄚˋ",e:"to lay down"},
+]},
+{n:"生詞 II",w:[
+{h:"聊",hs:"聊",p:"liáo",z:"ㄌㄧㄠˊ",e:"to chat"},
+{h:"奇怪",hs:"奇怪",p:"qí guài",z:"ㄑㄧˊ ㄍㄨㄞˋ",e:"strange"},
+{h:"袋子",hs:"袋子",p:"dài zi",z:"ㄉㄞˋ ㄗ˙",e:"bag"},
+{h:"一定",hs:"一定",p:"yī dìng",z:"ㄧ ㄉㄧㄥˋ",e:"surely"},
+{h:"地點",hs:"地点",p:"dì diǎn",z:"ㄉㄧˋ ㄉㄧㄢˇ",e:"place"},
+{h:"為了",hs:"为了",p:"wèi le",z:"ㄨㄟˋ ㄌㄜ˙",e:"in order to"},
+{h:"保護",hs:"保护",p:"bǎo hù",z:"ㄅㄠˇ ㄏㄨˋ",e:"to protect"},
+{h:"利用",hs:"利用",p:"lì yòng",z:"ㄌㄧˋ ㄩㄥˋ",e:"to exploit"},
+{h:"瓶子",hs:"瓶子",p:"píng zi",z:"ㄆㄧㄥˊ ㄗ˙",e:"bottle"},
+{h:"城市",hs:"城市",p:"chéng shì",z:"ㄔㄥˊ ㄕˋ",e:"city"},
+{h:"聽見",hs:"听见",p:"tīng jiàn",z:"ㄊㄧㄥ ㄐㄧㄢˋ",e:"to hear"},
+{h:"路上",hs:"路上",p:"lù shang",z:"ㄌㄨˋ ㄕㄤ˙",e:"on the road"},
+]},
+]},
+{n:8,t:"學功夫",tp:"Xué gōngfu",te:"Learning Kung Fu",parts:[
+{n:"生詞 I",w:[
+{h:"動作",hs:"动作",p:"dòng zuò",z:"ㄉㄨㄥˋ ㄗㄨㄛˋ",e:"movement"},
+{h:"功夫",hs:"功夫",p:"gōng fu",z:"ㄍㄨㄥ ㄈㄨ˙",e:"skill"},
+{h:"見",hs:"见",p:"jiàn",z:"ㄐㄧㄢˋ",e:"to see"},
+{h:"體育館",hs:"体育馆",p:"tǐ yù guǎn",z:"ㄊㄧˇ ㄩˋ ㄍㄨㄢˇ",e:"gym"},
+{h:"太極拳",hs:"太极拳",p:"tài jí quán",z:"ㄊㄞˋ ㄐㄧˊ ㄑㄩㄢˊ",e:"shadowboxing or Taiji, T'aichi or T'aichichuan"},
+{h:"天分",hs:"天分",p:"tiān fèn",z:"ㄊㄧㄢ ㄈㄣˋ",e:"natural gift"},
+{h:"了",hs:"了",p:"liǎo",z:"ㄌㄧㄠˇ",e:"to finish"},
+{h:"下去",hs:"下去",p:"xià qù",z:"ㄒㄧㄚˋ ㄑㄩˋ",e:"to go down"},
+{h:"興趣",hs:"兴趣",p:"xìng qù",z:"ㄒㄧㄥˋ ㄑㄩˋ",e:"interest (desire to know about sth)"},
+{h:"借",hs:"借",p:"jiè",z:"ㄐㄧㄝˋ",e:"to lend"},
+{h:"學會",hs:"学会",p:"xué huì",z:"ㄒㄩㄝˊ ㄏㄨㄟˋ",e:"to learn"},
+]},
+{n:"生詞 II",w:[
+{h:"公尺",hs:"公尺",p:"gōng chǐ",z:"ㄍㄨㄥ ㄔˇ",e:"meter (unit of length)"},
+{h:"完",hs:"完",p:"wán",z:"ㄨㄢˊ",e:"to finish"},
+{h:"體力",hs:"体力",p:"tǐ lì",z:"ㄊㄧˇ ㄌㄧˋ",e:"physical strength"},
+{h:"整天",hs:"整天",p:"zhěng tiān",z:"ㄓㄥˇ ㄊㄧㄢ",e:"all day long"},
+{h:"精神",hs:"精神",p:"jīng shén",z:"ㄐㄧㄥ ㄕㄣˊ",e:"spirit"},
+{h:"本來",hs:"本来",p:"běn lái",z:"ㄅㄣˇ ㄌㄞˊ",e:"original"},
+{h:"可能",hs:"可能",p:"kě néng",z:"ㄎㄜˇ ㄋㄥˊ",e:"might (happen)"},
+{h:"影響",hs:"影响",p:"yǐng xiǎng",z:"ㄧㄥˇ ㄒㄧㄤˇ",e:"influence"},
+]},
+]},
+{n:9,t:"那個城市好漂亮",tp:"Nàge chéngshì hǎo piàoliang",te:"That City Is So Beautiful",parts:[
+{n:"生詞 I",w:[
+{h:"春假",hs:"春假",p:"chūn jià",z:"ㄔㄨㄣ ㄐㄧㄚˋ",e:"spring break"},
+{h:"潛水",hs:"潜水",p:"qián shuǐ",z:"ㄑㄧㄢˊ ㄕㄨㄟˇ",e:"to dive"},
+{h:"好",hs:"好",p:"hǎo",z:"ㄏㄠˇ",e:"good"},
+{h:"到",hs:"到",p:"dào",z:"ㄉㄠˋ",e:"to (a place)"},
+{h:"特色",hs:"特色",p:"tè sè",z:"ㄊㄜˋ ㄙㄜˋ",e:"characteristic"},
+{h:"夠",hs:"够",p:"gòu",z:"ㄍㄡˋ",e:"enough (sufficient)"},
+{h:"顏色",hs:"颜色",p:"yán sè",z:"ㄧㄢˊ ㄙㄜˋ",e:"color"},
+{h:"像",hs:"像",p:"xiàng",z:"ㄒㄧㄤˋ",e:"to resemble"},
+{h:"教堂",hs:"教堂",p:"jiào táng",z:"ㄐㄧㄠˋ ㄊㄤˊ",e:"church"},
+{h:"各",hs:"各",p:"gè",z:"ㄍㄜˋ",e:"each"},
+{h:"魚",hs:"鱼",p:"yú",z:"ㄩˊ",e:"fish"},
+{h:"味道",hs:"味道",p:"wèi dao",z:"ㄨㄟˋ ㄉㄠ˙",e:"flavor"},
+{h:"極了",hs:"极了",p:"jí le",z:"ㄐㄧˊ ㄌㄜ˙",e:"extremely"},
+]},
+{n:"生詞 II",w:[
+{h:"鄉下",hs:"乡下",p:"xiāng xia",z:"ㄒㄧㄤ ㄒㄧㄚ˙",e:"countryside"},
+{h:"氣氛",hs:"气氛",p:"qì fēn",z:"ㄑㄧˋ ㄈㄣ",e:"atmosphere"},
+{h:"不同",hs:"不同",p:"bù tóng",z:"ㄅㄨˋ ㄊㄨㄥˊ",e:"different"},
+{h:"現代",hs:"现代",p:"xiàn dài",z:"ㄒㄧㄢˋ ㄉㄞˋ",e:"modern times"},
+{h:"公寓",hs:"公寓",p:"gōng yù",z:"ㄍㄨㄥ ㄩˋ",e:"apartment building"},
+{h:"馬路",hs:"马路",p:"mǎ lù",z:"ㄇㄚˇ ㄌㄨˋ",e:"street"},
+{h:"寬",hs:"宽",p:"kuān",z:"ㄎㄨㄢ",e:"lenient"},
+{h:"汽車",hs:"汽车",p:"qì chē",z:"ㄑㄧˋ ㄔㄜ",e:"car"},
+{h:"建築",hs:"建筑",p:"jiàn zhù",z:"ㄐㄧㄢˋ ㄓㄨˋ",e:"to construct"},
+{h:"北部",hs:"北部",p:"běi bù",z:"ㄅㄟˇ ㄅㄨˋ",e:"northern part"},
+{h:"熱情",hs:"热情",p:"rè qíng",z:"ㄖㄜˋ ㄑㄧㄥˊ",e:"cordial"},
+{h:"飲料",hs:"饮料",p:"yǐn liào",z:"ㄧㄣˇ ㄌㄧㄠˋ",e:"drink"},
+{h:"巴黎",hs:"巴黎",p:"Bā lí",z:"ㄅㄚ ㄌㄧˊ",e:"Paris, capital of France"},
+{h:"高雄市",hs:"高雄市",p:"Gāo xióng shì",z:"ㄍㄠ ㄒㄩㄥˊ ㄕˋ",e:"Kaohsiung or Gaoxiong city in south Taiwan"},
+{h:"百貨公司",hs:"百货公司",p:"bǎi huò gōng sī",z:"ㄅㄞˇ ㄏㄨㄛˋ ㄍㄨㄥ ㄙ",e:"department store"},
+{h:"越來越",hs:"越来越",p:"yuè lái yuè",z:"ㄩㄝˋ ㄌㄞˊ ㄩㄝˋ",e:"more and more"},
+]},
+]},
+{n:10,t:"歡迎到我家來包餃子",tp:"Huānyíng dào wǒ jiā lái bāo jiǎozi",te:"Welcome to My Home to Make Dumplings",parts:[
+{n:"生詞 I",w:[
+{h:"馬丁",hs:"马丁",p:"Mǎ dīng",z:"ㄇㄚˇ ㄉㄧㄥ",e:"Martin (name)"},
+{h:"包",hs:"包",p:"bāo",z:"ㄅㄠ",e:"to cover"},
+{h:"餃子",hs:"饺子",p:"jiǎo zi",z:"ㄐㄧㄠˇ ㄗ˙",e:"dumpling"},
+{h:"脫",hs:"脱",p:"tuō",z:"ㄊㄨㄛ",e:"to shed"},
+{h:"污",hs:"污",p:"wū",z:"ㄨ",e:"dirty"},
+{h:"水餃",hs:"水饺",p:"shuǐ jiǎo",z:"ㄕㄨㄟˇ ㄐㄧㄠˇ",e:"boiled dumpling"},
+{h:"破",hs:"破",p:"pò",z:"ㄆㄛˋ",e:"broken"},
+{h:"餡兒",hs:"馅儿",p:"xiàn r",z:"ㄒㄧㄢˋ r",e:"erhua variant of 餡|馅[xian4]"},
+{h:"材料",hs:"材料",p:"cái liào",z:"ㄘㄞˊ ㄌㄧㄠˋ",e:"material"},
+{h:"道",hs:"道",p:"dào",z:"ㄉㄠˋ",e:"road"},
+{h:"他",hs:"他",p:"tā",z:"ㄊㄚ",e:"he or him"},
+{h:"光",hs:"光",p:"guāng",z:"ㄍㄨㄤ",e:"light"},
+{h:"筷子",hs:"筷子",p:"kuài zi",z:"ㄎㄨㄞˋ ㄗ˙",e:"chopsticks"},
+{h:"碗",hs:"碗",p:"wǎn",z:"ㄨㄢˇ",e:"bowl"},
+{h:"韓國",hs:"韩国",p:"Hán guó",z:"ㄏㄢˊ ㄍㄨㄛˊ",e:"South Korea (Republic of Korea)"},
+{h:"酸辣湯",hs:"酸辣汤",p:"suān là tāng",z:"ㄙㄨㄢ ㄌㄚˋ ㄊㄤ",e:"hot and sour soup"},
+]},
+{n:"生詞 II",w:[
+{h:"學期",hs:"学期",p:"xué qī",z:"ㄒㄩㄝˊ ㄑㄧ",e:"term"},
+{h:"大白菜",hs:"大白菜",p:"dà bái cài",z:"ㄉㄚˋ ㄅㄞˊ ㄘㄞˋ",e:"bok choy"},
+{h:"加",hs:"加",p:"jiā",z:"ㄐㄧㄚ",e:"to add"},
+{h:"調味料",hs:"调味料",p:"tiáo wèi liào",z:"ㄊㄧㄠˊ ㄨㄟˋ ㄌㄧㄠˋ",e:"seasoning"},
+{h:"玻璃",hs:"玻璃",p:"bō li",z:"ㄅㄛ ㄌㄧ˙",e:"glass"},
+{h:"壽司",hs:"寿司",p:"shòu sī",z:"ㄕㄡˋ ㄙ",e:"sushi"},
+{h:"像",hs:"像",p:"xiàng",z:"ㄒㄧㄤˋ",e:"to resemble"},
+]},
+]},
+{n:11,t:"台灣好玩的地方真多",tp:"Táiwān hǎowán de dìfang zhēn duō",te:"Taiwan Has So Many Fun Places",parts:[
+{n:"生詞 I",w:[
+{h:"後來",hs:"后来",p:"hòu lái",z:"ㄏㄡˋ ㄌㄞˊ",e:"afterwards"},
+{h:"建議",hs:"建议",p:"jiàn yì",z:"ㄐㄧㄢˋ ㄧˋ",e:"to propose"},
+{h:"原住民",hs:"原住民",p:"yuán zhù mín",z:"ㄩㄢˊ ㄓㄨˋ ㄇㄧㄣˊ",e:"indigenous peoples"},
+{h:"沙灘",hs:"沙滩",p:"shā tān",z:"ㄕㄚ ㄊㄢ",e:"beach"},
+{h:"被",hs:"被",p:"bèi",z:"ㄅㄟˋ",e:"quilt"},
+{h:"安全",hs:"安全",p:"ān quán",z:"ㄢ ㄑㄩㄢˊ",e:"safe"},
+{h:"值得",hs:"值得",p:"zhí de",z:"ㄓˊ ㄉㄜ˙",e:"to be worth"},
+{h:"墾丁",hs:"垦丁",p:"Kěn dīng",z:"ㄎㄣˇ ㄉㄧㄥ",e:"Kenting, a national park on the southern tip of Taiwan, popular as a tourist destination (abbr. for 墾丁國家公園|垦丁国家公园[Ken3 ding1 Guo2 jia1 Gong1 yuan2])"},
+{h:"日月潭",hs:"日月潭",p:"Rì yuè Tán",z:"ㄖˋ ㄩㄝˋ ㄊㄢˊ",e:"Sun Moon Lake in Nantou County, Taiwan"},
+]},
+{n:"生詞 II",w:[
+{h:"摩托車",hs:"摩托车",p:"mó tuō chē",z:"ㄇㄛˊ ㄊㄨㄛ ㄔㄜ",e:"motorbike"},
+{h:"熱帶",hs:"热带",p:"rè dài",z:"ㄖㄜˋ ㄉㄞˋ",e:"the tropics"},
+{h:"所有",hs:"所有",p:"suǒ yǒu",z:"ㄙㄨㄛˇ ㄧㄡˇ",e:"all"},
+{h:"白天",hs:"白天",p:"bái tiān",z:"ㄅㄞˊ ㄊㄧㄢ",e:"daytime"},
+{h:"條",hs:"条",p:"tiáo",z:"ㄊㄧㄠˊ",e:"strip"},
+{h:"浪漫",hs:"浪漫",p:"làng màn",z:"ㄌㄤˋ ㄇㄢˋ",e:"romantic"},
+{h:"家鄉",hs:"家乡",p:"jiā xiāng",z:"ㄐㄧㄚ ㄒㄧㄤ",e:"hometown"},
+{h:"觀光客",hs:"观光客",p:"guān guāng kè",z:"ㄍㄨㄢ ㄍㄨㄤ ㄎㄜˋ",e:"tourist"},
+{h:"曬太陽",hs:"晒太阳",p:"shài tài yáng",z:"ㄕㄞˋ ㄊㄞˋ ㄧㄤˊ",e:"to be in the sun (getting warm or sunbathing etc)"},
+{h:"愛上",hs:"爱上",p:"ài shàng",z:"ㄞˋ ㄕㄤˋ",e:"to fall in love with"},
+]},
+]},
+{n:12,t:"怎麼吃才健康？",tp:"Zěnme chī cái jiànkāng?",te:"How Can I Eat Healthily?",parts:[
+{n:"生詞 I",w:[
+{h:"素食",hs:"素食",p:"sù shí",z:"ㄙㄨˋ ㄕˊ",e:"vegetables"},
+{h:"速食",hs:"速食",p:"sù shí",z:"ㄙㄨˋ ㄕˊ",e:"fast food (Tw)"},
+{h:"做",hs:"做",p:"zuò",z:"ㄗㄨㄛˋ",e:"to do"},
+{h:"吃素",hs:"吃素",p:"chī sù",z:"ㄔ ㄙㄨˋ",e:"to be a vegetarian"},
+{h:"漢堡",hs:"汉堡",p:"hàn bǎo",z:"ㄏㄢˋ ㄅㄠˇ",e:"hamburger (loanword)"},
+{h:"素菜",hs:"素菜",p:"sù cài",z:"ㄙㄨˋ ㄘㄞˋ",e:"vegetable dish"},
+{h:"油膩",hs:"油腻",p:"yóu nì",z:"ㄧㄡˊ ㄋㄧˋ",e:"grease"},
+{h:"好奇",hs:"好奇",p:"hào qí",z:"ㄏㄠˋ ㄑㄧˊ",e:"inquisitive"},
+{h:"青菜",hs:"青菜",p:"qīng cài",z:"ㄑㄧㄥ ㄘㄞˋ",e:"green vegetables"},
+{h:"西方",hs:"西方",p:"Xī fāng",z:"ㄒㄧ ㄈㄤ",e:"the West"},
+{h:"完全",hs:"完全",p:"wán quán",z:"ㄨㄢˊ ㄑㄩㄢˊ",e:"complete"},
+{h:"鹹",hs:"咸",p:"xián",z:"ㄒㄧㄢˊ",e:"salted"},
+{h:"炸",hs:"炸",p:"zhá",z:"ㄓㄚˊ",e:"to deep fry"},
+{h:"烤",hs:"烤",p:"kǎo",z:"ㄎㄠˇ",e:"to roast"},
+]},
+{n:"生詞 II",w:[
+{h:"只要",hs:"只要",p:"zhǐ yào",z:"ㄓˇ ㄧㄠˋ",e:"if only"},
+{h:"薯條",hs:"薯条",p:"shǔ tiáo",z:"ㄕㄨˇ ㄊㄧㄠˊ",e:"french fries"},
+{h:"越",hs:"越",p:"yuè",z:"ㄩㄝˋ",e:"to exceed"},
+{h:"簡單",hs:"简单",p:"jiǎn dān",z:"ㄐㄧㄢˇ ㄉㄢ",e:"simple"},
+{h:"有機",hs:"有机",p:"yǒu jī",z:"ㄧㄡˇ ㄐㄧ",e:"organic"},
+{h:"食品",hs:"食品",p:"shí pǐn",z:"ㄕˊ ㄆㄧㄣˇ",e:"foodstuff"},
+{h:"地球",hs:"地球",p:"dì qiú",z:"ㄉㄧˋ ㄑㄧㄡˊ",e:"the earth"},
+{h:"嚴重",hs:"严重",p:"yán zhòng",z:"ㄧㄢˊ ㄓㄨㄥˋ",e:"grave"},
+{h:"衛生",hs:"卫生",p:"wèi shēng",z:"ㄨㄟˋ ㄕㄥ",e:"health"},
+{h:"什麼的",hs:"什么的",p:"shén me de",z:"ㄕㄣˊ ㄇㄜ˙ ㄉㄜ˙",e:"and so on"},
+]},
+]},
+{n:13,t:"我的手機掉了",tp:"Wǒ de shǒujī diào le",te:"I Lost My Phone",parts:[
+{n:"生詞 I",w:[
+{h:"低頭",hs:"低头",p:"dī tóu",z:"ㄉㄧ ㄊㄡˊ",e:"to bow the head"},
+{h:"傳",hs:"传",p:"chuán",z:"ㄔㄨㄢˊ",e:"to pass on"},
+{h:"簡訊",hs:"简讯",p:"jiǎn xùn",z:"ㄐㄧㄢˇ ㄒㄩㄣˋ",e:"newsletter"},
+{h:"功能",hs:"功能",p:"gōng néng",z:"ㄍㄨㄥ ㄋㄥˊ",e:"function"},
+{h:"生氣",hs:"生气",p:"shēng qì",z:"ㄕㄥ ㄑㄧˋ",e:"to get angry"},
+{h:"健身房",hs:"健身房",p:"jiàn shēn fáng",z:"ㄐㄧㄢˋ ㄕㄣ ㄈㄤˊ",e:"gym"},
+{h:"啦",hs:"啦",p:"lā",z:"ㄌㄚ",e:"(onom.) sound of singing, cheering etc"},
+{h:"查",hs:"查",p:"chá",z:"ㄔㄚˊ",e:"to research"},
+{h:"班機",hs:"班机",p:"bān jī",z:"ㄅㄢ ㄐㄧ",e:"airliner"},
+{h:"訂位",hs:"订位",p:"dìng wèi",z:"ㄉㄧㄥˋ ㄨㄟˋ",e:"to reserve a seat"},
+{h:"充電",hs:"充电",p:"chōng diàn",z:"ㄔㄨㄥ ㄉㄧㄢˋ",e:"to recharge (a battery)"},
+{h:"糊塗",hs:"糊涂",p:"hú tu",z:"ㄏㄨˊ ㄊㄨ˙",e:"muddled"},
+{h:"義大利",hs:"义大利",p:"Yì dà lì",z:"ㄧˋ ㄉㄚˋ ㄌㄧˋ",e:"(Tw) Italy"},
+{h:"留下",hs:"留下",p:"liú xià",z:"ㄌㄧㄡˊ ㄒㄧㄚˋ",e:"to leave behind"},
+]},
+{n:"生詞 II",w:[
+{h:"網路",hs:"网路",p:"wǎng lù",z:"ㄨㄤˇ ㄌㄨˋ",e:"network (computer, telecom)"},
+{h:"事情",hs:"事情",p:"shì qing",z:"ㄕˋ ㄑㄧㄥ˙",e:"affair"},
+{h:"消息",hs:"消息",p:"xiāo xi",z:"ㄒㄧㄠ ㄒㄧ˙",e:"news"},
+{h:"透過",hs:"透过",p:"tòu guò",z:"ㄊㄡˋ ㄍㄨㄛˋ",e:"to pass through"},
+{h:"世界",hs:"世界",p:"shì jiè",z:"ㄕˋ ㄐㄧㄝˋ",e:"world"},
+{h:"節省",hs:"节省",p:"jié shěng",z:"ㄐㄧㄝˊ ㄕㄥˇ",e:"saving"},
+{h:"檢查",hs:"检查",p:"jiǎn chá",z:"ㄐㄧㄢˇ ㄔㄚˊ",e:"inspection"},
+{h:"郵件",hs:"邮件",p:"yóu jiàn",z:"ㄧㄡˊ ㄐㄧㄢˋ",e:"mail"},
+{h:"立刻",hs:"立刻",p:"lì kè",z:"ㄌㄧˋ ㄎㄜˋ",e:"forthwith"},
+{h:"上傳",hs:"上传",p:"shàng chuán",z:"ㄕㄤˋ ㄔㄨㄢˊ",e:"to upload"},
+{h:"正常",hs:"正常",p:"zhèng cháng",z:"ㄓㄥˋ ㄔㄤˊ",e:"regular"},
+{h:"談",hs:"谈",p:"tán",z:"ㄊㄢˊ",e:"to speak"},
+{h:"現代人",hs:"现代人",p:"xiàn dài rén",z:"ㄒㄧㄢˋ ㄉㄞˋ ㄖㄣˊ",e:"modern man"},
+{h:"比方說",hs:"比方说",p:"bǐ fang shuō",z:"ㄅㄧˇ ㄈㄤ˙ ㄕㄨㄛ",e:"for example"},
+{h:"第一手",hs:"第一手",p:"dì yī shǒu",z:"ㄉㄧˋ ㄧ ㄕㄡˇ",e:"first-hand"},
+{h:"急著",hs:"急着",p:"jí zhe",z:"ㄐㄧˊ ㄓㄜ˙",e:"urgently"},
+{h:"打招呼",hs:"打招呼",p:"dǎ zhāo hu",z:"ㄉㄚˇ ㄓㄠ ㄏㄨ˙",e:"to greet sb by word or action"},
+{h:"面對面",hs:"面对面",p:"miàn duì miàn",z:"ㄇㄧㄢˋ ㄉㄨㄟˋ ㄇㄧㄢˋ",e:"face to face"},
+]},
+]},
+{n:14,t:"我要開始找工作了",tp:"Wǒ yào kāishǐ zhǎo gōngzuò le",te:"I'm Going to Start Job Hunting",parts:[
+{n:"生詞 I",w:[
+{h:"將來",hs:"将来",p:"jiāng lái",z:"ㄐㄧㄤ ㄌㄞˊ",e:"in the future"},
+{h:"連",hs:"连",p:"lián",z:"ㄌㄧㄢˊ",e:"to link"},
+{h:"想法",hs:"想法",p:"xiǎng fǎ",z:"ㄒㄧㄤˇ ㄈㄚˇ",e:"way of thinking"},
+{h:"不但",hs:"不但",p:"bù dàn",z:"ㄅㄨˋ ㄉㄢˋ",e:"not only (... but also...)"},
+{h:"使用",hs:"使用",p:"shǐ yòng",z:"ㄕˇ ㄩㄥˋ",e:"to use"},
+{h:"秋天",hs:"秋天",p:"qiū tiān",z:"ㄑㄧㄡ ㄊㄧㄢ",e:"autumn"},
+{h:"招待",hs:"招待",p:"zhāo dài",z:"ㄓㄠ ㄉㄞˋ",e:"to receive (guests)"},
+{h:"研究所",hs:"研究所",p:"yán jiū suǒ",z:"ㄧㄢˊ ㄐㄧㄡ ㄙㄨㄛˇ",e:"research institute"},
+{h:"香港",hs:"香港",p:"Xiāng gǎng",z:"ㄒㄧㄤ ㄍㄤˇ",e:"Hong Kong"},
+{h:"上海",hs:"上海",p:"Shàng hǎi",z:"ㄕㄤˋ ㄏㄞˇ",e:"Shanghai municipality, central east China, abbr. to 滬|沪[Hu4]"},
+{h:"說到",hs:"说到",p:"shuō dào",z:"ㄕㄨㄛ ㄉㄠˋ",e:"to talk about"},
+{h:"分公司",hs:"分公司",p:"fēn gōng sī",z:"ㄈㄣ ㄍㄨㄥ ㄙ",e:"subsidiary company"},
+{h:"捨不得",hs:"舍不得",p:"shě bu de",z:"ㄕㄜˇ ㄅㄨ˙ ㄉㄜ˙",e:"to hate to do sth"},
+]},
+{n:"生詞 II",w:[
+{h:"當時",hs:"当时",p:"dāng shí",z:"ㄉㄤ ㄕˊ",e:"then"},
+{h:"語法",hs:"语法",p:"yǔ fǎ",z:"ㄩˇ ㄈㄚˇ",e:"grammar"},
+{h:"聲調",hs:"声调",p:"shēng diào",z:"ㄕㄥ ㄉㄧㄠˋ",e:"tone"},
+{h:"企業",hs:"企业",p:"qǐ yè",z:"ㄑㄧˇ ㄧㄝˋ",e:"company"},
+{h:"管理",hs:"管理",p:"guǎn lǐ",z:"ㄍㄨㄢˇ ㄌㄧˇ",e:"to supervise"},
+{h:"經濟",hs:"经济",p:"jīng jì",z:"ㄐㄧㄥ ㄐㄧˋ",e:"economy"},
+{h:"有關",hs:"有关",p:"yǒu guān",z:"ㄧㄡˇ ㄍㄨㄢ",e:"to have sth to do with"},
+{h:"研究",hs:"研究",p:"yán jiū",z:"ㄧㄢˊ ㄐㄧㄡ",e:"research"},
+{h:"教書",hs:"教书",p:"jiāo shū",z:"ㄐㄧㄠ ㄕㄨ",e:"to teach (in a school)"},
+{h:"方法",hs:"方法",p:"fāng fǎ",z:"ㄈㄤ ㄈㄚˇ",e:"method"},
+{h:"目的",hs:"目的",p:"mù dì",z:"ㄇㄨˋ ㄉㄧˋ",e:"purpose"},
+{h:"國際",hs:"国际",p:"guó jì",z:"ㄍㄨㄛˊ ㄐㄧˋ",e:"international"},
+{h:"翻譯",hs:"翻译",p:"fān yì",z:"ㄈㄢ ㄧˋ",e:"to translate"},
+{h:"外交",hs:"外交",p:"wài jiāo",z:"ㄨㄞˋ ㄐㄧㄠ",e:"diplomacy"},
+{h:"人員",hs:"人员",p:"rén yuán",z:"ㄖㄣˊ ㄩㄢˊ",e:"staff"},
+{h:"充實",hs:"充实",p:"chōng shí",z:"ㄔㄨㄥ ㄕˊ",e:"rich"},
+{h:"專業",hs:"专业",p:"zhuān yè",z:"ㄓㄨㄢ ㄧㄝˋ",e:"specialty"},
+{h:"能力",hs:"能力",p:"néng lì",z:"ㄋㄥˊ ㄌㄧˋ",e:"capability"},
+{h:"加拿大",hs:"加拿大",p:"Jiā ná dà",z:"ㄐㄧㄚ ㄋㄚˊ ㄉㄚˋ",e:"Canada"},
+{h:"國際關係",hs:"国际关系",p:"guó jì guān xì",z:"ㄍㄨㄛˊ ㄐㄧˋ ㄍㄨㄢ ㄒㄧˋ",e:"international relations"},
+]},
+]},
+{n:15,t:"過春節",tp:"Guò Chūnjié",te:"Celebrating Chinese New Year",parts:[
+{n:"生詞 I",w:[
+{h:"春節",hs:"春节",p:"Chūn jié",z:"ㄔㄨㄣ ㄐㄧㄝˊ",e:"Spring Festival (Chinese New Year)"},
+{h:"打擾",hs:"打扰",p:"dǎ rǎo",z:"ㄉㄚˇ ㄖㄠˇ",e:"to disturb"},
+{h:"國外",hs:"国外",p:"guó wài",z:"ㄍㄨㄛˊ ㄨㄞˋ",e:"abroad"},
+{h:"意思",hs:"意思",p:"yì si",z:"ㄧˋ ㄙ˙",e:"idea"},
+{h:"全家",hs:"全家",p:"quán jiā",z:"ㄑㄩㄢˊ ㄐㄧㄚ",e:"whole family"},
+{h:"孩子",hs:"孩子",p:"hái zi",z:"ㄏㄞˊ ㄗ˙",e:"child"},
+{h:"吉祥",hs:"吉祥",p:"jí xiáng",z:"ㄐㄧˊ ㄒㄧㄤˊ",e:"lucky"},
+{h:"過年",hs:"过年",p:"guò nián",z:"ㄍㄨㄛˋ ㄋㄧㄢˊ",e:"to celebrate the Chinese New Year"},
+{h:"壓歲錢",hs:"压岁钱",p:"yā suì qián",z:"ㄧㄚ ㄙㄨㄟˋ ㄑㄧㄢˊ",e:"money given to children as new year present"},
+{h:"恭喜發財",hs:"恭喜发财",p:"gōng xǐ fā cái",z:"ㄍㄨㄥ ㄒㄧˇ ㄈㄚ ㄘㄞˊ",e:"May you have a prosperous New Year! (New Year's greeting)"},
+]},
+{n:"生詞 II",w:[
+{h:"活",hs:"活",p:"huó",z:"ㄏㄨㄛˊ",e:"to live"},
+{h:"另外",hs:"另外",p:"lìng wài",z:"ㄌㄧㄥˋ ㄨㄞˋ",e:"additional"},
+{h:"春聯",hs:"春联",p:"chūn lián",z:"ㄔㄨㄣ ㄌㄧㄢˊ",e:"Spring Festival couplet (the first line of which is pasted on the right side of a doorway at New Year, and the second on the left side)"},
+{h:"橘子",hs:"橘子",p:"jú zi",z:"ㄐㄩˊ ㄗ˙",e:"tangerine"},
+{h:"守歲",hs:"守岁",p:"shǒu suì",z:"ㄕㄡˇ ㄙㄨㄟˋ",e:"to see in the New Year"},
+{h:"說法",hs:"说法",p:"shuō fa",z:"ㄕㄨㄛ ㄈㄚ˙",e:"way of speaking"},
+{h:"晚",hs:"晚",p:"wǎn",z:"ㄨㄢˇ",e:"evening"},
+{h:"出門",hs:"出门",p:"chū mén",z:"ㄔㄨ ㄇㄣˊ",e:"to go out"},
+{h:"拜年",hs:"拜年",p:"bài nián",z:"ㄅㄞˋ ㄋㄧㄢˊ",e:"to pay a New Year call"},
+{h:"又",hs:"又",p:"yòu",z:"ㄧㄡˋ",e:"(once) again"},
+{h:"起來",hs:"起来",p:"qi lai",z:"ㄑㄧ˙ ㄌㄞ˙",e:"(after a verb) indicating the beginning and continuation of an action or a state"},
+{h:"大吉大利",hs:"大吉大利",p:"dà jí dà lì",z:"ㄉㄚˋ ㄐㄧˊ ㄉㄚˋ ㄌㄧˋ",e:"great luck, great profit (idiom); everything is thriving"},
+{h:"放鞭炮",hs:"放鞭炮",p:"fàng biān pào",z:"ㄈㄤˋ ㄅㄧㄢ ㄆㄠˋ",e:"to set off firecrackers"},
+]},
+]},
+]},
+{id:"cn",units:
+[
+{n:1,t:"你好",tp:"Nǐ hǎo",te:"Hello",parts:[
+{n:"Part I · Saying hello",w:[
+{h:"你",hs:"你",p:"nǐ",z:"ㄋㄧˇ",e:"you",sh:"你好!",sp:"Nǐ hǎo!",sz:"ㄋㄧˇ ㄏㄠˇ!",se:"Hello!"},
+{h:"好",hs:"好",p:"hǎo",z:"ㄏㄠˇ",e:"good, well",sh:"我很好。",sp:"Wǒ hěn hǎo.",sz:"ㄨㄛˇ ㄏㄣˇ ㄏㄠˇ.",se:"I'm fine."},
+{h:"我",hs:"我",p:"wǒ",z:"ㄨㄛˇ",e:"I, me",sh:"我是学生。",sp:"Wǒ shì xuésheng.",sz:"ㄨㄛˇ ㄕˋ ㄒㄩㄝˊ ㄕㄥ˙.",se:"I am a student."},
+{h:"是",hs:"是",p:"shì",z:"ㄕˋ",e:"to be",sh:"他是老师。",sp:"Tā shì lǎoshī.",sz:"ㄊㄚ ㄕˋ ㄌㄠˇ ㄕ.",se:"He is a teacher."},
+{h:"老师",hs:"老师",p:"lǎoshī",z:"ㄌㄠˇ ㄕ",e:"teacher",sh:"王老师很忙。",sp:"Wáng lǎoshī hěn máng.",sz:"ㄨㄤˊ ㄌㄠˇ ㄕ ㄏㄣˇ ㄇㄤˊ.",se:"Teacher Wang is busy."},
+{h:"学生",hs:"学生",p:"xuésheng",z:"ㄒㄩㄝˊ ㄕㄥ˙",e:"student",sh:"我们都是学生。",sp:"Wǒmen dōu shì xuésheng.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄉㄡ ㄕˋ ㄒㄩㄝˊ ㄕㄥ˙.",se:"We are all students."},
+{h:"吗",hs:"吗",p:"ma",z:"ㄇㄚ˙",e:"question particle",sh:"你好吗?",sp:"Nǐ hǎo ma?",sz:"ㄋㄧˇ ㄏㄠˇ ㄇㄚ˙?",se:"How are you?"},
+{h:"很",hs:"很",p:"hěn",z:"ㄏㄣˇ",e:"very",sh:"我很忙。",sp:"Wǒ hěn máng.",sz:"ㄨㄛˇ ㄏㄣˇ ㄇㄤˊ.",se:"I'm very busy."},
+{h:"不",hs:"不",p:"bù",z:"ㄅㄨˋ",e:"not, no",sh:"我不是老师。",sp:"Wǒ bú shì lǎoshī.",sz:"ㄨㄛˇ ㄅㄨˊ ㄕˋ ㄌㄠˇ ㄕ.",se:"I'm not a teacher."},
+{h:"他",hs:"他",p:"tā",z:"ㄊㄚ",e:"he, him",sh:"他是中国人。",sp:"Tā shì Zhōngguórén.",sz:"ㄊㄚ ㄕˋ ㄓㄨㄥ ㄍㄨㄛˊ ㄖㄣˊ.",se:"He is Chinese."},
+{h:"她",hs:"她",p:"tā",z:"ㄊㄚ",e:"she, her",sh:"她是我的朋友。",sp:"Tā shì wǒ de péngyou.",sz:"ㄊㄚ ㄕˋ ㄨㄛˇ ㄉㄜ˙ ㄆㄥˊ ㄧㄡ˙.",se:"She is my friend."},
+{h:"朋友",hs:"朋友",p:"péngyou",z:"ㄆㄥˊ ㄧㄡ˙",e:"friend",sh:"他是我的好朋友。",sp:"Tā shì wǒ de hǎo péngyou.",sz:"ㄊㄚ ㄕˋ ㄨㄛˇ ㄉㄜ˙ ㄏㄠˇ ㄆㄥˊ ㄧㄡ˙.",se:"He is my good friend."},
+]},
+{n:"Part II · Names and where you're from",w:[
+{h:"请问",hs:"请问",p:"qǐngwèn",z:"ㄑㄧㄥˇ ㄨㄣˋ",e:"excuse me, may I ask",sh:"请问,你是老师吗?",sp:"Qǐngwèn, nǐ shì lǎoshī ma?",sz:"ㄑㄧㄥˇ ㄨㄣˋ, ㄋㄧˇ ㄕˋ ㄌㄠˇ ㄕ ㄇㄚ˙?",se:"Excuse me, are you a teacher?"},
+{h:"贵姓",hs:"贵姓",p:"guìxìng",z:"ㄍㄨㄟˋ ㄒㄧㄥˋ",e:"your surname (polite)",sh:"您贵姓?",sp:"Nín guìxìng?",sz:"ㄋㄧㄣˊ ㄍㄨㄟˋ ㄒㄧㄥˋ?",se:"May I ask your surname?"},
+{h:"姓",hs:"姓",p:"xìng",z:"ㄒㄧㄥˋ",e:"surname; be surnamed",sh:"我姓王。",sp:"Wǒ xìng Wáng.",sz:"ㄨㄛˇ ㄒㄧㄥˋ ㄨㄤˊ.",se:"My surname is Wang."},
+{h:"叫",hs:"叫",p:"jiào",z:"ㄐㄧㄠˋ",e:"be called",sh:"我叫大卫。",sp:"Wǒ jiào Dàwèi.",sz:"ㄨㄛˇ ㄐㄧㄠˋ ㄉㄚˋ ㄨㄟˋ.",se:"My name is David."},
+{h:"名字",hs:"名字",p:"míngzi",z:"ㄇㄧㄥˊ ㄗ˙",e:"name",sh:"你的名字很好听。",sp:"Nǐ de míngzi hěn hǎotīng.",sz:"ㄋㄧˇ ㄉㄜ˙ ㄇㄧㄥˊ ㄗ˙ ㄏㄣˇ ㄏㄠˇ ㄊㄧㄥ.",se:"Your name sounds lovely."},
+{h:"什么",hs:"什么",p:"shénme",z:"ㄕㄣˊ ㄇㄜ˙",e:"what",sh:"这是什么?",sp:"Zhè shì shénme?",sz:"ㄓㄜˋ ㄕˋ ㄕㄣˊ ㄇㄜ˙?",se:"What is this?"},
+{h:"谁",hs:"谁",p:"shéi",z:"ㄕㄟˊ",e:"who",sh:"他是谁?",sp:"Tā shì shéi?",sz:"ㄊㄚ ㄕˋ ㄕㄟˊ?",se:"Who is he?"},
+{h:"的",hs:"的",p:"de",z:"ㄉㄜ˙",e:"possessive particle",sh:"这是我的书。",sp:"Zhè shì wǒ de shū.",sz:"ㄓㄜˋ ㄕˋ ㄨㄛˇ ㄉㄜ˙ ㄕㄨ.",se:"This is my book."},
+{h:"中国",hs:"中国",p:"Zhōngguó",z:"ㄓㄨㄥ ㄍㄨㄛˊ",e:"China",sh:"我去中国学习。",sp:"Wǒ qù Zhōngguó xuéxí.",sz:"ㄨㄛˇ ㄑㄩˋ ㄓㄨㄥ ㄍㄨㄛˊ ㄒㄩㄝˊ ㄒㄧˊ.",se:"I'm going to China to study."},
+{h:"越南",hs:"越南",p:"Yuènán",z:"ㄩㄝˋ ㄋㄢˊ",e:"Vietnam",sh:"我是越南人。",sp:"Wǒ shì Yuènánrén.",sz:"ㄨㄛˇ ㄕˋ ㄩㄝˋ ㄋㄢˊ ㄖㄣˊ.",se:"I am Vietnamese."},
+{h:"人",hs:"人",p:"rén",z:"ㄖㄣˊ",e:"person",sh:"他是美国人。",sp:"Tā shì Měiguórén.",sz:"ㄊㄚ ㄕˋ ㄇㄟˇ ㄍㄨㄛˊ ㄖㄣˊ.",se:"He is American."},
+{h:"认识",hs:"认识",p:"rènshi",z:"ㄖㄣˋ ㄕ˙",e:"to know, to meet",sh:"认识你很高兴。",sp:"Rènshi nǐ hěn gāoxìng.",sz:"ㄖㄣˋ ㄕ˙ ㄋㄧˇ ㄏㄣˇ ㄍㄠ ㄒㄧㄥˋ.",se:"Pleased to meet you."},
+{h:"高兴",hs:"高兴",p:"gāoxìng",z:"ㄍㄠ ㄒㄧㄥˋ",e:"glad, happy",sh:"她今天很高兴。",sp:"Tā jīntiān hěn gāoxìng.",sz:"ㄊㄚ ㄐㄧㄣ ㄊㄧㄢ ㄏㄣˇ ㄍㄠ ㄒㄧㄥˋ.",se:"She is happy today."},
+{h:"再见",hs:"再见",p:"zàijiàn",z:"ㄗㄞˋ ㄐㄧㄢˋ",e:"goodbye",sh:"老师,再见!",sp:"Lǎoshī, zàijiàn!",sz:"ㄌㄠˇ ㄕ, ㄗㄞˋ ㄐㄧㄢˋ!",se:"Goodbye, teacher!"},
+]},
+]},
+{n:2,t:"你身体好吗?",tp:"Nǐ shēntǐ hǎo ma?",te:"How are you keeping?",parts:[
+{n:"Part I · How you're doing",w:[
+{h:"身体",hs:"身体",p:"shēntǐ",z:"ㄕㄣ ㄊㄧˇ",e:"body, health",sh:"你身体好吗?",sp:"Nǐ shēntǐ hǎo ma?",sz:"ㄋㄧˇ ㄕㄣ ㄊㄧˇ ㄏㄠˇ ㄇㄚ˙?",se:"How is your health?"},
+{h:"怎么样",hs:"怎么样",p:"zěnmeyàng",z:"ㄗㄣˇ ㄇㄜ˙ ㄧㄤˋ",e:"how about, how is it",sh:"你最近怎么样?",sp:"Nǐ zuìjìn zěnmeyàng?",sz:"ㄋㄧˇ ㄗㄨㄟˋ ㄐㄧㄣˋ ㄗㄣˇ ㄇㄜ˙ ㄧㄤˋ?",se:"How have you been lately?"},
+{h:"最近",hs:"最近",p:"zuìjìn",z:"ㄗㄨㄟˋ ㄐㄧㄣˋ",e:"recently",sh:"最近我很忙。",sp:"Zuìjìn wǒ hěn máng.",sz:"ㄗㄨㄟˋ ㄐㄧㄣˋ ㄨㄛˇ ㄏㄣˇ ㄇㄤˊ.",se:"I've been busy lately."},
+{h:"忙",hs:"忙",p:"máng",z:"ㄇㄤˊ",e:"busy",sh:"我今天不忙。",sp:"Wǒ jīntiān bù máng.",sz:"ㄨㄛˇ ㄐㄧㄣ ㄊㄧㄢ ㄅㄨˋ ㄇㄤˊ.",se:"I'm not busy today."},
+{h:"累",hs:"累",p:"lèi",z:"ㄌㄟˋ",e:"tired",sh:"我有点儿累。",sp:"Wǒ yǒudiǎnr lèi.",sz:"ㄨㄛˇ yǒudiǎnr ㄌㄟˋ.",se:"I'm a bit tired."},
+{h:"有点儿",hs:"有点儿",p:"yǒudiǎnr",z:"yǒudiǎnr",e:"a bit, slightly",sh:"今天有点儿冷。",sp:"Jīntiān yǒudiǎnr lěng.",sz:"ㄐㄧㄣ ㄊㄧㄢ yǒudiǎnr ㄌㄥˇ.",se:"It's a bit cold today."},
+{h:"还",hs:"还",p:"hái",z:"ㄏㄞˊ",e:"still, yet",sh:"他还在工作。",sp:"Tā hái zài gōngzuò.",sz:"ㄊㄚ ㄏㄞˊ ㄗㄞˋ ㄍㄨㄥ ㄗㄨㄛˋ.",se:"He is still working."},
+{h:"可以",hs:"可以",p:"kěyǐ",z:"ㄎㄜˇ ㄧˇ",e:"may, can, all right",sh:"我的汉语还可以。",sp:"Wǒ de Hànyǔ hái kěyǐ.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄏㄢˋ ㄩˇ ㄏㄞˊ ㄎㄜˇ ㄧˇ.",se:"My Chinese is passable."},
+{h:"谢谢",hs:"谢谢",p:"xièxie",z:"ㄒㄧㄝˋ ㄒㄧㄝ˙",e:"thank you",sh:"谢谢你的帮助。",sp:"Xièxie nǐ de bāngzhù.",sz:"ㄒㄧㄝˋ ㄒㄧㄝ˙ ㄋㄧˇ ㄉㄜ˙ ㄅㄤ ㄓㄨˋ.",se:"Thanks for your help."},
+{h:"不客气",hs:"不客气",p:"bú kèqi",z:"ㄅㄨˊ ㄎㄜˋ ㄑㄧ˙",e:"you're welcome",sh:"不客气!",sp:"Bú kèqi!",sz:"ㄅㄨˊ ㄎㄜˋ ㄑㄧ˙!",se:"You're welcome!"},
+{h:"呢",hs:"呢",p:"ne",z:"ㄋㄜ˙",e:"and what about…?",sh:"我很好,你呢?",sp:"Wǒ hěn hǎo, nǐ ne?",sz:"ㄨㄛˇ ㄏㄣˇ ㄏㄠˇ, ㄋㄧˇ ㄋㄜ˙?",se:"I'm well — and you?"},
+]},
+{n:"Part II · Work and study",w:[
+{h:"工作",hs:"工作",p:"gōngzuò",z:"ㄍㄨㄥ ㄗㄨㄛˋ",e:"work; to work",sh:"他在医院工作。",sp:"Tā zài yīyuàn gōngzuò.",sz:"ㄊㄚ ㄗㄞˋ ㄧ ㄩㄢˋ ㄍㄨㄥ ㄗㄨㄛˋ.",se:"He works at a hospital."},
+{h:"学习",hs:"学习",p:"xuéxí",z:"ㄒㄩㄝˊ ㄒㄧˊ",e:"to study",sh:"我学习汉语。",sp:"Wǒ xuéxí Hànyǔ.",sz:"ㄨㄛˇ ㄒㄩㄝˊ ㄒㄧˊ ㄏㄢˋ ㄩˇ.",se:"I study Chinese."},
+{h:"汉语",hs:"汉语",p:"Hànyǔ",z:"ㄏㄢˋ ㄩˇ",e:"Chinese language",sh:"汉语很有意思。",sp:"Hànyǔ hěn yǒu yìsi.",sz:"ㄏㄢˋ ㄩˇ ㄏㄣˇ ㄧㄡˇ ㄧˋ ㄙ˙.",se:"Chinese is interesting."},
+{h:"难",hs:"难",p:"nán",z:"ㄋㄢˊ",e:"difficult",sh:"汉字很难写。",sp:"Hànzì hěn nán xiě.",sz:"ㄏㄢˋ ㄗˋ ㄏㄣˇ ㄋㄢˊ ㄒㄧㄝˇ.",se:"Chinese characters are hard to write."},
+{h:"容易",hs:"容易",p:"róngyì",z:"ㄖㄨㄥˊ ㄧˋ",e:"easy",sh:"这个字很容易。",sp:"Zhège zì hěn róngyì.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄗˋ ㄏㄣˇ ㄖㄨㄥˊ ㄧˋ.",se:"This character is easy."},
+{h:"有意思",hs:"有意思",p:"yǒu yìsi",z:"ㄧㄡˇ ㄧˋ ㄙ˙",e:"interesting",sh:"这本书很有意思。",sp:"Zhè běn shū hěn yǒu yìsi.",sz:"ㄓㄜˋ ㄅㄣˇ ㄕㄨ ㄏㄣˇ ㄧㄡˇ ㄧˋ ㄙ˙.",se:"This book is interesting."},
+{h:"太",hs:"太",p:"tài",z:"ㄊㄞˋ",e:"too, excessively",sh:"太好了!",sp:"Tài hǎo le!",sz:"ㄊㄞˋ ㄏㄠˇ ㄌㄜ˙!",se:"Wonderful!"},
+{h:"都",hs:"都",p:"dōu",z:"ㄉㄡ",e:"all, both",sh:"我们都很忙。",sp:"Wǒmen dōu hěn máng.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄉㄡ ㄏㄣˇ ㄇㄤˊ.",se:"We are all busy."},
+{h:"们",hs:"们",p:"men",z:"ㄇㄣ˙",e:"plural suffix",sh:"老师们好!",sp:"Lǎoshīmen hǎo!",sz:"ㄌㄠˇ ㄕ ㄇㄣ˙ ㄏㄠˇ!",se:"Hello, teachers!"},
+{h:"也",hs:"也",p:"yě",z:"ㄧㄝˇ",e:"also, too",sh:"我也是越南人。",sp:"Wǒ yě shì Yuènánrén.",sz:"ㄨㄛˇ ㄧㄝˇ ㄕˋ ㄩㄝˋ ㄋㄢˊ ㄖㄣˊ.",se:"I'm Vietnamese too."},
+{h:"在",hs:"在",p:"zài",z:"ㄗㄞˋ",e:"at, in; to be at",sh:"我在学校。",sp:"Wǒ zài xuéxiào.",sz:"ㄨㄛˇ ㄗㄞˋ ㄒㄩㄝˊ ㄒㄧㄠˋ.",se:"I'm at school."},
+{h:"学校",hs:"学校",p:"xuéxiào",z:"ㄒㄩㄝˊ ㄒㄧㄠˋ",e:"school",sh:"我们的学校很大。",sp:"Wǒmen de xuéxiào hěn dà.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄉㄜ˙ ㄒㄩㄝˊ ㄒㄧㄠˋ ㄏㄣˇ ㄉㄚˋ.",se:"Our school is big."},
+]},
+]},
+{n:3,t:"你家有几口人?",tp:"Nǐ jiā yǒu jǐ kǒu rén?",te:"How many people are in your family?",parts:[
+{n:"Part I · Family",w:[
+{h:"家",hs:"家",p:"jiā",z:"ㄐㄧㄚ",e:"family, home",sh:"我家有四口人。",sp:"Wǒ jiā yǒu sì kǒu rén.",sz:"ㄨㄛˇ ㄐㄧㄚ ㄧㄡˇ ㄙˋ ㄎㄡˇ ㄖㄣˊ.",se:"There are four people in my family."},
+{h:"有",hs:"有",p:"yǒu",z:"ㄧㄡˇ",e:"to have; there is",sh:"我有一个妹妹。",sp:"Wǒ yǒu yí ge mèimei.",sz:"ㄨㄛˇ ㄧㄡˇ ㄧˊ ㄍㄜ˙ ㄇㄟˋ ㄇㄟ˙.",se:"I have a younger sister."},
+{h:"几",hs:"几",p:"jǐ",z:"ㄐㄧˇ",e:"how many",sh:"你家有几口人?",sp:"Nǐ jiā yǒu jǐ kǒu rén?",sz:"ㄋㄧˇ ㄐㄧㄚ ㄧㄡˇ ㄐㄧˇ ㄎㄡˇ ㄖㄣˊ?",se:"How many are in your family?"},
+{h:"口",hs:"口",p:"kǒu",z:"ㄎㄡˇ",e:"measure word for family members",sh:"我们家五口人。",sp:"Wǒmen jiā wǔ kǒu rén.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄐㄧㄚ ㄨˇ ㄎㄡˇ ㄖㄣˊ.",se:"Our family has five people."},
+{h:"个",hs:"个",p:"gè",z:"ㄍㄜˋ",e:"general measure word",sh:"我有三个朋友。",sp:"Wǒ yǒu sān ge péngyou.",sz:"ㄨㄛˇ ㄧㄡˇ ㄙㄢ ㄍㄜ˙ ㄆㄥˊ ㄧㄡ˙.",se:"I have three friends."},
+{h:"爸爸",hs:"爸爸",p:"bàba",z:"ㄅㄚˋ ㄅㄚ˙",e:"father, dad",sh:"我爸爸是老师。",sp:"Wǒ bàba shì lǎoshī.",sz:"ㄨㄛˇ ㄅㄚˋ ㄅㄚ˙ ㄕˋ ㄌㄠˇ ㄕ.",se:"My father is a teacher."},
+{h:"妈妈",hs:"妈妈",p:"māma",z:"ㄇㄚ ㄇㄚ˙",e:"mother, mum",sh:"我妈妈做饭很好吃。",sp:"Wǒ māma zuò fàn hěn hǎochī.",sz:"ㄨㄛˇ ㄇㄚ ㄇㄚ˙ ㄗㄨㄛˋ ㄈㄢˋ ㄏㄣˇ ㄏㄠˇ ㄔ.",se:"My mother cooks well."},
+{h:"哥哥",hs:"哥哥",p:"gēge",z:"ㄍㄜ ㄍㄜ˙",e:"older brother",sh:"我哥哥在上海工作。",sp:"Wǒ gēge zài Shànghǎi gōngzuò.",sz:"ㄨㄛˇ ㄍㄜ ㄍㄜ˙ ㄗㄞˋ ㄕㄤˋ ㄏㄞˇ ㄍㄨㄥ ㄗㄨㄛˋ.",se:"My older brother works in Shanghai."},
+{h:"姐姐",hs:"姐姐",p:"jiějie",z:"ㄐㄧㄝˇ ㄐㄧㄝ˙",e:"older sister",sh:"我姐姐是医生。",sp:"Wǒ jiějie shì yīshēng.",sz:"ㄨㄛˇ ㄐㄧㄝˇ ㄐㄧㄝ˙ ㄕˋ ㄧ ㄕㄥ.",se:"My older sister is a doctor."},
+{h:"弟弟",hs:"弟弟",p:"dìdi",z:"ㄉㄧˋ ㄉㄧ˙",e:"younger brother",sh:"我弟弟今年十岁。",sp:"Wǒ dìdi jīnnián shí suì.",sz:"ㄨㄛˇ ㄉㄧˋ ㄉㄧ˙ ㄐㄧㄣ ㄋㄧㄢˊ ㄕˊ ㄙㄨㄟˋ.",se:"My younger brother is ten."},
+{h:"妹妹",hs:"妹妹",p:"mèimei",z:"ㄇㄟˋ ㄇㄟ˙",e:"younger sister",sh:"我妹妹是学生。",sp:"Wǒ mèimei shì xuésheng.",sz:"ㄨㄛˇ ㄇㄟˋ ㄇㄟ˙ ㄕˋ ㄒㄩㄝˊ ㄕㄥ˙.",se:"My younger sister is a student."},
+{h:"和",hs:"和",p:"hé",z:"ㄏㄜˊ",e:"and, with",sh:"我和哥哥都学汉语。",sp:"Wǒ hé gēge dōu xué Hànyǔ.",sz:"ㄨㄛˇ ㄏㄜˊ ㄍㄜ ㄍㄜ˙ ㄉㄡ ㄒㄩㄝˊ ㄏㄢˋ ㄩˇ.",se:"My brother and I both study Chinese."},
+]},
+{n:"Part II · Numbers and age",w:[
+{h:"一",hs:"一",p:"yī",z:"ㄧ",e:"one",sh:"我有一个哥哥。",sp:"Wǒ yǒu yí ge gēge.",sz:"ㄨㄛˇ ㄧㄡˇ ㄧˊ ㄍㄜ˙ ㄍㄜ ㄍㄜ˙.",se:"I have one older brother."},
+{h:"二",hs:"二",p:"èr",z:"ㄦˋ",e:"two",sh:"我住二楼。",sp:"Wǒ zhù èr lóu.",sz:"ㄨㄛˇ ㄓㄨˋ ㄦˋ ㄌㄡˊ.",se:"I live on the second floor."},
+{h:"三",hs:"三",p:"sān",z:"ㄙㄢ",e:"three",sh:"我们班有三个越南学生。",sp:"Wǒmen bān yǒu sān ge Yuènán xuésheng.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄅㄢ ㄧㄡˇ ㄙㄢ ㄍㄜ˙ ㄩㄝˋ ㄋㄢˊ ㄒㄩㄝˊ ㄕㄥ˙.",se:"Our class has three Vietnamese students."},
+{h:"四",hs:"四",p:"sì",z:"ㄙˋ",e:"four",sh:"我家有四口人。",sp:"Wǒ jiā yǒu sì kǒu rén.",sz:"ㄨㄛˇ ㄐㄧㄚ ㄧㄡˇ ㄙˋ ㄎㄡˇ ㄖㄣˊ.",se:"My family has four people."},
+{h:"五",hs:"五",p:"wǔ",z:"ㄨˇ",e:"five",sh:"现在五点。",sp:"Xiànzài wǔ diǎn.",sz:"ㄒㄧㄢˋ ㄗㄞˋ ㄨˇ ㄉㄧㄢˇ.",se:"It's five o'clock."},
+{h:"六",hs:"六",p:"liù",z:"ㄌㄧㄡˋ",e:"six",sh:"我六点起床。",sp:"Wǒ liù diǎn qǐchuáng.",sz:"ㄨㄛˇ ㄌㄧㄡˋ ㄉㄧㄢˇ ㄑㄧˇ ㄔㄨㄤˊ.",se:"I get up at six."},
+{h:"七",hs:"七",p:"qī",z:"ㄑㄧ",e:"seven",sh:"一个星期有七天。",sp:"Yí ge xīngqī yǒu qī tiān.",sz:"ㄧˊ ㄍㄜ˙ ㄒㄧㄥ ㄑㄧ ㄧㄡˇ ㄑㄧ ㄊㄧㄢ.",se:"A week has seven days."},
+{h:"八",hs:"八",p:"bā",z:"ㄅㄚ",e:"eight",sh:"我们八点上课。",sp:"Wǒmen bā diǎn shàngkè.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄅㄚ ㄉㄧㄢˇ ㄕㄤˋ ㄎㄜˋ.",se:"Our class starts at eight."},
+{h:"九",hs:"九",p:"jiǔ",z:"ㄐㄧㄡˇ",e:"nine",sh:"九月天气很好。",sp:"Jiǔyuè tiānqì hěn hǎo.",sz:"ㄐㄧㄡˇ ㄩㄝˋ ㄊㄧㄢ ㄑㄧˋ ㄏㄣˇ ㄏㄠˇ.",se:"The weather in September is nice."},
+{h:"十",hs:"十",p:"shí",z:"ㄕˊ",e:"ten",sh:"我十点睡觉。",sp:"Wǒ shí diǎn shuìjiào.",sz:"ㄨㄛˇ ㄕˊ ㄉㄧㄢˇ ㄕㄨㄟˋ ㄐㄧㄠˋ.",se:"I go to bed at ten."},
+{h:"多大",hs:"多大",p:"duō dà",z:"ㄉㄨㄛ ㄉㄚˋ",e:"how old",sh:"你妹妹多大?",sp:"Nǐ mèimei duō dà?",sz:"ㄋㄧˇ ㄇㄟˋ ㄇㄟ˙ ㄉㄨㄛ ㄉㄚˋ?",se:"How old is your sister?"},
+{h:"岁",hs:"岁",p:"suì",z:"ㄙㄨㄟˋ",e:"years of age",sh:"我今年二十岁。",sp:"Wǒ jīnnián èrshí suì.",sz:"ㄨㄛˇ ㄐㄧㄣ ㄋㄧㄢˊ ㄦˋ ㄕˊ ㄙㄨㄟˋ.",se:"I'm twenty this year."},
+]},
+]},
+{n:4,t:"现在几点?",tp:"Xiànzài jǐ diǎn?",te:"What time is it?",parts:[
+{n:"Part I · Telling the time",w:[
+{h:"现在",hs:"现在",p:"xiànzài",z:"ㄒㄧㄢˋ ㄗㄞˋ",e:"now",sh:"现在几点?",sp:"Xiànzài jǐ diǎn?",sz:"ㄒㄧㄢˋ ㄗㄞˋ ㄐㄧˇ ㄉㄧㄢˇ?",se:"What time is it now?"},
+{h:"点",hs:"点",p:"diǎn",z:"ㄉㄧㄢˇ",e:"o'clock",sh:"现在八点。",sp:"Xiànzài bā diǎn.",sz:"ㄒㄧㄢˋ ㄗㄞˋ ㄅㄚ ㄉㄧㄢˇ.",se:"It's eight o'clock."},
+{h:"分",hs:"分",p:"fēn",z:"ㄈㄣ",e:"minute",sh:"八点十分。",sp:"Bā diǎn shí fēn.",sz:"ㄅㄚ ㄉㄧㄢˇ ㄕˊ ㄈㄣ.",se:"Ten past eight."},
+{h:"半",hs:"半",p:"bàn",z:"ㄅㄢˋ",e:"half",sh:"现在七点半。",sp:"Xiànzài qī diǎn bàn.",sz:"ㄒㄧㄢˋ ㄗㄞˋ ㄑㄧ ㄉㄧㄢˇ ㄅㄢˋ.",se:"It's half past seven."},
+{h:"差",hs:"差",p:"chà",z:"ㄔㄚˋ",e:"to lack, to be short of",sh:"差五分十点。",sp:"Chà wǔ fēn shí diǎn.",sz:"ㄔㄚˋ ㄨˇ ㄈㄣ ㄕˊ ㄉㄧㄢˇ.",se:"Five to ten."},
+{h:"早上",hs:"早上",p:"zǎoshang",z:"ㄗㄠˇ ㄕㄤ˙",e:"early morning",sh:"早上我七点起床。",sp:"Zǎoshang wǒ qī diǎn qǐchuáng.",sz:"ㄗㄠˇ ㄕㄤ˙ ㄨㄛˇ ㄑㄧ ㄉㄧㄢˇ ㄑㄧˇ ㄔㄨㄤˊ.",se:"I get up at seven in the morning."},
+{h:"上午",hs:"上午",p:"shàngwǔ",z:"ㄕㄤˋ ㄨˇ",e:"morning (before noon)",sh:"上午我有课。",sp:"Shàngwǔ wǒ yǒu kè.",sz:"ㄕㄤˋ ㄨˇ ㄨㄛˇ ㄧㄡˇ ㄎㄜˋ.",se:"I have class in the morning."},
+{h:"下午",hs:"下午",p:"xiàwǔ",z:"ㄒㄧㄚˋ ㄨˇ",e:"afternoon",sh:"下午我去图书馆。",sp:"Xiàwǔ wǒ qù túshūguǎn.",sz:"ㄒㄧㄚˋ ㄨˇ ㄨㄛˇ ㄑㄩˋ ㄊㄨˊ ㄕㄨ ㄍㄨㄢˇ.",se:"I go to the library in the afternoon."},
+{h:"晚上",hs:"晚上",p:"wǎnshang",z:"ㄨㄢˇ ㄕㄤ˙",e:"evening",sh:"晚上我看电视。",sp:"Wǎnshang wǒ kàn diànshì.",sz:"ㄨㄢˇ ㄕㄤ˙ ㄨㄛˇ ㄎㄢˋ ㄉㄧㄢˋ ㄕˋ.",se:"I watch TV in the evening."},
+{h:"起床",hs:"起床",p:"qǐchuáng",z:"ㄑㄧˇ ㄔㄨㄤˊ",e:"to get up",sh:"我六点半起床。",sp:"Wǒ liù diǎn bàn qǐchuáng.",sz:"ㄨㄛˇ ㄌㄧㄡˋ ㄉㄧㄢˇ ㄅㄢˋ ㄑㄧˇ ㄔㄨㄤˊ.",se:"I get up at half six."},
+{h:"睡觉",hs:"睡觉",p:"shuìjiào",z:"ㄕㄨㄟˋ ㄐㄧㄠˋ",e:"to sleep, go to bed",sh:"我十一点睡觉。",sp:"Wǒ shíyī diǎn shuìjiào.",sz:"ㄨㄛˇ ㄕˊ ㄧ ㄉㄧㄢˇ ㄕㄨㄟˋ ㄐㄧㄠˋ.",se:"I go to bed at eleven."},
+]},
+{n:"Part II · Days and the timetable",w:[
+{h:"今天",hs:"今天",p:"jīntiān",z:"ㄐㄧㄣ ㄊㄧㄢ",e:"today",sh:"今天星期几?",sp:"Jīntiān xīngqī jǐ?",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄒㄧㄥ ㄑㄧ ㄐㄧˇ?",se:"What day is it today?"},
+{h:"明天",hs:"明天",p:"míngtiān",z:"ㄇㄧㄥˊ ㄊㄧㄢ",e:"tomorrow",sh:"明天我不上课。",sp:"Míngtiān wǒ bú shàngkè.",sz:"ㄇㄧㄥˊ ㄊㄧㄢ ㄨㄛˇ ㄅㄨˊ ㄕㄤˋ ㄎㄜˋ.",se:"I have no class tomorrow."},
+{h:"昨天",hs:"昨天",p:"zuótiān",z:"ㄗㄨㄛˊ ㄊㄧㄢ",e:"yesterday",sh:"昨天我很忙。",sp:"Zuótiān wǒ hěn máng.",sz:"ㄗㄨㄛˊ ㄊㄧㄢ ㄨㄛˇ ㄏㄣˇ ㄇㄤˊ.",se:"I was busy yesterday."},
+{h:"星期",hs:"星期",p:"xīngqī",z:"ㄒㄧㄥ ㄑㄧ",e:"week; day of the week",sh:"今天星期三。",sp:"Jīntiān xīngqīsān.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄒㄧㄥ ㄑㄧ ㄙㄢ.",se:"Today is Wednesday."},
+{h:"号",hs:"号",p:"hào",z:"ㄏㄠˋ",e:"date, number",sh:"今天九月十号。",sp:"Jīntiān jiǔyuè shí hào.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄐㄧㄡˇ ㄩㄝˋ ㄕˊ ㄏㄠˋ.",se:"Today is 10 September."},
+{h:"月",hs:"月",p:"yuè",z:"ㄩㄝˋ",e:"month; moon",sh:"我十月去中国。",sp:"Wǒ shíyuè qù Zhōngguó.",sz:"ㄨㄛˇ ㄕˊ ㄩㄝˋ ㄑㄩˋ ㄓㄨㄥ ㄍㄨㄛˊ.",se:"I'm going to China in October."},
+{h:"年",hs:"年",p:"nián",z:"ㄋㄧㄢˊ",e:"year",sh:"我学了一年汉语。",sp:"Wǒ xué le yì nián Hànyǔ.",sz:"ㄨㄛˇ ㄒㄩㄝˊ ㄌㄜ˙ ㄧˋ ㄋㄧㄢˊ ㄏㄢˋ ㄩˇ.",se:"I've studied Chinese for a year."},
+{h:"上课",hs:"上课",p:"shàngkè",z:"ㄕㄤˋ ㄎㄜˋ",e:"to attend class",sh:"我们八点上课。",sp:"Wǒmen bā diǎn shàngkè.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄅㄚ ㄉㄧㄢˇ ㄕㄤˋ ㄎㄜˋ.",se:"We start class at eight."},
+{h:"下课",hs:"下课",p:"xiàkè",z:"ㄒㄧㄚˋ ㄎㄜˋ",e:"to finish class",sh:"我们十二点下课。",sp:"Wǒmen shí'èr diǎn xiàkè.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄕˊ ㄦˋ ㄉㄧㄢˇ ㄒㄧㄚˋ ㄎㄜˋ.",se:"We finish class at twelve."},
+{h:"课",hs:"课",p:"kè",z:"ㄎㄜˋ",e:"class, lesson",sh:"我今天有两节课。",sp:"Wǒ jīntiān yǒu liǎng jié kè.",sz:"ㄨㄛˇ ㄐㄧㄣ ㄊㄧㄢ ㄧㄡˇ ㄌㄧㄤˇ ㄐㄧㄝˊ ㄎㄜˋ.",se:"I have two classes today."},
+{h:"时候",hs:"时候",p:"shíhou",z:"ㄕˊ ㄏㄡ˙",e:"time, moment",sh:"你什么时候来?",sp:"Nǐ shénme shíhou lái?",sz:"ㄋㄧˇ ㄕㄣˊ ㄇㄜ˙ ㄕˊ ㄏㄡ˙ ㄌㄞˊ?",se:"When are you coming?"},
+{h:"一起",hs:"一起",p:"yìqǐ",z:"ㄧˋ ㄑㄧˇ",e:"together",sh:"我们一起吃饭吧。",sp:"Wǒmen yìqǐ chī fàn ba.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄧˋ ㄑㄧˇ ㄔ ㄈㄢˋ ㄅㄚ˙.",se:"Let's eat together."},
+]},
+]},
+{n:5,t:"我住在留学生宿舍",tp:"Wǒ zhù zài liúxuéshēng sùshè",te:"I live in the international students' dorm",parts:[
+{n:"Part I · Where you live",w:[
+{h:"住",hs:"住",p:"zhù",z:"ㄓㄨˋ",e:"to live, to stay",sh:"我住在宿舍。",sp:"Wǒ zhù zài sùshè.",sz:"ㄨㄛˇ ㄓㄨˋ ㄗㄞˋ ㄙㄨˋ ㄕㄜˋ.",se:"I live in the dorm."},
+{h:"宿舍",hs:"宿舍",p:"sùshè",z:"ㄙㄨˋ ㄕㄜˋ",e:"dormitory",sh:"我们的宿舍很干净。",sp:"Wǒmen de sùshè hěn gānjìng.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄉㄜ˙ ㄙㄨˋ ㄕㄜˋ ㄏㄣˇ ㄍㄢ ㄐㄧㄥˋ.",se:"Our dorm is clean."},
+{h:"留学生",hs:"留学生",p:"liúxuéshēng",z:"ㄌㄧㄡˊ ㄒㄩㄝˊ ㄕㄥ",e:"international student",sh:"他是越南留学生。",sp:"Tā shì Yuènán liúxuéshēng.",sz:"ㄊㄚ ㄕˋ ㄩㄝˋ ㄋㄢˊ ㄌㄧㄡˊ ㄒㄩㄝˊ ㄕㄥ.",se:"He is a Vietnamese international student."},
+{h:"哪儿",hs:"哪儿",p:"nǎr",z:"nǎr",e:"where",sh:"你住在哪儿?",sp:"Nǐ zhù zài nǎr?",sz:"ㄋㄧˇ ㄓㄨˋ ㄗㄞˋ nǎr?",se:"Where do you live?"},
+{h:"这儿",hs:"这儿",p:"zhèr",z:"ㄓㄦˋ",e:"here",sh:"这儿有很多人。",sp:"Zhèr yǒu hěn duō rén.",sz:"ㄓㄦˋ ㄧㄡˇ ㄏㄣˇ ㄉㄨㄛ ㄖㄣˊ.",se:"There are many people here."},
+{h:"那儿",hs:"那儿",p:"nàr",z:"nàr",e:"there",sh:"那儿是图书馆。",sp:"Nàr shì túshūguǎn.",sz:"Nàr ㄕˋ ㄊㄨˊ ㄕㄨ ㄍㄨㄢˇ.",se:"That's the library over there."},
+{h:"楼",hs:"楼",p:"lóu",z:"ㄌㄡˊ",e:"building; floor",sh:"我住三楼。",sp:"Wǒ zhù sān lóu.",sz:"ㄨㄛˇ ㄓㄨˋ ㄙㄢ ㄌㄡˊ.",se:"I live on the third floor."},
+{h:"房间",hs:"房间",p:"fángjiān",z:"ㄈㄤˊ ㄐㄧㄢ",e:"room",sh:"我的房间不大。",sp:"Wǒ de fángjiān bú dà.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄈㄤˊ ㄐㄧㄢ ㄅㄨˊ ㄉㄚˋ.",se:"My room isn't big."},
+{h:"里",hs:"里",p:"lǐ",z:"ㄌㄧˇ",e:"inside",sh:"房间里有一张床。",sp:"Fángjiān li yǒu yì zhāng chuáng.",sz:"ㄈㄤˊ ㄐㄧㄢ ㄌㄧ˙ ㄧㄡˇ ㄧˋ ㄓㄤ ㄔㄨㄤˊ.",se:"There's a bed in the room."},
+{h:"旁边",hs:"旁边",p:"pángbiān",z:"ㄆㄤˊ ㄅㄧㄢ",e:"beside, next to",sh:"银行在学校旁边。",sp:"Yínháng zài xuéxiào pángbiān.",sz:"ㄧㄣˊ ㄏㄤˊ ㄗㄞˋ ㄒㄩㄝˊ ㄒㄧㄠˋ ㄆㄤˊ ㄅㄧㄢ.",se:"The bank is next to the school."},
+{h:"食堂",hs:"食堂",p:"shítáng",z:"ㄕˊ ㄊㄤˊ",e:"canteen, dining hall",sh:"食堂在宿舍旁边。",sp:"Shítáng zài sùshè pángbiān.",sz:"ㄕˊ ㄊㄤˊ ㄗㄞˋ ㄙㄨˋ ㄕㄜˋ ㄆㄤˊ ㄅㄧㄢ.",se:"The canteen is next to the dorm."},
+]},
+{n:"Part II · Places around town",w:[
+{h:"图书馆",hs:"图书馆",p:"túshūguǎn",z:"ㄊㄨˊ ㄕㄨ ㄍㄨㄢˇ",e:"library",sh:"我去图书馆看书。",sp:"Wǒ qù túshūguǎn kàn shū.",sz:"ㄨㄛˇ ㄑㄩˋ ㄊㄨˊ ㄕㄨ ㄍㄨㄢˇ ㄎㄢˋ ㄕㄨ.",se:"I go to the library to read."},
+{h:"教室",hs:"教室",p:"jiàoshì",z:"ㄐㄧㄠˋ ㄕˋ",e:"classroom",sh:"教室里有很多学生。",sp:"Jiàoshì li yǒu hěn duō xuésheng.",sz:"ㄐㄧㄠˋ ㄕˋ ㄌㄧ˙ ㄧㄡˇ ㄏㄣˇ ㄉㄨㄛ ㄒㄩㄝˊ ㄕㄥ˙.",se:"There are many students in the classroom."},
+{h:"商店",hs:"商店",p:"shāngdiàn",z:"ㄕㄤ ㄉㄧㄢˋ",e:"shop, store",sh:"商店九点开门。",sp:"Shāngdiàn jiǔ diǎn kāimén.",sz:"ㄕㄤ ㄉㄧㄢˋ ㄐㄧㄡˇ ㄉㄧㄢˇ ㄎㄞ ㄇㄣˊ.",se:"The shop opens at nine."},
+{h:"银行",hs:"银行",p:"yínháng",z:"ㄧㄣˊ ㄏㄤˊ",e:"bank",sh:"银行在邮局对面。",sp:"Yínháng zài yóujú duìmiàn.",sz:"ㄧㄣˊ ㄏㄤˊ ㄗㄞˋ ㄧㄡˊ ㄐㄩˊ ㄉㄨㄟˋ ㄇㄧㄢˋ.",se:"The bank is opposite the post office."},
+{h:"医院",hs:"医院",p:"yīyuàn",z:"ㄧ ㄩㄢˋ",e:"hospital",sh:"我妈妈在医院工作。",sp:"Wǒ māma zài yīyuàn gōngzuò.",sz:"ㄨㄛˇ ㄇㄚ ㄇㄚ˙ ㄗㄞˋ ㄧ ㄩㄢˋ ㄍㄨㄥ ㄗㄨㄛˋ.",se:"My mother works at a hospital."},
+{h:"邮局",hs:"邮局",p:"yóujú",z:"ㄧㄡˊ ㄐㄩˊ",e:"post office",sh:"邮局离这儿很近。",sp:"Yóujú lí zhèr hěn jìn.",sz:"ㄧㄡˊ ㄐㄩˊ ㄌㄧˊ ㄓㄦˋ ㄏㄣˇ ㄐㄧㄣˋ.",se:"The post office is near here."},
+{h:"远",hs:"远",p:"yuǎn",z:"ㄩㄢˇ",e:"far",sh:"我家离学校很远。",sp:"Wǒ jiā lí xuéxiào hěn yuǎn.",sz:"ㄨㄛˇ ㄐㄧㄚ ㄌㄧˊ ㄒㄩㄝˊ ㄒㄧㄠˋ ㄏㄣˇ ㄩㄢˇ.",se:"My home is far from school."},
+{h:"近",hs:"近",p:"jìn",z:"ㄐㄧㄣˋ",e:"near, close",sh:"食堂离宿舍很近。",sp:"Shítáng lí sùshè hěn jìn.",sz:"ㄕˊ ㄊㄤˊ ㄌㄧˊ ㄙㄨˋ ㄕㄜˋ ㄏㄣˇ ㄐㄧㄣˋ.",se:"The canteen is close to the dorm."},
+{h:"离",hs:"离",p:"lí",z:"ㄌㄧˊ",e:"away from",sh:"学校离银行不远。",sp:"Xuéxiào lí yínháng bù yuǎn.",sz:"ㄒㄩㄝˊ ㄒㄧㄠˋ ㄌㄧˊ ㄧㄣˊ ㄏㄤˊ ㄅㄨˋ ㄩㄢˇ.",se:"The school isn't far from the bank."},
+{h:"去",hs:"去",p:"qù",z:"ㄑㄩˋ",e:"to go",sh:"我们去食堂吃饭。",sp:"Wǒmen qù shítáng chī fàn.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄑㄩˋ ㄕˊ ㄊㄤˊ ㄔ ㄈㄢˋ.",se:"We're going to the canteen to eat."},
+{h:"来",hs:"来",p:"lái",z:"ㄌㄞˊ",e:"to come",sh:"你什么时候来我家?",sp:"Nǐ shénme shíhou lái wǒ jiā?",sz:"ㄋㄧˇ ㄕㄣˊ ㄇㄜ˙ ㄕˊ ㄏㄡ˙ ㄌㄞˊ ㄨㄛˇ ㄐㄧㄚ?",se:"When will you come to my place?"},
+{h:"知道",hs:"知道",p:"zhīdào",z:"ㄓ ㄉㄠˋ",e:"to know",sh:"我知道他住在哪儿。",sp:"Wǒ zhīdào tā zhù zài nǎr.",sz:"ㄨㄛˇ ㄓ ㄉㄠˋ ㄊㄚ ㄓㄨˋ ㄗㄞˋ nǎr.",se:"I know where he lives."},
+]},
+]},
+{n:6,t:"我要红葡萄酒",tp:"Wǒ yào hóng pútáojiǔ",te:"I'd like red wine",parts:[
+{n:"Part I · Ordering food and drink",w:[
+{h:"要",hs:"要",p:"yào",z:"ㄧㄠˋ",e:"to want, to need",sh:"我要一杯茶。",sp:"Wǒ yào yì bēi chá.",sz:"ㄨㄛˇ ㄧㄠˋ ㄧˋ ㄅㄟ ㄔㄚˊ.",se:"I'd like a cup of tea."},
+{h:"喝",hs:"喝",p:"hē",z:"ㄏㄜ",e:"to drink",sh:"你喝什么?",sp:"Nǐ hē shénme?",sz:"ㄋㄧˇ ㄏㄜ ㄕㄣˊ ㄇㄜ˙?",se:"What would you like to drink?"},
+{h:"吃",hs:"吃",p:"chī",z:"ㄔ",e:"to eat",sh:"我想吃米饭。",sp:"Wǒ xiǎng chī mǐfàn.",sz:"ㄨㄛˇ ㄒㄧㄤˇ ㄔ ㄇㄧˇ ㄈㄢˋ.",se:"I want to eat rice."},
+{h:"菜",hs:"菜",p:"cài",z:"ㄘㄞˋ",e:"dish; vegetable",sh:"这个菜很好吃。",sp:"Zhège cài hěn hǎochī.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄘㄞˋ ㄏㄣˇ ㄏㄠˇ ㄔ.",se:"This dish is delicious."},
+{h:"米饭",hs:"米饭",p:"mǐfàn",z:"ㄇㄧˇ ㄈㄢˋ",e:"cooked rice",sh:"我要一碗米饭。",sp:"Wǒ yào yì wǎn mǐfàn.",sz:"ㄨㄛˇ ㄧㄠˋ ㄧˋ ㄨㄢˇ ㄇㄧˇ ㄈㄢˋ.",se:"I'd like a bowl of rice."},
+{h:"面条",hs:"面条",p:"miàntiáo",z:"ㄇㄧㄢˋ ㄊㄧㄠˊ",e:"noodles",sh:"他喜欢吃面条。",sp:"Tā xǐhuan chī miàntiáo.",sz:"ㄊㄚ ㄒㄧˇ ㄏㄨㄢ˙ ㄔ ㄇㄧㄢˋ ㄊㄧㄠˊ.",se:"He likes eating noodles."},
+{h:"茶",hs:"茶",p:"chá",z:"ㄔㄚˊ",e:"tea",sh:"中国茶很有名。",sp:"Zhōngguó chá hěn yǒumíng.",sz:"ㄓㄨㄥ ㄍㄨㄛˊ ㄔㄚˊ ㄏㄣˇ ㄧㄡˇ ㄇㄧㄥˊ.",se:"Chinese tea is famous."},
+{h:"水",hs:"水",p:"shuǐ",z:"ㄕㄨㄟˇ",e:"water",sh:"请给我一杯水。",sp:"Qǐng gěi wǒ yì bēi shuǐ.",sz:"ㄑㄧㄥˇ ㄍㄟˇ ㄨㄛˇ ㄧˋ ㄅㄟ ㄕㄨㄟˇ.",se:"Please give me a glass of water."},
+{h:"啤酒",hs:"啤酒",p:"píjiǔ",z:"ㄆㄧˊ ㄐㄧㄡˇ",e:"beer",sh:"我不喝啤酒。",sp:"Wǒ bù hē píjiǔ.",sz:"ㄨㄛˇ ㄅㄨˋ ㄏㄜ ㄆㄧˊ ㄐㄧㄡˇ.",se:"I don't drink beer."},
+{h:"杯",hs:"杯",p:"bēi",z:"ㄅㄟ",e:"cup, glass (measure word)",sh:"两杯咖啡,谢谢。",sp:"Liǎng bēi kāfēi, xièxie.",sz:"ㄌㄧㄤˇ ㄅㄟ ㄎㄚ ㄈㄟ, ㄒㄧㄝˋ ㄒㄧㄝ˙.",se:"Two coffees, please."},
+{h:"碗",hs:"碗",p:"wǎn",z:"ㄨㄢˇ",e:"bowl (measure word)",sh:"我要一碗面条。",sp:"Wǒ yào yì wǎn miàntiáo.",sz:"ㄨㄛˇ ㄧㄠˋ ㄧˋ ㄨㄢˇ ㄇㄧㄢˋ ㄊㄧㄠˊ.",se:"I'd like a bowl of noodles."},
+{h:"好吃",hs:"好吃",p:"hǎochī",z:"ㄏㄠˇ ㄔ",e:"tasty, delicious",sh:"这儿的菜很好吃。",sp:"Zhèr de cài hěn hǎochī.",sz:"ㄓㄦˋ ㄉㄜ˙ ㄘㄞˋ ㄏㄣˇ ㄏㄠˇ ㄔ.",se:"The food here is delicious."},
+]},
+{n:"Part II · Money and paying",w:[
+{h:"钱",hs:"钱",p:"qián",z:"ㄑㄧㄢˊ",e:"money",sh:"这个多少钱?",sp:"Zhège duōshao qián?",sz:"ㄓㄜˋ ㄍㄜ˙ ㄉㄨㄛ ㄕㄠ˙ ㄑㄧㄢˊ?",se:"How much is this?"},
+{h:"多少",hs:"多少",p:"duōshao",z:"ㄉㄨㄛ ㄕㄠ˙",e:"how much, how many",sh:"一共多少钱?",sp:"Yígòng duōshao qián?",sz:"ㄧˊ ㄍㄨㄥˋ ㄉㄨㄛ ㄕㄠ˙ ㄑㄧㄢˊ?",se:"How much altogether?"},
+{h:"块",hs:"块",p:"kuài",z:"ㄎㄨㄞˋ",e:"yuan (colloquial)",sh:"十五块钱。",sp:"Shíwǔ kuài qián.",sz:"ㄕˊ ㄨˇ ㄎㄨㄞˋ ㄑㄧㄢˊ.",se:"Fifteen yuan."},
+{h:"毛",hs:"毛",p:"máo",z:"ㄇㄠˊ",e:"ten cents",sh:"三块五毛。",sp:"Sān kuài wǔ máo.",sz:"ㄙㄢ ㄎㄨㄞˋ ㄨˇ ㄇㄠˊ.",se:"Three yuan fifty."},
+{h:"一共",hs:"一共",p:"yígòng",z:"ㄧˊ ㄍㄨㄥˋ",e:"altogether, in total",sh:"一共二十块。",sp:"Yígòng èrshí kuài.",sz:"ㄧˊ ㄍㄨㄥˋ ㄦˋ ㄕˊ ㄎㄨㄞˋ.",se:"Twenty yuan in total."},
+{h:"给",hs:"给",p:"gěi",z:"ㄍㄟˇ",e:"to give; for",sh:"请给我菜单。",sp:"Qǐng gěi wǒ càidān.",sz:"ㄑㄧㄥˇ ㄍㄟˇ ㄨㄛˇ ㄘㄞˋ ㄉㄢ.",se:"Please give me the menu."},
+{h:"服务员",hs:"服务员",p:"fúwùyuán",z:"ㄈㄨˊ ㄨˋ ㄩㄢˊ",e:"waiter, attendant",sh:"服务员,买单!",sp:"Fúwùyuán, mǎidān!",sz:"ㄈㄨˊ ㄨˋ ㄩㄢˊ, ㄇㄞˇ ㄉㄢ!",se:"Waiter, the bill please!"},
+{h:"菜单",hs:"菜单",p:"càidān",z:"ㄘㄞˋ ㄉㄢ",e:"menu",sh:"我看看菜单。",sp:"Wǒ kànkan càidān.",sz:"ㄨㄛˇ ㄎㄢˋ ㄎㄢ˙ ㄘㄞˋ ㄉㄢ.",se:"Let me look at the menu."},
+{h:"喜欢",hs:"喜欢",p:"xǐhuan",z:"ㄒㄧˇ ㄏㄨㄢ˙",e:"to like",sh:"我喜欢吃中国菜。",sp:"Wǒ xǐhuan chī Zhōngguó cài.",sz:"ㄨㄛˇ ㄒㄧˇ ㄏㄨㄢ˙ ㄔ ㄓㄨㄥ ㄍㄨㄛˊ ㄘㄞˋ.",se:"I like Chinese food."},
+{h:"还是",hs:"还是",p:"háishì",z:"ㄏㄞˊ ㄕˋ",e:"or (in questions)",sh:"你喝茶还是喝咖啡?",sp:"Nǐ hē chá háishì hē kāfēi?",sz:"ㄋㄧˇ ㄏㄜ ㄔㄚˊ ㄏㄞˊ ㄕˋ ㄏㄜ ㄎㄚ ㄈㄟ?",se:"Tea or coffee?"},
+{h:"咖啡",hs:"咖啡",p:"kāfēi",z:"ㄎㄚ ㄈㄟ",e:"coffee",sh:"越南咖啡很好喝。",sp:"Yuènán kāfēi hěn hǎohē.",sz:"ㄩㄝˋ ㄋㄢˊ ㄎㄚ ㄈㄟ ㄏㄣˇ ㄏㄠˇ ㄏㄜ.",se:"Vietnamese coffee is delicious."},
+{h:"渴",hs:"渴",p:"kě",z:"ㄎㄜˇ",e:"thirsty",sh:"我很渴,想喝水。",sp:"Wǒ hěn kě, xiǎng hē shuǐ.",sz:"ㄨㄛˇ ㄏㄣˇ ㄎㄜˇ, ㄒㄧㄤˇ ㄏㄜ ㄕㄨㄟˇ.",se:"I'm thirsty, I want water."},
+]},
+]},
+{n:7,t:"我想学汉语",tp:"Wǒ xiǎng xué Hànyǔ",te:"I want to learn Chinese",parts:[
+{n:"Part I · Language skills",w:[
+{h:"想",hs:"想",p:"xiǎng",z:"ㄒㄧㄤˇ",e:"to want; to think",sh:"我想学汉语。",sp:"Wǒ xiǎng xué Hànyǔ.",sz:"ㄨㄛˇ ㄒㄧㄤˇ ㄒㄩㄝˊ ㄏㄢˋ ㄩˇ.",se:"I want to learn Chinese."},
+{h:"会",hs:"会",p:"huì",z:"ㄏㄨㄟˋ",e:"can, know how to",sh:"我会说一点儿汉语。",sp:"Wǒ huì shuō yìdiǎnr Hànyǔ.",sz:"ㄨㄛˇ ㄏㄨㄟˋ ㄕㄨㄛ yìdiǎnr ㄏㄢˋ ㄩˇ.",se:"I can speak a little Chinese."},
+{h:"说",hs:"说",p:"shuō",z:"ㄕㄨㄛ",e:"to speak, to say",sh:"请说慢一点儿。",sp:"Qǐng shuō màn yìdiǎnr.",sz:"ㄑㄧㄥˇ ㄕㄨㄛ ㄇㄢˋ yìdiǎnr.",se:"Please speak more slowly."},
+{h:"写",hs:"写",p:"xiě",z:"ㄒㄧㄝˇ",e:"to write",sh:"我每天写汉字。",sp:"Wǒ měitiān xiě Hànzì.",sz:"ㄨㄛˇ ㄇㄟˇ ㄊㄧㄢ ㄒㄧㄝˇ ㄏㄢˋ ㄗˋ.",se:"I write characters every day."},
+{h:"汉字",hs:"汉字",p:"Hànzì",z:"ㄏㄢˋ ㄗˋ",e:"Chinese character",sh:"这个汉字有八画。",sp:"Zhège Hànzì yǒu bā huà.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄏㄢˋ ㄗˋ ㄧㄡˇ ㄅㄚ ㄏㄨㄚˋ.",se:"This character has eight strokes."},
+{h:"读",hs:"读",p:"dú",z:"ㄉㄨˊ",e:"to read aloud",sh:"请你读一遍。",sp:"Qǐng nǐ dú yí biàn.",sz:"ㄑㄧㄥˇ ㄋㄧˇ ㄉㄨˊ ㄧˊ ㄅㄧㄢˋ.",se:"Please read it once."},
+{h:"听",hs:"听",p:"tīng",z:"ㄊㄧㄥ",e:"to listen",sh:"我听老师说话。",sp:"Wǒ tīng lǎoshī shuōhuà.",sz:"ㄨㄛˇ ㄊㄧㄥ ㄌㄠˇ ㄕ ㄕㄨㄛ ㄏㄨㄚˋ.",se:"I listen to the teacher."},
+{h:"问题",hs:"问题",p:"wèntí",z:"ㄨㄣˋ ㄊㄧˊ",e:"question, problem",sh:"我有一个问题。",sp:"Wǒ yǒu yí ge wèntí.",sz:"ㄨㄛˇ ㄧㄡˇ ㄧˊ ㄍㄜ˙ ㄨㄣˋ ㄊㄧˊ.",se:"I have a question."},
+{h:"语法",hs:"语法",p:"yǔfǎ",z:"ㄩˇ ㄈㄚˇ",e:"grammar",sh:"今天的语法很难。",sp:"Jīntiān de yǔfǎ hěn nán.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄉㄜ˙ ㄩˇ ㄈㄚˇ ㄏㄣˇ ㄋㄢˊ.",se:"Today's grammar is hard."},
+{h:"生词",hs:"生词",p:"shēngcí",z:"ㄕㄥ ㄘˊ",e:"new word",sh:"这课有二十个生词。",sp:"Zhè kè yǒu èrshí ge shēngcí.",sz:"ㄓㄜˋ ㄎㄜˋ ㄧㄡˇ ㄦˋ ㄕˊ ㄍㄜ˙ ㄕㄥ ㄘˊ.",se:"This lesson has twenty new words."},
+{h:"课本",hs:"课本",p:"kèběn",z:"ㄎㄜˋ ㄅㄣˇ",e:"textbook",sh:"请打开课本。",sp:"Qǐng dǎkāi kèběn.",sz:"ㄑㄧㄥˇ ㄉㄚˇ ㄎㄞ ㄎㄜˋ ㄅㄣˇ.",se:"Please open your textbook."},
+{h:"练习",hs:"练习",p:"liànxí",z:"ㄌㄧㄢˋ ㄒㄧˊ",e:"to practise; exercise",sh:"我每天练习写汉字。",sp:"Wǒ měitiān liànxí xiě Hànzì.",sz:"ㄨㄛˇ ㄇㄟˇ ㄊㄧㄢ ㄌㄧㄢˋ ㄒㄧˊ ㄒㄧㄝˇ ㄏㄢˋ ㄗˋ.",se:"I practise writing characters daily."},
+]},
+{n:"Part II · How often, how well",w:[
+{h:"每天",hs:"每天",p:"měitiān",z:"ㄇㄟˇ ㄊㄧㄢ",e:"every day",sh:"我每天学习汉语。",sp:"Wǒ měitiān xuéxí Hànyǔ.",sz:"ㄨㄛˇ ㄇㄟˇ ㄊㄧㄢ ㄒㄩㄝˊ ㄒㄧˊ ㄏㄢˋ ㄩˇ.",se:"I study Chinese every day."},
+{h:"常常",hs:"常常",p:"chángcháng",z:"ㄔㄤˊ ㄔㄤˊ",e:"often",sh:"他常常去图书馆。",sp:"Tā chángcháng qù túshūguǎn.",sz:"ㄊㄚ ㄔㄤˊ ㄔㄤˊ ㄑㄩˋ ㄊㄨˊ ㄕㄨ ㄍㄨㄢˇ.",se:"He often goes to the library."},
+{h:"有时候",hs:"有时候",p:"yǒu shíhou",z:"ㄧㄡˇ ㄕˊ ㄏㄡ˙",e:"sometimes",sh:"有时候我在家学习。",sp:"Yǒu shíhou wǒ zài jiā xuéxí.",sz:"ㄧㄡˇ ㄕˊ ㄏㄡ˙ ㄨㄛˇ ㄗㄞˋ ㄐㄧㄚ ㄒㄩㄝˊ ㄒㄧˊ.",se:"Sometimes I study at home."},
+{h:"慢",hs:"慢",p:"màn",z:"ㄇㄢˋ",e:"slow",sh:"他说得很慢。",sp:"Tā shuō de hěn màn.",sz:"ㄊㄚ ㄕㄨㄛ ㄉㄜ˙ ㄏㄣˇ ㄇㄢˋ.",se:"He speaks slowly."},
+{h:"快",hs:"快",p:"kuài",z:"ㄎㄨㄞˋ",e:"fast, quick",sh:"你说得太快了。",sp:"Nǐ shuō de tài kuài le.",sz:"ㄋㄧˇ ㄕㄨㄛ ㄉㄜ˙ ㄊㄞˋ ㄎㄨㄞˋ ㄌㄜ˙.",se:"You speak too fast."},
+{h:"一点儿",hs:"一点儿",p:"yìdiǎnr",z:"yìdiǎnr",e:"a little",sh:"我会一点儿汉语。",sp:"Wǒ huì yìdiǎnr Hànyǔ.",sz:"ㄨㄛˇ ㄏㄨㄟˋ yìdiǎnr ㄏㄢˋ ㄩˇ.",se:"I know a little Chinese."},
+{h:"再",hs:"再",p:"zài",z:"ㄗㄞˋ",e:"again, once more",sh:"请再说一遍。",sp:"Qǐng zài shuō yí biàn.",sz:"ㄑㄧㄥˇ ㄗㄞˋ ㄕㄨㄛ ㄧˊ ㄅㄧㄢˋ.",se:"Please say it again."},
+{h:"遍",hs:"遍",p:"biàn",z:"ㄅㄧㄢˋ",e:"time (of repetition)",sh:"我读了三遍。",sp:"Wǒ dú le sān biàn.",sz:"ㄨㄛˇ ㄉㄨˊ ㄌㄜ˙ ㄙㄢ ㄅㄧㄢˋ.",se:"I read it three times."},
+{h:"应该",hs:"应该",p:"yīnggāi",z:"ㄧㄥ ㄍㄞ",e:"should, ought to",sh:"你应该多练习。",sp:"Nǐ yīnggāi duō liànxí.",sz:"ㄋㄧˇ ㄧㄥ ㄍㄞ ㄉㄨㄛ ㄌㄧㄢˋ ㄒㄧˊ.",se:"You should practise more."},
+{h:"多",hs:"多",p:"duō",z:"ㄉㄨㄛ",e:"many, much; more",sh:"你要多说汉语。",sp:"Nǐ yào duō shuō Hànyǔ.",sz:"ㄋㄧˇ ㄧㄠˋ ㄉㄨㄛ ㄕㄨㄛ ㄏㄢˋ ㄩˇ.",se:"You should speak more Chinese."},
+{h:"少",hs:"少",p:"shǎo",z:"ㄕㄠˇ",e:"few, little",sh:"我说得太少了。",sp:"Wǒ shuō de tài shǎo le.",sz:"ㄨㄛˇ ㄕㄨㄛ ㄉㄜ˙ ㄊㄞˋ ㄕㄠˇ ㄌㄜ˙.",se:"I speak too little."},
+{h:"懂",hs:"懂",p:"dǒng",z:"ㄉㄨㄥˇ",e:"to understand",sh:"这个词我不懂。",sp:"Zhège cí wǒ bù dǒng.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄘˊ ㄨㄛˇ ㄅㄨˋ ㄉㄨㄥˇ.",se:"I don't understand this word."},
+]},
+]},
+{n:8,t:"你的车是新的还是旧的?",tp:"Nǐ de chē shì xīn de háishì jiù de?",te:"Is your car new or old?",parts:[
+{n:"Part I · Things and their qualities",w:[
+{h:"车",hs:"车",p:"chē",z:"ㄔㄜ",e:"car, vehicle",sh:"这是我的车。",sp:"Zhè shì wǒ de chē.",sz:"ㄓㄜˋ ㄕˋ ㄨㄛˇ ㄉㄜ˙ ㄔㄜ.",se:"This is my car."},
+{h:"新",hs:"新",p:"xīn",z:"ㄒㄧㄣ",e:"new",sh:"我买了一辆新车。",sp:"Wǒ mǎi le yí liàng xīn chē.",sz:"ㄨㄛˇ ㄇㄞˇ ㄌㄜ˙ ㄧˊ ㄌㄧㄤˋ ㄒㄧㄣ ㄔㄜ.",se:"I bought a new car."},
+{h:"旧",hs:"旧",p:"jiù",z:"ㄐㄧㄡˋ",e:"old, used",sh:"我的自行车很旧。",sp:"Wǒ de zìxíngchē hěn jiù.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄗˋ ㄒㄧㄥˊ ㄔㄜ ㄏㄣˇ ㄐㄧㄡˋ.",se:"My bicycle is old."},
+{h:"自行车",hs:"自行车",p:"zìxíngchē",z:"ㄗˋ ㄒㄧㄥˊ ㄔㄜ",e:"bicycle",sh:"我骑自行车上学。",sp:"Wǒ qí zìxíngchē shàngxué.",sz:"ㄨㄛˇ ㄑㄧˊ ㄗˋ ㄒㄧㄥˊ ㄔㄜ ㄕㄤˋ ㄒㄩㄝˊ.",se:"I ride a bike to school."},
+{h:"大",hs:"大",p:"dà",z:"ㄉㄚˋ",e:"big, large",sh:"他的房间很大。",sp:"Tā de fángjiān hěn dà.",sz:"ㄊㄚ ㄉㄜ˙ ㄈㄤˊ ㄐㄧㄢ ㄏㄣˇ ㄉㄚˋ.",se:"His room is big."},
+{h:"小",hs:"小",p:"xiǎo",z:"ㄒㄧㄠˇ",e:"small",sh:"这件衣服太小了。",sp:"Zhè jiàn yīfu tài xiǎo le.",sz:"ㄓㄜˋ ㄐㄧㄢˋ ㄧ ㄈㄨ˙ ㄊㄞˋ ㄒㄧㄠˇ ㄌㄜ˙.",se:"This piece of clothing is too small."},
+{h:"贵",hs:"贵",p:"guì",z:"ㄍㄨㄟˋ",e:"expensive",sh:"这个手机很贵。",sp:"Zhège shǒujī hěn guì.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄕㄡˇ ㄐㄧ ㄏㄣˇ ㄍㄨㄟˋ.",se:"This phone is expensive."},
+{h:"便宜",hs:"便宜",p:"piányi",z:"ㄆㄧㄢˊ ㄧ˙",e:"cheap",sh:"那儿的东西很便宜。",sp:"Nàr de dōngxi hěn piányi.",sz:"Nàr ㄉㄜ˙ ㄉㄨㄥ ㄒㄧ˙ ㄏㄣˇ ㄆㄧㄢˊ ㄧ˙.",se:"Things there are cheap."},
+{h:"东西",hs:"东西",p:"dōngxi",z:"ㄉㄨㄥ ㄒㄧ˙",e:"thing, stuff",sh:"我要买点儿东西。",sp:"Wǒ yào mǎi diǎnr dōngxi.",sz:"ㄨㄛˇ ㄧㄠˋ ㄇㄞˇ diǎnr ㄉㄨㄥ ㄒㄧ˙.",se:"I want to buy a few things."},
+{h:"手机",hs:"手机",p:"shǒujī",z:"ㄕㄡˇ ㄐㄧ",e:"mobile phone",sh:"我的手机是新的。",sp:"Wǒ de shǒujī shì xīn de.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄕㄡˇ ㄐㄧ ㄕˋ ㄒㄧㄣ ㄉㄜ˙.",se:"My phone is new."},
+{h:"辆",hs:"辆",p:"liàng",z:"ㄌㄧㄤˋ",e:"measure word for vehicles",sh:"门口有两辆车。",sp:"Ménkǒu yǒu liǎng liàng chē.",sz:"ㄇㄣˊ ㄎㄡˇ ㄧㄡˇ ㄌㄧㄤˇ ㄌㄧㄤˋ ㄔㄜ.",se:"There are two cars at the gate."},
+{h:"骑",hs:"骑",p:"qí",z:"ㄑㄧˊ",e:"to ride",sh:"他骑自行车去学校。",sp:"Tā qí zìxíngchē qù xuéxiào.",sz:"ㄊㄚ ㄑㄧˊ ㄗˋ ㄒㄧㄥˊ ㄔㄜ ㄑㄩˋ ㄒㄩㄝˊ ㄒㄧㄠˋ.",se:"He rides a bike to school."},
+]},
+{n:"Part II · Colours and comparing",w:[
+{h:"颜色",hs:"颜色",p:"yánsè",z:"ㄧㄢˊ ㄙㄜˋ",e:"colour",sh:"你喜欢什么颜色?",sp:"Nǐ xǐhuan shénme yánsè?",sz:"ㄋㄧˇ ㄒㄧˇ ㄏㄨㄢ˙ ㄕㄣˊ ㄇㄜ˙ ㄧㄢˊ ㄙㄜˋ?",se:"What colour do you like?"},
+{h:"红",hs:"红",p:"hóng",z:"ㄏㄨㄥˊ",e:"red",sh:"我最喜欢红色。",sp:"Wǒ zuì xǐhuan hóngsè.",sz:"ㄨㄛˇ ㄗㄨㄟˋ ㄒㄧˇ ㄏㄨㄢ˙ ㄏㄨㄥˊ ㄙㄜˋ.",se:"I like red best."},
+{h:"白",hs:"白",p:"bái",z:"ㄅㄞˊ",e:"white",sh:"那是一件白衬衫。",sp:"Nà shì yí jiàn bái chènshān.",sz:"ㄋㄚˋ ㄕˋ ㄧˊ ㄐㄧㄢˋ ㄅㄞˊ ㄔㄣˋ ㄕㄢ.",se:"That's a white shirt."},
+{h:"黑",hs:"黑",p:"hēi",z:"ㄏㄟ",e:"black",sh:"他的车是黑色的。",sp:"Tā de chē shì hēisè de.",sz:"ㄊㄚ ㄉㄜ˙ ㄔㄜ ㄕˋ ㄏㄟ ㄙㄜˋ ㄉㄜ˙.",se:"His car is black."},
+{h:"蓝",hs:"蓝",p:"lán",z:"ㄌㄢˊ",e:"blue",sh:"今天天很蓝。",sp:"Jīntiān tiān hěn lán.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄊㄧㄢ ㄏㄣˇ ㄌㄢˊ.",se:"The sky is very blue today."},
+{h:"绿",hs:"绿",p:"lǜ",z:"ㄌㄩˋ",e:"green",sh:"绿茶很好喝。",sp:"Lǜchá hěn hǎohē.",sz:"ㄌㄩˋ ㄔㄚˊ ㄏㄣˇ ㄏㄠˇ ㄏㄜ.",se:"Green tea tastes good."},
+{h:"比",hs:"比",p:"bǐ",z:"ㄅㄧˇ",e:"compared with, than",sh:"今天比昨天热。",sp:"Jīntiān bǐ zuótiān rè.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄅㄧˇ ㄗㄨㄛˊ ㄊㄧㄢ ㄖㄜˋ.",se:"Today is hotter than yesterday."},
+{h:"一样",hs:"一样",p:"yíyàng",z:"ㄧˊ ㄧㄤˋ",e:"the same",sh:"我们的书一样。",sp:"Wǒmen de shū yíyàng.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄉㄜ˙ ㄕㄨ ㄧˊ ㄧㄤˋ.",se:"Our books are the same."},
+{h:"最",hs:"最",p:"zuì",z:"ㄗㄨㄟˋ",e:"most, -est",sh:"她是我最好的朋友。",sp:"Tā shì wǒ zuì hǎo de péngyou.",sz:"ㄊㄚ ㄕˋ ㄨㄛˇ ㄗㄨㄟˋ ㄏㄠˇ ㄉㄜ˙ ㄆㄥˊ ㄧㄡ˙.",se:"She is my best friend."},
+{h:"漂亮",hs:"漂亮",p:"piàoliang",z:"ㄆㄧㄠˋ ㄌㄧㄤ˙",e:"pretty, beautiful",sh:"这件衣服很漂亮。",sp:"Zhè jiàn yīfu hěn piàoliang.",sz:"ㄓㄜˋ ㄐㄧㄢˋ ㄧ ㄈㄨ˙ ㄏㄣˇ ㄆㄧㄠˋ ㄌㄧㄤ˙.",se:"This dress is pretty."},
+{h:"真",hs:"真",p:"zhēn",z:"ㄓㄣ",e:"really, truly",sh:"你的房间真干净。",sp:"Nǐ de fángjiān zhēn gānjìng.",sz:"ㄋㄧˇ ㄉㄜ˙ ㄈㄤˊ ㄐㄧㄢ ㄓㄣ ㄍㄢ ㄐㄧㄥˋ.",se:"Your room is really clean."},
+{h:"干净",hs:"干净",p:"gānjìng",z:"ㄍㄢ ㄐㄧㄥˋ",e:"clean",sh:"教室很干净。",sp:"Jiàoshì hěn gānjìng.",sz:"ㄐㄧㄠˋ ㄕˋ ㄏㄣˇ ㄍㄢ ㄐㄧㄥˋ.",se:"The classroom is clean."},
+]},
+]},
+{n:9,t:"我全身都不舒服",tp:"Wǒ quánshēn dōu bù shūfu",te:"I ache all over",parts:[
+{n:"Part I · Symptoms",w:[
+{h:"舒服",hs:"舒服",p:"shūfu",z:"ㄕㄨ ㄈㄨ˙",e:"comfortable, well",sh:"我今天不舒服。",sp:"Wǒ jīntiān bù shūfu.",sz:"ㄨㄛˇ ㄐㄧㄣ ㄊㄧㄢ ㄅㄨˋ ㄕㄨ ㄈㄨ˙.",se:"I don't feel well today."},
+{h:"头",hs:"头",p:"tóu",z:"ㄊㄡˊ",e:"head",sh:"我头很疼。",sp:"Wǒ tóu hěn téng.",sz:"ㄨㄛˇ ㄊㄡˊ ㄏㄣˇ ㄊㄥˊ.",se:"My head really hurts."},
+{h:"疼",hs:"疼",p:"téng",z:"ㄊㄥˊ",e:"to ache, painful",sh:"我的牙疼。",sp:"Wǒ de yá téng.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄧㄚˊ ㄊㄥˊ.",se:"My tooth hurts."},
+{h:"肚子",hs:"肚子",p:"dùzi",z:"ㄉㄨˋ ㄗ˙",e:"belly, stomach",sh:"我肚子疼。",sp:"Wǒ dùzi téng.",sz:"ㄨㄛˇ ㄉㄨˋ ㄗ˙ ㄊㄥˊ.",se:"I have a stomach ache."},
+{h:"眼睛",hs:"眼睛",p:"yǎnjing",z:"ㄧㄢˇ ㄐㄧㄥ˙",e:"eye",sh:"她的眼睛很大。",sp:"Tā de yǎnjing hěn dà.",sz:"ㄊㄚ ㄉㄜ˙ ㄧㄢˇ ㄐㄧㄥ˙ ㄏㄣˇ ㄉㄚˋ.",se:"Her eyes are big."},
+{h:"发烧",hs:"发烧",p:"fāshāo",z:"ㄈㄚ ㄕㄠ",e:"to have a fever",sh:"他昨天发烧了。",sp:"Tā zuótiān fāshāo le.",sz:"ㄊㄚ ㄗㄨㄛˊ ㄊㄧㄢ ㄈㄚ ㄕㄠ ㄌㄜ˙.",se:"He had a fever yesterday."},
+{h:"感冒",hs:"感冒",p:"gǎnmào",z:"ㄍㄢˇ ㄇㄠˋ",e:"to catch a cold",sh:"我感冒了。",sp:"Wǒ gǎnmào le.",sz:"ㄨㄛˇ ㄍㄢˇ ㄇㄠˋ ㄌㄜ˙.",se:"I've caught a cold."},
+{h:"咳嗽",hs:"咳嗽",p:"késou",z:"ㄎㄜˊ ㄙㄡ˙",e:"to cough",sh:"我咳嗽得很厉害。",sp:"Wǒ késou de hěn lìhai.",sz:"ㄨㄛˇ ㄎㄜˊ ㄙㄡ˙ ㄉㄜ˙ ㄏㄣˇ ㄌㄧˋ ㄏㄞ˙.",se:"I'm coughing badly."},
+{h:"生病",hs:"生病",p:"shēngbìng",z:"ㄕㄥ ㄅㄧㄥˋ",e:"to fall ill",sh:"她生病了,没来上课。",sp:"Tā shēngbìng le, méi lái shàngkè.",sz:"ㄊㄚ ㄕㄥ ㄅㄧㄥˋ ㄌㄜ˙, ㄇㄟˊ ㄌㄞˊ ㄕㄤˋ ㄎㄜˋ.",se:"She fell ill and didn't come to class."},
+{h:"全身",hs:"全身",p:"quánshēn",z:"ㄑㄩㄢˊ ㄕㄣ",e:"the whole body",sh:"我全身都不舒服。",sp:"Wǒ quánshēn dōu bù shūfu.",sz:"ㄨㄛˇ ㄑㄩㄢˊ ㄕㄣ ㄉㄡ ㄅㄨˋ ㄕㄨ ㄈㄨ˙.",se:"I feel bad all over."},
+{h:"手",hs:"手",p:"shǒu",z:"ㄕㄡˇ",e:"hand",sh:"吃饭以前要洗手。",sp:"Chī fàn yǐqián yào xǐ shǒu.",sz:"ㄔ ㄈㄢˋ ㄧˇ ㄑㄧㄢˊ ㄧㄠˋ ㄒㄧˇ ㄕㄡˇ.",se:"Wash your hands before eating."},
+]},
+{n:"Part II · At the doctor's",w:[
+{h:"医生",hs:"医生",p:"yīshēng",z:"ㄧ ㄕㄥ",e:"doctor",sh:"医生说我要休息。",sp:"Yīshēng shuō wǒ yào xiūxi.",sz:"ㄧ ㄕㄥ ㄕㄨㄛ ㄨㄛˇ ㄧㄠˋ ㄒㄧㄡ ㄒㄧ˙.",se:"The doctor says I need rest."},
+{h:"看病",hs:"看病",p:"kànbìng",z:"ㄎㄢˋ ㄅㄧㄥˋ",e:"to see a doctor",sh:"我去医院看病。",sp:"Wǒ qù yīyuàn kànbìng.",sz:"ㄨㄛˇ ㄑㄩˋ ㄧ ㄩㄢˋ ㄎㄢˋ ㄅㄧㄥˋ.",se:"I'm going to the hospital."},
+{h:"药",hs:"药",p:"yào",z:"ㄧㄠˋ",e:"medicine",sh:"请按时吃药。",sp:"Qǐng ànshí chī yào.",sz:"ㄑㄧㄥˇ ㄢˋ ㄕˊ ㄔ ㄧㄠˋ.",se:"Please take the medicine on time."},
+{h:"休息",hs:"休息",p:"xiūxi",z:"ㄒㄧㄡ ㄒㄧ˙",e:"to rest",sh:"你应该多休息。",sp:"Nǐ yīnggāi duō xiūxi.",sz:"ㄋㄧˇ ㄧㄥ ㄍㄞ ㄉㄨㄛ ㄒㄧㄡ ㄒㄧ˙.",se:"You should rest more."},
+{h:"别",hs:"别",p:"bié",z:"ㄅㄧㄝˊ",e:"don't",sh:"别喝酒。",sp:"Bié hē jiǔ.",sz:"ㄅㄧㄝˊ ㄏㄜ ㄐㄧㄡˇ.",se:"Don't drink alcohol."},
+{h:"必须",hs:"必须",p:"bìxū",z:"ㄅㄧˋ ㄒㄩ",e:"must, have to",sh:"你必须吃药。",sp:"Nǐ bìxū chī yào.",sz:"ㄋㄧˇ ㄅㄧˋ ㄒㄩ ㄔ ㄧㄠˋ.",se:"You must take the medicine."},
+{h:"好好儿",hs:"好好儿",p:"hǎohāor",z:"hǎohāor",e:"properly, well",sh:"你好好儿休息。",sp:"Nǐ hǎohāor xiūxi.",sz:"ㄋㄧˇ hǎohāor ㄒㄧㄡ ㄒㄧ˙.",se:"Get a proper rest."},
+{h:"着急",hs:"着急",p:"zháojí",z:"ㄓㄠˊ ㄐㄧˊ",e:"to worry, be anxious",sh:"别着急,慢慢来。",sp:"Bié zháojí, mànmàn lái.",sz:"ㄅㄧㄝˊ ㄓㄠˊ ㄐㄧˊ, ㄇㄢˋ ㄇㄢˋ ㄌㄞˊ.",se:"Don't worry, take your time."},
+{h:"没关系",hs:"没关系",p:"méi guānxi",z:"ㄇㄟˊ ㄍㄨㄢ ㄒㄧ˙",e:"it doesn't matter",sh:"没关系,我很好。",sp:"Méi guānxi, wǒ hěn hǎo.",sz:"ㄇㄟˊ ㄍㄨㄢ ㄒㄧ˙, ㄨㄛˇ ㄏㄣˇ ㄏㄠˇ.",se:"It's fine, I'm all right."},
+{h:"次",hs:"次",p:"cì",z:"ㄘˋ",e:"time (occurrence)",sh:"一天吃三次药。",sp:"Yì tiān chī sān cì yào.",sz:"ㄧˋ ㄊㄧㄢ ㄔ ㄙㄢ ㄘˋ ㄧㄠˋ.",se:"Take the medicine three times a day."},
+{h:"以后",hs:"以后",p:"yǐhòu",z:"ㄧˇ ㄏㄡˋ",e:"after, later",sh:"吃饭以后吃药。",sp:"Chī fàn yǐhòu chī yào.",sz:"ㄔ ㄈㄢˋ ㄧˇ ㄏㄡˋ ㄔ ㄧㄠˋ.",se:"Take the medicine after eating."},
+{h:"健康",hs:"健康",p:"jiànkāng",z:"ㄐㄧㄢˋ ㄎㄤ",e:"health; healthy",sh:"他身体很健康。",sp:"Tā shēntǐ hěn jiànkāng.",sz:"ㄊㄚ ㄕㄣ ㄊㄧˇ ㄏㄣˇ ㄐㄧㄢˋ ㄎㄤ.",se:"He is in good health."},
+]},
+]},
+{n:10,t:"我们的教室在二楼",tp:"Wǒmen de jiàoshì zài èr lóu",te:"Our classroom is on the second floor",parts:[
+{n:"Part I · Position words",w:[
+{h:"上",hs:"上",p:"shàng",z:"ㄕㄤˋ",e:"on, above",sh:"书在桌子上。",sp:"Shū zài zhuōzi shang.",sz:"ㄕㄨ ㄗㄞˋ ㄓㄨㄛ ㄗ˙ ㄕㄤ˙.",se:"The book is on the table."},
+{h:"下",hs:"下",p:"xià",z:"ㄒㄧㄚˋ",e:"under, below",sh:"猫在椅子下。",sp:"Māo zài yǐzi xià.",sz:"ㄇㄠ ㄗㄞˋ ㄧˇ ㄗ˙ ㄒㄧㄚˋ.",se:"The cat is under the chair."},
+{h:"前边",hs:"前边",p:"qiánbian",z:"ㄑㄧㄢˊ ㄅㄧㄢ˙",e:"in front",sh:"银行在学校前边。",sp:"Yínháng zài xuéxiào qiánbian.",sz:"ㄧㄣˊ ㄏㄤˊ ㄗㄞˋ ㄒㄩㄝˊ ㄒㄧㄠˋ ㄑㄧㄢˊ ㄅㄧㄢ˙.",se:"The bank is in front of the school."},
+{h:"后边",hs:"后边",p:"hòubian",z:"ㄏㄡˋ ㄅㄧㄢ˙",e:"behind",sh:"食堂在宿舍后边。",sp:"Shítáng zài sùshè hòubian.",sz:"ㄕˊ ㄊㄤˊ ㄗㄞˋ ㄙㄨˋ ㄕㄜˋ ㄏㄡˋ ㄅㄧㄢ˙.",se:"The canteen is behind the dorm."},
+{h:"左边",hs:"左边",p:"zuǒbian",z:"ㄗㄨㄛˇ ㄅㄧㄢ˙",e:"left side",sh:"图书馆在左边。",sp:"Túshūguǎn zài zuǒbian.",sz:"ㄊㄨˊ ㄕㄨ ㄍㄨㄢˇ ㄗㄞˋ ㄗㄨㄛˇ ㄅㄧㄢ˙.",se:"The library is on the left."},
+{h:"右边",hs:"右边",p:"yòubian",z:"ㄧㄡˋ ㄅㄧㄢ˙",e:"right side",sh:"商店在右边。",sp:"Shāngdiàn zài yòubian.",sz:"ㄕㄤ ㄉㄧㄢˋ ㄗㄞˋ ㄧㄡˋ ㄅㄧㄢ˙.",se:"The shop is on the right."},
+{h:"中间",hs:"中间",p:"zhōngjiān",z:"ㄓㄨㄥ ㄐㄧㄢ",e:"between, in the middle",sh:"我坐在他们中间。",sp:"Wǒ zuò zài tāmen zhōngjiān.",sz:"ㄨㄛˇ ㄗㄨㄛˋ ㄗㄞˋ ㄊㄚ ㄇㄣ˙ ㄓㄨㄥ ㄐㄧㄢ.",se:"I sit between them."},
+{h:"对面",hs:"对面",p:"duìmiàn",z:"ㄉㄨㄟˋ ㄇㄧㄢˋ",e:"opposite",sh:"邮局在银行对面。",sp:"Yóujú zài yínháng duìmiàn.",sz:"ㄧㄡˊ ㄐㄩˊ ㄗㄞˋ ㄧㄣˊ ㄏㄤˊ ㄉㄨㄟˋ ㄇㄧㄢˋ.",se:"The post office is opposite the bank."},
+{h:"桌子",hs:"桌子",p:"zhuōzi",z:"ㄓㄨㄛ ㄗ˙",e:"table, desk",sh:"桌子上有一本书。",sp:"Zhuōzi shang yǒu yì běn shū.",sz:"ㄓㄨㄛ ㄗ˙ ㄕㄤ˙ ㄧㄡˇ ㄧˋ ㄅㄣˇ ㄕㄨ.",se:"There's a book on the desk."},
+{h:"椅子",hs:"椅子",p:"yǐzi",z:"ㄧˇ ㄗ˙",e:"chair",sh:"这把椅子很新。",sp:"Zhè bǎ yǐzi hěn xīn.",sz:"ㄓㄜˋ ㄅㄚˇ ㄧˇ ㄗ˙ ㄏㄣˇ ㄒㄧㄣ.",se:"This chair is new."},
+{h:"门",hs:"门",p:"mén",z:"ㄇㄣˊ",e:"door, gate",sh:"请关门。",sp:"Qǐng guān mén.",sz:"ㄑㄧㄥˇ ㄍㄨㄢ ㄇㄣˊ.",se:"Please close the door."},
+{h:"里边",hs:"里边",p:"lǐbian",z:"ㄌㄧˇ ㄅㄧㄢ˙",e:"inside",sh:"教室里边没有人。",sp:"Jiàoshì lǐbian méiyǒu rén.",sz:"ㄐㄧㄠˋ ㄕˋ ㄌㄧˇ ㄅㄧㄢ˙ ㄇㄟˊ ㄧㄡˇ ㄖㄣˊ.",se:"There's nobody inside the classroom."},
+]},
+{n:"Part II · Asking the way, moving things",w:[
+{h:"怎么",hs:"怎么",p:"zěnme",z:"ㄗㄣˇ ㄇㄜ˙",e:"how",sh:"去邮局怎么走?",sp:"Qù yóujú zěnme zǒu?",sz:"ㄑㄩˋ ㄧㄡˊ ㄐㄩˊ ㄗㄣˇ ㄇㄜ˙ ㄗㄡˇ?",se:"How do I get to the post office?"},
+{h:"走",hs:"走",p:"zǒu",z:"ㄗㄡˇ",e:"to walk, to go",sh:"一直往前走。",sp:"Yìzhí wǎng qián zǒu.",sz:"ㄧˋ ㄓˊ ㄨㄤˇ ㄑㄧㄢˊ ㄗㄡˇ.",se:"Walk straight ahead."},
+{h:"往",hs:"往",p:"wǎng",z:"ㄨㄤˇ",e:"towards",sh:"往右拐。",sp:"Wǎng yòu guǎi.",sz:"ㄨㄤˇ ㄧㄡˋ ㄍㄨㄞˇ.",se:"Turn right."},
+{h:"拐",hs:"拐",p:"guǎi",z:"ㄍㄨㄞˇ",e:"to turn",sh:"往左拐就到了。",sp:"Wǎng zuǒ guǎi jiù dào le.",sz:"ㄨㄤˇ ㄗㄨㄛˇ ㄍㄨㄞˇ ㄐㄧㄡˋ ㄉㄠˋ ㄌㄜ˙.",se:"Turn left and you're there."},
+{h:"一直",hs:"一直",p:"yìzhí",z:"ㄧˋ ㄓˊ",e:"straight; continuously",sh:"一直走五分钟。",sp:"Yìzhí zǒu wǔ fēnzhōng.",sz:"ㄧˋ ㄓˊ ㄗㄡˇ ㄨˇ ㄈㄣ ㄓㄨㄥ.",se:"Walk straight for five minutes."},
+{h:"到",hs:"到",p:"dào",z:"ㄉㄠˋ",e:"to arrive, to reach",sh:"你到了吗?",sp:"Nǐ dào le ma?",sz:"ㄋㄧˇ ㄉㄠˋ ㄌㄜ˙ ㄇㄚ˙?",se:"Have you arrived?"},
+{h:"坐",hs:"坐",p:"zuò",z:"ㄗㄨㄛˋ",e:"to sit; to travel by",sh:"请坐这儿。",sp:"Qǐng zuò zhèr.",sz:"ㄑㄧㄥˇ ㄗㄨㄛˋ ㄓㄦˋ.",se:"Please sit here."},
+{h:"开",hs:"开",p:"kāi",z:"ㄎㄞ",e:"to open; to drive",sh:"他开车去上班。",sp:"Tā kāi chē qù shàngbān.",sz:"ㄊㄚ ㄎㄞ ㄔㄜ ㄑㄩˋ ㄕㄤˋ ㄅㄢ.",se:"He drives to work."},
+{h:"拿",hs:"拿",p:"ná",z:"ㄋㄚˊ",e:"to take, to hold",sh:"请拿我的书来。",sp:"Qǐng ná wǒ de shū lái.",sz:"ㄑㄧㄥˇ ㄋㄚˊ ㄨㄛˇ ㄉㄜ˙ ㄕㄨ ㄌㄞˊ.",se:"Please bring my book."},
+{h:"放",hs:"放",p:"fàng",z:"ㄈㄤˋ",e:"to put, to place",sh:"把书放在桌子上。",sp:"Bǎ shū fàng zài zhuōzi shang.",sz:"ㄅㄚˇ ㄕㄨ ㄈㄤˋ ㄗㄞˋ ㄓㄨㄛ ㄗ˙ ㄕㄤ˙.",se:"Put the book on the desk."},
+{h:"把",hs:"把",p:"bǎ",z:"ㄅㄚˇ",e:"particle moving the object forward",sh:"我把门开了。",sp:"Wǒ bǎ mén kāi le.",sz:"ㄨㄛˇ ㄅㄚˇ ㄇㄣˊ ㄎㄞ ㄌㄜ˙.",se:"I opened the door."},
+{h:"找",hs:"找",p:"zhǎo",z:"ㄓㄠˇ",e:"to look for",sh:"我找我的手机。",sp:"Wǒ zhǎo wǒ de shǒujī.",sz:"ㄨㄛˇ ㄓㄠˇ ㄨㄛˇ ㄉㄜ˙ ㄕㄡˇ ㄐㄧ.",se:"I'm looking for my phone."},
+]},
+]},
+{n:11,t:"我坐飞机去上海",tp:"Wǒ zuò fēijī qù Shànghǎi",te:"I'm flying to Shanghai",parts:[
+{n:"Part I · Getting around",w:[
+{h:"飞机",hs:"飞机",p:"fēijī",z:"ㄈㄟ ㄐㄧ",e:"aeroplane",sh:"我坐飞机去上海。",sp:"Wǒ zuò fēijī qù Shànghǎi.",sz:"ㄨㄛˇ ㄗㄨㄛˋ ㄈㄟ ㄐㄧ ㄑㄩˋ ㄕㄤˋ ㄏㄞˇ.",se:"I'm flying to Shanghai."},
+{h:"火车",hs:"火车",p:"huǒchē",z:"ㄏㄨㄛˇ ㄔㄜ",e:"train",sh:"火车八点开。",sp:"Huǒchē bā diǎn kāi.",sz:"ㄏㄨㄛˇ ㄔㄜ ㄅㄚ ㄉㄧㄢˇ ㄎㄞ.",se:"The train leaves at eight."},
+{h:"公共汽车",hs:"公共汽车",p:"gōnggòng qìchē",z:"ㄍㄨㄥ ㄍㄨㄥˋ ㄑㄧˋ ㄔㄜ",e:"bus",sh:"我坐公共汽车上学。",sp:"Wǒ zuò gōnggòng qìchē shàngxué.",sz:"ㄨㄛˇ ㄗㄨㄛˋ ㄍㄨㄥ ㄍㄨㄥˋ ㄑㄧˋ ㄔㄜ ㄕㄤˋ ㄒㄩㄝˊ.",se:"I take the bus to school."},
+{h:"出租车",hs:"出租车",p:"chūzūchē",z:"ㄔㄨ ㄗㄨ ㄔㄜ",e:"taxi",sh:"我们打出租车去机场。",sp:"Wǒmen dǎ chūzūchē qù jīchǎng.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄉㄚˇ ㄔㄨ ㄗㄨ ㄔㄜ ㄑㄩˋ ㄐㄧ ㄔㄤˇ.",se:"We'll take a taxi to the airport."},
+{h:"地铁",hs:"地铁",p:"dìtiě",z:"ㄉㄧˋ ㄊㄧㄝˇ",e:"metro, subway",sh:"坐地铁很快。",sp:"Zuò dìtiě hěn kuài.",sz:"ㄗㄨㄛˋ ㄉㄧˋ ㄊㄧㄝˇ ㄏㄣˇ ㄎㄨㄞˋ.",se:"The metro is fast."},
+{h:"票",hs:"票",p:"piào",z:"ㄆㄧㄠˋ",e:"ticket",sh:"我买了两张票。",sp:"Wǒ mǎi le liǎng zhāng piào.",sz:"ㄨㄛˇ ㄇㄞˇ ㄌㄜ˙ ㄌㄧㄤˇ ㄓㄤ ㄆㄧㄠˋ.",se:"I bought two tickets."},
+{h:"张",hs:"张",p:"zhāng",z:"ㄓㄤ",e:"measure word for flat things",sh:"请给我一张票。",sp:"Qǐng gěi wǒ yì zhāng piào.",sz:"ㄑㄧㄥˇ ㄍㄟˇ ㄨㄛˇ ㄧˋ ㄓㄤ ㄆㄧㄠˋ.",se:"One ticket, please."},
+{h:"机场",hs:"机场",p:"jīchǎng",z:"ㄐㄧ ㄔㄤˇ",e:"airport",sh:"机场离市区很远。",sp:"Jīchǎng lí shìqū hěn yuǎn.",sz:"ㄐㄧ ㄔㄤˇ ㄌㄧˊ ㄕˋ ㄑㄩ ㄏㄣˇ ㄩㄢˇ.",se:"The airport is far from the city."},
+{h:"车站",hs:"车站",p:"chēzhàn",z:"ㄔㄜ ㄓㄢˋ",e:"station, bus stop",sh:"车站就在前边。",sp:"Chēzhàn jiù zài qiánbian.",sz:"ㄔㄜ ㄓㄢˋ ㄐㄧㄡˋ ㄗㄞˋ ㄑㄧㄢˊ ㄅㄧㄢ˙.",se:"The stop is just ahead."},
+{h:"上海",hs:"上海",p:"Shànghǎi",z:"ㄕㄤˋ ㄏㄞˇ",e:"Shanghai",sh:"上海是个大城市。",sp:"Shànghǎi shì ge dà chéngshì.",sz:"ㄕㄤˋ ㄏㄞˇ ㄕˋ ㄍㄜ˙ ㄉㄚˋ ㄔㄥˊ ㄕˋ.",se:"Shanghai is a big city."},
+{h:"北京",hs:"北京",p:"Běijīng",z:"ㄅㄟˇ ㄐㄧㄥ",e:"Beijing",sh:"我明年去北京。",sp:"Wǒ míngnián qù Běijīng.",sz:"ㄨㄛˇ ㄇㄧㄥˊ ㄋㄧㄢˊ ㄑㄩˋ ㄅㄟˇ ㄐㄧㄥ.",se:"I'm going to Beijing next year."},
+{h:"城市",hs:"城市",p:"chéngshì",z:"ㄔㄥˊ ㄕˋ",e:"city",sh:"这个城市很漂亮。",sp:"Zhège chéngshì hěn piàoliang.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄔㄥˊ ㄕˋ ㄏㄣˇ ㄆㄧㄠˋ ㄌㄧㄤ˙.",se:"This city is beautiful."},
+]},
+{n:"Part II · Setting off",w:[
+{h:"买",hs:"买",p:"mǎi",z:"ㄇㄞˇ",e:"to buy",sh:"我买两张火车票。",sp:"Wǒ mǎi liǎng zhāng huǒchē piào.",sz:"ㄨㄛˇ ㄇㄞˇ ㄌㄧㄤˇ ㄓㄤ ㄏㄨㄛˇ ㄔㄜ ㄆㄧㄠˋ.",se:"I'll buy two train tickets."},
+{h:"卖",hs:"卖",p:"mài",z:"ㄇㄞˋ",e:"to sell",sh:"那儿卖水果。",sp:"Nàr mài shuǐguǒ.",sz:"Nàr ㄇㄞˋ ㄕㄨㄟˇ ㄍㄨㄛˇ.",se:"They sell fruit there."},
+{h:"出发",hs:"出发",p:"chūfā",z:"ㄔㄨ ㄈㄚ",e:"to set off",sh:"我们明天早上出发。",sp:"Wǒmen míngtiān zǎoshang chūfā.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄇㄧㄥˊ ㄊㄧㄢ ㄗㄠˇ ㄕㄤ˙ ㄔㄨ ㄈㄚ.",se:"We set off tomorrow morning."},
+{h:"回",hs:"回",p:"huí",z:"ㄏㄨㄟˊ",e:"to return, to go back",sh:"我下午回宿舍。",sp:"Wǒ xiàwǔ huí sùshè.",sz:"ㄨㄛˇ ㄒㄧㄚˋ ㄨˇ ㄏㄨㄟˊ ㄙㄨˋ ㄕㄜˋ.",se:"I'll go back to the dorm this afternoon."},
+{h:"小时",hs:"小时",p:"xiǎoshí",z:"ㄒㄧㄠˇ ㄕˊ",e:"hour (duration)",sh:"坐火车要三个小时。",sp:"Zuò huǒchē yào sān ge xiǎoshí.",sz:"ㄗㄨㄛˋ ㄏㄨㄛˇ ㄔㄜ ㄧㄠˋ ㄙㄢ ㄍㄜ˙ ㄒㄧㄠˇ ㄕˊ.",se:"The train takes three hours."},
+{h:"分钟",hs:"分钟",p:"fēnzhōng",z:"ㄈㄣ ㄓㄨㄥ",e:"minute (duration)",sh:"走十分钟就到了。",sp:"Zǒu shí fēnzhōng jiù dào le.",sz:"ㄗㄡˇ ㄕˊ ㄈㄣ ㄓㄨㄥ ㄐㄧㄡˋ ㄉㄠˋ ㄌㄜ˙.",se:"It's a ten-minute walk."},
+{h:"先",hs:"先",p:"xiān",z:"ㄒㄧㄢ",e:"first, before",sh:"我先去银行。",sp:"Wǒ xiān qù yínháng.",sz:"ㄨㄛˇ ㄒㄧㄢ ㄑㄩˋ ㄧㄣˊ ㄏㄤˊ.",se:"I'll go to the bank first."},
+{h:"然后",hs:"然后",p:"ránhòu",z:"ㄖㄢˊ ㄏㄡˋ",e:"then, afterwards",sh:"然后我们去吃饭。",sp:"Ránhòu wǒmen qù chī fàn.",sz:"ㄖㄢˊ ㄏㄡˋ ㄨㄛˇ ㄇㄣ˙ ㄑㄩˋ ㄔ ㄈㄢˋ.",se:"Then we'll go eat."},
+{h:"准备",hs:"准备",p:"zhǔnbèi",z:"ㄓㄨㄣˇ ㄅㄟˋ",e:"to prepare",sh:"我在准备行李。",sp:"Wǒ zài zhǔnbèi xíngli.",sz:"ㄨㄛˇ ㄗㄞˋ ㄓㄨㄣˇ ㄅㄟˋ ㄒㄧㄥˊ ㄌㄧ˙.",se:"I'm packing my luggage."},
+{h:"行李",hs:"行李",p:"xíngli",z:"ㄒㄧㄥˊ ㄌㄧ˙",e:"luggage",sh:"我的行李很重。",sp:"Wǒ de xíngli hěn zhòng.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄒㄧㄥˊ ㄌㄧ˙ ㄏㄣˇ ㄓㄨㄥˋ.",se:"My luggage is heavy."},
+{h:"重",hs:"重",p:"zhòng",z:"ㄓㄨㄥˋ",e:"heavy",sh:"这个箱子太重了。",sp:"Zhège xiāngzi tài zhòng le.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄒㄧㄤ ㄗ˙ ㄊㄞˋ ㄓㄨㄥˋ ㄌㄜ˙.",se:"This case is too heavy."},
+{h:"护照",hs:"护照",p:"hùzhào",z:"ㄏㄨˋ ㄓㄠˋ",e:"passport",sh:"请给我看你的护照。",sp:"Qǐng gěi wǒ kàn nǐ de hùzhào.",sz:"ㄑㄧㄥˇ ㄍㄟˇ ㄨㄛˇ ㄎㄢˋ ㄋㄧˇ ㄉㄜ˙ ㄏㄨˋ ㄓㄠˋ.",se:"Please show me your passport."},
+]},
+]},
+{n:12,t:"我买了两件毛衣",tp:"Wǒ mǎi le liǎng jiàn máoyī",te:"I bought two sweaters",parts:[
+{n:"Part I · Clothes and sizes",w:[
+{h:"衣服",hs:"衣服",p:"yīfu",z:"ㄧ ㄈㄨ˙",e:"clothes",sh:"这件衣服很漂亮。",sp:"Zhè jiàn yīfu hěn piàoliang.",sz:"ㄓㄜˋ ㄐㄧㄢˋ ㄧ ㄈㄨ˙ ㄏㄣˇ ㄆㄧㄠˋ ㄌㄧㄤ˙.",se:"This garment is lovely."},
+{h:"毛衣",hs:"毛衣",p:"máoyī",z:"ㄇㄠˊ ㄧ",e:"sweater",sh:"我买了两件毛衣。",sp:"Wǒ mǎi le liǎng jiàn máoyī.",sz:"ㄨㄛˇ ㄇㄞˇ ㄌㄜ˙ ㄌㄧㄤˇ ㄐㄧㄢˋ ㄇㄠˊ ㄧ.",se:"I bought two sweaters."},
+{h:"衬衫",hs:"衬衫",p:"chènshān",z:"ㄔㄣˋ ㄕㄢ",e:"shirt, blouse",sh:"这件衬衫是白的。",sp:"Zhè jiàn chènshān shì bái de.",sz:"ㄓㄜˋ ㄐㄧㄢˋ ㄔㄣˋ ㄕㄢ ㄕˋ ㄅㄞˊ ㄉㄜ˙.",se:"This shirt is white."},
+{h:"裤子",hs:"裤子",p:"kùzi",z:"ㄎㄨˋ ㄗ˙",e:"trousers",sh:"这条裤子太长了。",sp:"Zhè tiáo kùzi tài cháng le.",sz:"ㄓㄜˋ ㄊㄧㄠˊ ㄎㄨˋ ㄗ˙ ㄊㄞˋ ㄔㄤˊ ㄌㄜ˙.",se:"These trousers are too long."},
+{h:"鞋",hs:"鞋",p:"xié",z:"ㄒㄧㄝˊ",e:"shoes",sh:"这双鞋很舒服。",sp:"Zhè shuāng xié hěn shūfu.",sz:"ㄓㄜˋ ㄕㄨㄤ ㄒㄧㄝˊ ㄏㄣˇ ㄕㄨ ㄈㄨ˙.",se:"These shoes are comfortable."},
+{h:"件",hs:"件",p:"jiàn",z:"ㄐㄧㄢˋ",e:"measure word for garments",sh:"我要一件毛衣。",sp:"Wǒ yào yí jiàn máoyī.",sz:"ㄨㄛˇ ㄧㄠˋ ㄧˊ ㄐㄧㄢˋ ㄇㄠˊ ㄧ.",se:"I'd like one sweater."},
+{h:"条",hs:"条",p:"tiáo",z:"ㄊㄧㄠˊ",e:"measure word for long things",sh:"我买了一条裤子。",sp:"Wǒ mǎi le yì tiáo kùzi.",sz:"ㄨㄛˇ ㄇㄞˇ ㄌㄜ˙ ㄧˋ ㄊㄧㄠˊ ㄎㄨˋ ㄗ˙.",se:"I bought a pair of trousers."},
+{h:"双",hs:"双",p:"shuāng",z:"ㄕㄨㄤ",e:"pair",sh:"我要一双黑鞋。",sp:"Wǒ yào yì shuāng hēi xié.",sz:"ㄨㄛˇ ㄧㄠˋ ㄧˋ ㄕㄨㄤ ㄏㄟ ㄒㄧㄝˊ.",se:"I'd like a pair of black shoes."},
+{h:"长",hs:"长",p:"cháng",z:"ㄔㄤˊ",e:"long",sh:"这条裙子太长。",sp:"Zhè tiáo qúnzi tài cháng.",sz:"ㄓㄜˋ ㄊㄧㄠˊ ㄑㄩㄣˊ ㄗ˙ ㄊㄞˋ ㄔㄤˊ.",se:"This skirt is too long."},
+{h:"短",hs:"短",p:"duǎn",z:"ㄉㄨㄢˇ",e:"short",sh:"我要短一点儿的。",sp:"Wǒ yào duǎn yìdiǎnr de.",sz:"ㄨㄛˇ ㄧㄠˋ ㄉㄨㄢˇ yìdiǎnr ㄉㄜ˙.",se:"I want a shorter one."},
+{h:"试",hs:"试",p:"shì",z:"ㄕˋ",e:"to try, to try on",sh:"我可以试试吗?",sp:"Wǒ kěyǐ shìshi ma?",sz:"ㄨㄛˇ ㄎㄜˇ ㄧˇ ㄕˋ ㄕ˙ ㄇㄚ˙?",se:"May I try it on?"},
+{h:"大小",hs:"大小",p:"dàxiǎo",z:"ㄉㄚˋ ㄒㄧㄠˇ",e:"size",sh:"这件的大小正好。",sp:"Zhè jiàn de dàxiǎo zhènghǎo.",sz:"ㄓㄜˋ ㄐㄧㄢˋ ㄉㄜ˙ ㄉㄚˋ ㄒㄧㄠˇ ㄓㄥˋ ㄏㄠˇ.",se:"This one's size is just right."},
+]},
+{n:"Part II · At the till",w:[
+{h:"了",hs:"了",p:"le",z:"ㄌㄜ˙",e:"particle marking a completed action",sh:"我买了一本书。",sp:"Wǒ mǎi le yì běn shū.",sz:"ㄨㄛˇ ㄇㄞˇ ㄌㄜ˙ ㄧˋ ㄅㄣˇ ㄕㄨ.",se:"I bought a book."},
+{h:"正好",hs:"正好",p:"zhènghǎo",z:"ㄓㄥˋ ㄏㄠˇ",e:"just right",sh:"这双鞋正好。",sp:"Zhè shuāng xié zhènghǎo.",sz:"ㄓㄜˋ ㄕㄨㄤ ㄒㄧㄝˊ ㄓㄥˋ ㄏㄠˇ.",se:"These shoes fit perfectly."},
+{h:"换",hs:"换",p:"huàn",z:"ㄏㄨㄢˋ",e:"to change, to exchange",sh:"我想换一件大的。",sp:"Wǒ xiǎng huàn yí jiàn dà de.",sz:"ㄨㄛˇ ㄒㄧㄤˇ ㄏㄨㄢˋ ㄧˊ ㄐㄧㄢˋ ㄉㄚˋ ㄉㄜ˙.",se:"I'd like to change it for a bigger one."},
+{h:"打折",hs:"打折",p:"dǎzhé",z:"ㄉㄚˇ ㄓㄜˊ",e:"to give a discount",sh:"今天这儿打折。",sp:"Jīntiān zhèr dǎzhé.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄓㄦˋ ㄉㄚˇ ㄓㄜˊ.",se:"There's a discount here today."},
+{h:"付钱",hs:"付钱",p:"fùqián",z:"ㄈㄨˋ ㄑㄧㄢˊ",e:"to pay",sh:"我在哪儿付钱?",sp:"Wǒ zài nǎr fùqián?",sz:"ㄨㄛˇ ㄗㄞˋ nǎr ㄈㄨˋ ㄑㄧㄢˊ?",se:"Where do I pay?"},
+{h:"现金",hs:"现金",p:"xiànjīn",z:"ㄒㄧㄢˋ ㄐㄧㄣ",e:"cash",sh:"我用现金付。",sp:"Wǒ yòng xiànjīn fù.",sz:"ㄨㄛˇ ㄩㄥˋ ㄒㄧㄢˋ ㄐㄧㄣ ㄈㄨˋ.",se:"I'll pay cash."},
+{h:"信用卡",hs:"信用卡",p:"xìnyòngkǎ",z:"ㄒㄧㄣˋ ㄩㄥˋ ㄎㄚˇ",e:"credit card",sh:"你们收信用卡吗?",sp:"Nǐmen shōu xìnyòngkǎ ma?",sz:"ㄋㄧˇ ㄇㄣ˙ ㄕㄡ ㄒㄧㄣˋ ㄩㄥˋ ㄎㄚˇ ㄇㄚ˙?",se:"Do you take credit cards?"},
+{h:"收",hs:"收",p:"shōu",z:"ㄕㄡ",e:"to accept, to receive",sh:"我们只收现金。",sp:"Wǒmen zhǐ shōu xiànjīn.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄓˇ ㄕㄡ ㄒㄧㄢˋ ㄐㄧㄣ.",se:"We only take cash."},
+{h:"售货员",hs:"售货员",p:"shòuhuòyuán",z:"ㄕㄡˋ ㄏㄨㄛˋ ㄩㄢˊ",e:"shop assistant",sh:"售货员很热情。",sp:"Shòuhuòyuán hěn rèqíng.",sz:"ㄕㄡˋ ㄏㄨㄛˋ ㄩㄢˊ ㄏㄣˇ ㄖㄜˋ ㄑㄧㄥˊ.",se:"The shop assistant is friendly."},
+{h:"商场",hs:"商场",p:"shāngchǎng",z:"ㄕㄤ ㄔㄤˇ",e:"shopping centre",sh:"商场里人很多。",sp:"Shāngchǎng li rén hěn duō.",sz:"ㄕㄤ ㄔㄤˇ ㄌㄧ˙ ㄖㄣˊ ㄏㄣˇ ㄉㄨㄛ.",se:"The mall is crowded."},
+{h:"满意",hs:"满意",p:"mǎnyì",z:"ㄇㄢˇ ㄧˋ",e:"satisfied",sh:"我很满意。",sp:"Wǒ hěn mǎnyì.",sz:"ㄨㄛˇ ㄏㄣˇ ㄇㄢˇ ㄧˋ.",se:"I'm very satisfied."},
+{h:"只",hs:"只",p:"zhǐ",z:"ㄓˇ",e:"only",sh:"我只买一件。",sp:"Wǒ zhǐ mǎi yí jiàn.",sz:"ㄨㄛˇ ㄓˇ ㄇㄞˇ ㄧˊ ㄐㄧㄢˋ.",se:"I'll only buy one."},
+]},
+]},
+{n:13,t:"你的电话号码是多少?",tp:"Nǐ de diànhuà hàomǎ shì duōshao?",te:"What's your phone number?",parts:[
+{n:"Part I · On the phone",w:[
+{h:"电话",hs:"电话",p:"diànhuà",z:"ㄉㄧㄢˋ ㄏㄨㄚˋ",e:"telephone; phone call",sh:"我给你打电话。",sp:"Wǒ gěi nǐ dǎ diànhuà.",sz:"ㄨㄛˇ ㄍㄟˇ ㄋㄧˇ ㄉㄚˇ ㄉㄧㄢˋ ㄏㄨㄚˋ.",se:"I'll call you."},
+{h:"号码",hs:"号码",p:"hàomǎ",z:"ㄏㄠˋ ㄇㄚˇ",e:"number",sh:"你的电话号码是多少?",sp:"Nǐ de diànhuà hàomǎ shì duōshao?",sz:"ㄋㄧˇ ㄉㄜ˙ ㄉㄧㄢˋ ㄏㄨㄚˋ ㄏㄠˋ ㄇㄚˇ ㄕˋ ㄉㄨㄛ ㄕㄠ˙?",se:"What's your phone number?"},
+{h:"打",hs:"打",p:"dǎ",z:"ㄉㄚˇ",e:"to make (a call); to hit",sh:"我给妈妈打电话。",sp:"Wǒ gěi māma dǎ diànhuà.",sz:"ㄨㄛˇ ㄍㄟˇ ㄇㄚ ㄇㄚ˙ ㄉㄚˇ ㄉㄧㄢˋ ㄏㄨㄚˋ.",se:"I'm calling my mother."},
+{h:"喂",hs:"喂",p:"wèi",z:"ㄨㄟˋ",e:"hello (on the phone)",sh:"喂,你好!",sp:"Wéi, nǐ hǎo!",sz:"ㄨㄟˊ, ㄋㄧˇ ㄏㄠˇ!",se:"Hello?"},
+{h:"接",hs:"接",p:"jiē",z:"ㄐㄧㄝ",e:"to answer; to meet",sh:"他没接电话。",sp:"Tā méi jiē diànhuà.",sz:"ㄊㄚ ㄇㄟˊ ㄐㄧㄝ ㄉㄧㄢˋ ㄏㄨㄚˋ.",se:"He didn't answer the phone."},
+{h:"零",hs:"零",p:"líng",z:"ㄌㄧㄥˊ",e:"zero",sh:"我的号码有两个零。",sp:"Wǒ de hàomǎ yǒu liǎng ge líng.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄏㄠˋ ㄇㄚˇ ㄧㄡˇ ㄌㄧㄤˇ ㄍㄜ˙ ㄌㄧㄥˊ.",se:"My number has two zeros."},
+{h:"等",hs:"等",p:"děng",z:"ㄉㄥˇ",e:"to wait",sh:"请等一下。",sp:"Qǐng děng yíxià.",sz:"ㄑㄧㄥˇ ㄉㄥˇ ㄧˊ ㄒㄧㄚˋ.",se:"Please wait a moment."},
+{h:"一下",hs:"一下",p:"yíxià",z:"ㄧˊ ㄒㄧㄚˋ",e:"a moment, briefly",sh:"我看一下你的手机。",sp:"Wǒ kàn yíxià nǐ de shǒujī.",sz:"ㄨㄛˇ ㄎㄢˋ ㄧˊ ㄒㄧㄚˋ ㄋㄧˇ ㄉㄜ˙ ㄕㄡˇ ㄐㄧ.",se:"Let me take a quick look at your phone."},
+{h:"告诉",hs:"告诉",p:"gàosu",z:"ㄍㄠˋ ㄙㄨ˙",e:"to tell",sh:"请告诉我你的号码。",sp:"Qǐng gàosu wǒ nǐ de hàomǎ.",sz:"ㄑㄧㄥˇ ㄍㄠˋ ㄙㄨ˙ ㄨㄛˇ ㄋㄧˇ ㄉㄜ˙ ㄏㄠˋ ㄇㄚˇ.",se:"Please tell me your number."},
+{h:"发",hs:"发",p:"fā",z:"ㄈㄚ",e:"to send",sh:"我给你发短信。",sp:"Wǒ gěi nǐ fā duǎnxìn.",sz:"ㄨㄛˇ ㄍㄟˇ ㄋㄧˇ ㄈㄚ ㄉㄨㄢˇ ㄒㄧㄣˋ.",se:"I'll text you."},
+{h:"短信",hs:"短信",p:"duǎnxìn",z:"ㄉㄨㄢˇ ㄒㄧㄣˋ",e:"text message",sh:"我收到你的短信了。",sp:"Wǒ shōudào nǐ de duǎnxìn le.",sz:"ㄨㄛˇ ㄕㄡ ㄉㄠˋ ㄋㄧˇ ㄉㄜ˙ ㄉㄨㄢˇ ㄒㄧㄣˋ ㄌㄜ˙.",se:"I got your text."},
+{h:"微信",hs:"微信",p:"wēixìn",z:"ㄨㄟ ㄒㄧㄣˋ",e:"WeChat",sh:"你有微信吗?",sp:"Nǐ yǒu wēixìn ma?",sz:"ㄋㄧˇ ㄧㄡˇ ㄨㄟ ㄒㄧㄣˋ ㄇㄚ˙?",se:"Do you have WeChat?"},
+]},
+{n:"Part II · Invitations and plans",w:[
+{h:"请",hs:"请",p:"qǐng",z:"ㄑㄧㄥˇ",e:"to invite; please",sh:"我请你吃饭。",sp:"Wǒ qǐng nǐ chī fàn.",sz:"ㄨㄛˇ ㄑㄧㄥˇ ㄋㄧˇ ㄔ ㄈㄢˋ.",se:"Let me treat you to a meal."},
+{h:"有空",hs:"有空",p:"yǒu kòng",z:"ㄧㄡˇ ㄎㄨㄥˋ",e:"to be free",sh:"你明天有空吗?",sp:"Nǐ míngtiān yǒu kòng ma?",sz:"ㄋㄧˇ ㄇㄧㄥˊ ㄊㄧㄢ ㄧㄡˇ ㄎㄨㄥˋ ㄇㄚ˙?",se:"Are you free tomorrow?"},
+{h:"时间",hs:"时间",p:"shíjiān",z:"ㄕˊ ㄐㄧㄢ",e:"time",sh:"今天我没有时间。",sp:"Jīntiān wǒ méiyǒu shíjiān.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄨㄛˇ ㄇㄟˊ ㄧㄡˇ ㄕˊ ㄐㄧㄢ.",se:"I have no time today."},
+{h:"参加",hs:"参加",p:"cānjiā",z:"ㄘㄢ ㄐㄧㄚ",e:"to take part in",sh:"我要参加他的晚会。",sp:"Wǒ yào cānjiā tā de wǎnhuì.",sz:"ㄨㄛˇ ㄧㄠˋ ㄘㄢ ㄐㄧㄚ ㄊㄚ ㄉㄜ˙ ㄨㄢˇ ㄏㄨㄟˋ.",se:"I'm going to his party."},
+{h:"生日",hs:"生日",p:"shēngrì",z:"ㄕㄥ ㄖˋ",e:"birthday",sh:"明天是我的生日。",sp:"Míngtiān shì wǒ de shēngrì.",sz:"ㄇㄧㄥˊ ㄊㄧㄢ ㄕˋ ㄨㄛˇ ㄉㄜ˙ ㄕㄥ ㄖˋ.",se:"Tomorrow is my birthday."},
+{h:"晚会",hs:"晚会",p:"wǎnhuì",z:"ㄨㄢˇ ㄏㄨㄟˋ",e:"evening party",sh:"晚会七点开始。",sp:"Wǎnhuì qī diǎn kāishǐ.",sz:"ㄨㄢˇ ㄏㄨㄟˋ ㄑㄧ ㄉㄧㄢˇ ㄎㄞ ㄕˇ.",se:"The party starts at seven."},
+{h:"开始",hs:"开始",p:"kāishǐ",z:"ㄎㄞ ㄕˇ",e:"to begin",sh:"电影八点开始。",sp:"Diànyǐng bā diǎn kāishǐ.",sz:"ㄉㄧㄢˋ ㄧㄥˇ ㄅㄚ ㄉㄧㄢˇ ㄎㄞ ㄕˇ.",se:"The film starts at eight."},
+{h:"结束",hs:"结束",p:"jiéshù",z:"ㄐㄧㄝˊ ㄕㄨˋ",e:"to end",sh:"晚会十点结束。",sp:"Wǎnhuì shí diǎn jiéshù.",sz:"ㄨㄢˇ ㄏㄨㄟˋ ㄕˊ ㄉㄧㄢˇ ㄐㄧㄝˊ ㄕㄨˋ.",se:"The party ends at ten."},
+{h:"能",hs:"能",p:"néng",z:"ㄋㄥˊ",e:"can, to be able to",sh:"我今天不能去。",sp:"Wǒ jīntiān bù néng qù.",sz:"ㄨㄛˇ ㄐㄧㄣ ㄊㄧㄢ ㄅㄨˋ ㄋㄥˊ ㄑㄩˋ.",se:"I can't go today."},
+{h:"恐怕",hs:"恐怕",p:"kǒngpà",z:"ㄎㄨㄥˇ ㄆㄚˋ",e:"I'm afraid that",sh:"恐怕我来不了。",sp:"Kǒngpà wǒ lái bu liǎo.",sz:"ㄎㄨㄥˇ ㄆㄚˋ ㄨㄛˇ ㄌㄞˊ ㄅㄨ˙ ㄌㄧㄠˇ.",se:"I'm afraid I can't come."},
+{h:"对不起",hs:"对不起",p:"duìbuqǐ",z:"ㄉㄨㄟˋ ㄅㄨ˙ ㄑㄧˇ",e:"sorry, excuse me",sh:"对不起,我来晚了。",sp:"Duìbuqǐ, wǒ lái wǎn le.",sz:"ㄉㄨㄟˋ ㄅㄨ˙ ㄑㄧˇ, ㄨㄛˇ ㄌㄞˊ ㄨㄢˇ ㄌㄜ˙.",se:"Sorry, I'm late."},
+{h:"欢迎",hs:"欢迎",p:"huānyíng",z:"ㄏㄨㄢ ㄧㄥˊ",e:"to welcome",sh:"欢迎你来我家。",sp:"Huānyíng nǐ lái wǒ jiā.",sz:"ㄏㄨㄢ ㄧㄥˊ ㄋㄧˇ ㄌㄞˊ ㄨㄛˇ ㄐㄧㄚ.",se:"Welcome to my home."},
+]},
+]},
+{n:14,t:"我看过那个电影",tp:"Wǒ kàn guo nàge diànyǐng",te:"I've seen that film",parts:[
+{n:"Part I · Things you've done, things you like",w:[
+{h:"过",hs:"过",p:"guo",z:"ㄍㄨㄛ˙",e:"particle: have experienced",sh:"我看过这个电影。",sp:"Wǒ kàn guo zhège diànyǐng.",sz:"ㄨㄛˇ ㄎㄢˋ ㄍㄨㄛ˙ ㄓㄜˋ ㄍㄜ˙ ㄉㄧㄢˋ ㄧㄥˇ.",se:"I've seen this film."},
+{h:"电影",hs:"电影",p:"diànyǐng",z:"ㄉㄧㄢˋ ㄧㄥˇ",e:"film, movie",sh:"这个电影很好看。",sp:"Zhège diànyǐng hěn hǎokàn.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄉㄧㄢˋ ㄧㄥˇ ㄏㄣˇ ㄏㄠˇ ㄎㄢˋ.",se:"This film is good."},
+{h:"看",hs:"看",p:"kàn",z:"ㄎㄢˋ",e:"to look, watch, read",sh:"我们去看电影吧。",sp:"Wǒmen qù kàn diànyǐng ba.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄑㄩˋ ㄎㄢˋ ㄉㄧㄢˋ ㄧㄥˇ ㄅㄚ˙.",se:"Let's go see a film."},
+{h:"好看",hs:"好看",p:"hǎokàn",z:"ㄏㄠˇ ㄎㄢˋ",e:"good-looking; enjoyable to watch",sh:"那本书很好看。",sp:"Nà běn shū hěn hǎokàn.",sz:"ㄋㄚˋ ㄅㄣˇ ㄕㄨ ㄏㄣˇ ㄏㄠˇ ㄎㄢˋ.",se:"That book is a good read."},
+{h:"音乐",hs:"音乐",p:"yīnyuè",z:"ㄧㄣ ㄩㄝˋ",e:"music",sh:"我喜欢听中国音乐。",sp:"Wǒ xǐhuan tīng Zhōngguó yīnyuè.",sz:"ㄨㄛˇ ㄒㄧˇ ㄏㄨㄢ˙ ㄊㄧㄥ ㄓㄨㄥ ㄍㄨㄛˊ ㄧㄣ ㄩㄝˋ.",se:"I like listening to Chinese music."},
+{h:"唱歌",hs:"唱歌",p:"chànggē",z:"ㄔㄤˋ ㄍㄜ",e:"to sing",sh:"她唱歌唱得很好。",sp:"Tā chànggē chàng de hěn hǎo.",sz:"ㄊㄚ ㄔㄤˋ ㄍㄜ ㄔㄤˋ ㄉㄜ˙ ㄏㄣˇ ㄏㄠˇ.",se:"She sings well."},
+{h:"跳舞",hs:"跳舞",p:"tiàowǔ",z:"ㄊㄧㄠˋ ㄨˇ",e:"to dance",sh:"我不会跳舞。",sp:"Wǒ bú huì tiàowǔ.",sz:"ㄨㄛˇ ㄅㄨˊ ㄏㄨㄟˋ ㄊㄧㄠˋ ㄨˇ.",se:"I can't dance."},
+{h:"运动",hs:"运动",p:"yùndòng",z:"ㄩㄣˋ ㄉㄨㄥˋ",e:"sport; to exercise",sh:"我每天早上运动。",sp:"Wǒ měitiān zǎoshang yùndòng.",sz:"ㄨㄛˇ ㄇㄟˇ ㄊㄧㄢ ㄗㄠˇ ㄕㄤ˙ ㄩㄣˋ ㄉㄨㄥˋ.",se:"I exercise every morning."},
+{h:"足球",hs:"足球",p:"zúqiú",z:"ㄗㄨˊ ㄑㄧㄡˊ",e:"football",sh:"他们在踢足球。",sp:"Tāmen zài tī zúqiú.",sz:"ㄊㄚ ㄇㄣ˙ ㄗㄞˋ ㄊㄧ ㄗㄨˊ ㄑㄧㄡˊ.",se:"They're playing football."},
+{h:"游泳",hs:"游泳",p:"yóuyǒng",z:"ㄧㄡˊ ㄩㄥˇ",e:"to swim",sh:"夏天我常常去游泳。",sp:"Xiàtiān wǒ chángcháng qù yóuyǒng.",sz:"ㄒㄧㄚˋ ㄊㄧㄢ ㄨㄛˇ ㄔㄤˊ ㄔㄤˊ ㄑㄩˋ ㄧㄡˊ ㄩㄥˇ.",se:"I often swim in summer."},
+{h:"爱好",hs:"爱好",p:"àihào",z:"ㄞˋ ㄏㄠˋ",e:"hobby",sh:"我的爱好是看书。",sp:"Wǒ de àihào shì kàn shū.",sz:"ㄨㄛˇ ㄉㄜ˙ ㄞˋ ㄏㄠˋ ㄕˋ ㄎㄢˋ ㄕㄨ.",se:"My hobby is reading."},
+{h:"已经",hs:"已经",p:"yǐjīng",z:"ㄧˇ ㄐㄧㄥ",e:"already",sh:"我已经看过了。",sp:"Wǒ yǐjīng kàn guo le.",sz:"ㄨㄛˇ ㄧˇ ㄐㄧㄥ ㄎㄢˋ ㄍㄨㄛ˙ ㄌㄜ˙.",se:"I've already seen it."},
+]},
+{n:"Part II · Weather and seasons",w:[
+{h:"天气",hs:"天气",p:"tiānqì",z:"ㄊㄧㄢ ㄑㄧˋ",e:"weather",sh:"今天天气很好。",sp:"Jīntiān tiānqì hěn hǎo.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄊㄧㄢ ㄑㄧˋ ㄏㄣˇ ㄏㄠˇ.",se:"The weather is nice today."},
+{h:"热",hs:"热",p:"rè",z:"ㄖㄜˋ",e:"hot",sh:"越南夏天很热。",sp:"Yuènán xiàtiān hěn rè.",sz:"ㄩㄝˋ ㄋㄢˊ ㄒㄧㄚˋ ㄊㄧㄢ ㄏㄣˇ ㄖㄜˋ.",se:"Summer in Vietnam is hot."},
+{h:"冷",hs:"冷",p:"lěng",z:"ㄌㄥˇ",e:"cold",sh:"北京冬天很冷。",sp:"Běijīng dōngtiān hěn lěng.",sz:"ㄅㄟˇ ㄐㄧㄥ ㄉㄨㄥ ㄊㄧㄢ ㄏㄣˇ ㄌㄥˇ.",se:"Winter in Beijing is cold."},
+{h:"下雨",hs:"下雨",p:"xiàyǔ",z:"ㄒㄧㄚˋ ㄩˇ",e:"to rain",sh:"昨天下雨了。",sp:"Zuótiān xiàyǔ le.",sz:"ㄗㄨㄛˊ ㄊㄧㄢ ㄒㄧㄚˋ ㄩˇ ㄌㄜ˙.",se:"It rained yesterday."},
+{h:"下雪",hs:"下雪",p:"xiàxuě",z:"ㄒㄧㄚˋ ㄒㄩㄝˇ",e:"to snow",sh:"冬天这儿下雪。",sp:"Dōngtiān zhèr xiàxuě.",sz:"ㄉㄨㄥ ㄊㄧㄢ ㄓㄦˋ ㄒㄧㄚˋ ㄒㄩㄝˇ.",se:"It snows here in winter."},
+{h:"春天",hs:"春天",p:"chūntiān",z:"ㄔㄨㄣ ㄊㄧㄢ",e:"spring",sh:"春天不冷不热。",sp:"Chūntiān bù lěng bú rè.",sz:"ㄔㄨㄣ ㄊㄧㄢ ㄅㄨˋ ㄌㄥˇ ㄅㄨˊ ㄖㄜˋ.",se:"Spring is neither cold nor hot."},
+{h:"夏天",hs:"夏天",p:"xiàtiān",z:"ㄒㄧㄚˋ ㄊㄧㄢ",e:"summer",sh:"夏天我去海边。",sp:"Xiàtiān wǒ qù hǎibiān.",sz:"ㄒㄧㄚˋ ㄊㄧㄢ ㄨㄛˇ ㄑㄩˋ ㄏㄞˇ ㄅㄧㄢ.",se:"In summer I go to the seaside."},
+{h:"秋天",hs:"秋天",p:"qiūtiān",z:"ㄑㄧㄡ ㄊㄧㄢ",e:"autumn",sh:"秋天天气最好。",sp:"Qiūtiān tiānqì zuì hǎo.",sz:"ㄑㄧㄡ ㄊㄧㄢ ㄊㄧㄢ ㄑㄧˋ ㄗㄨㄟˋ ㄏㄠˇ.",se:"Autumn has the best weather."},
+{h:"冬天",hs:"冬天",p:"dōngtiān",z:"ㄉㄨㄥ ㄊㄧㄢ",e:"winter",sh:"冬天我不想出门。",sp:"Dōngtiān wǒ bù xiǎng chūmén.",sz:"ㄉㄨㄥ ㄊㄧㄢ ㄨㄛˇ ㄅㄨˋ ㄒㄧㄤˇ ㄔㄨ ㄇㄣˊ.",se:"In winter I don't want to go out."},
+{h:"风",hs:"风",p:"fēng",z:"ㄈㄥ",e:"wind",sh:"今天风很大。",sp:"Jīntiān fēng hěn dà.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄈㄥ ㄏㄣˇ ㄉㄚˋ.",se:"It's windy today."},
+{h:"度",hs:"度",p:"dù",z:"ㄉㄨˋ",e:"degree",sh:"今天三十五度。",sp:"Jīntiān sānshíwǔ dù.",sz:"ㄐㄧㄣ ㄊㄧㄢ ㄙㄢ ㄕˊ ㄨˇ ㄉㄨˋ.",se:"It's thirty-five degrees today."},
+{h:"觉得",hs:"觉得",p:"juéde",z:"ㄐㄩㄝˊ ㄉㄜ˙",e:"to feel, to think",sh:"我觉得今天很热。",sp:"Wǒ juéde jīntiān hěn rè.",sz:"ㄨㄛˇ ㄐㄩㄝˊ ㄉㄜ˙ ㄐㄧㄣ ㄊㄧㄢ ㄏㄣˇ ㄖㄜˋ.",se:"I think it's hot today."},
+]},
+]},
+{n:15,t:"我们去长城吧",tp:"Wǒmen qù Chángchéng ba",te:"Let's go to the Great Wall",parts:[
+{n:"Part I · Days out",w:[
+{h:"长城",hs:"长城",p:"Chángchéng",z:"ㄔㄤˊ ㄔㄥˊ",e:"the Great Wall",sh:"我们去长城吧。",sp:"Wǒmen qù Chángchéng ba.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄑㄩˋ ㄔㄤˊ ㄔㄥˊ ㄅㄚ˙.",se:"Let's go to the Great Wall."},
+{h:"吧",hs:"吧",p:"ba",z:"ㄅㄚ˙",e:"particle for suggestions",sh:"我们一起去吧。",sp:"Wǒmen yìqǐ qù ba.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄧˋ ㄑㄧˇ ㄑㄩˋ ㄅㄚ˙.",se:"Let's go together."},
+{h:"玩儿",hs:"玩儿",p:"wánr",z:"wánr",e:"to play, to have fun",sh:"周末我们去公园玩儿。",sp:"Zhōumò wǒmen qù gōngyuán wánr.",sz:"ㄓㄡ ㄇㄛˋ ㄨㄛˇ ㄇㄣ˙ ㄑㄩˋ ㄍㄨㄥ ㄩㄢˊ wánr.",se:"We'll go to the park at the weekend."},
+{h:"公园",hs:"公园",p:"gōngyuán",z:"ㄍㄨㄥ ㄩㄢˊ",e:"park",sh:"公园里人很多。",sp:"Gōngyuán li rén hěn duō.",sz:"ㄍㄨㄥ ㄩㄢˊ ㄌㄧ˙ ㄖㄣˊ ㄏㄣˇ ㄉㄨㄛ.",se:"The park is crowded."},
+{h:"照片",hs:"照片",p:"zhàopiàn",z:"ㄓㄠˋ ㄆㄧㄢˋ",e:"photograph",sh:"我照了很多照片。",sp:"Wǒ zhào le hěn duō zhàopiàn.",sz:"ㄨㄛˇ ㄓㄠˋ ㄌㄜ˙ ㄏㄣˇ ㄉㄨㄛ ㄓㄠˋ ㄆㄧㄢˋ.",se:"I took a lot of photos."},
+{h:"照相",hs:"照相",p:"zhàoxiàng",z:"ㄓㄠˋ ㄒㄧㄤˋ",e:"to take a photo",sh:"我们在这儿照相吧。",sp:"Wǒmen zài zhèr zhàoxiàng ba.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄗㄞˋ ㄓㄦˋ ㄓㄠˋ ㄒㄧㄤˋ ㄅㄚ˙.",se:"Let's take a photo here."},
+{h:"地方",hs:"地方",p:"dìfang",z:"ㄉㄧˋ ㄈㄤ˙",e:"place",sh:"这个地方很有名。",sp:"Zhège dìfang hěn yǒumíng.",sz:"ㄓㄜˋ ㄍㄜ˙ ㄉㄧˋ ㄈㄤ˙ ㄏㄣˇ ㄧㄡˇ ㄇㄧㄥˊ.",se:"This place is famous."},
+{h:"有名",hs:"有名",p:"yǒumíng",z:"ㄧㄡˇ ㄇㄧㄥˊ",e:"famous",sh:"长城很有名。",sp:"Chángchéng hěn yǒumíng.",sz:"ㄔㄤˊ ㄔㄥˊ ㄏㄣˇ ㄧㄡˇ ㄇㄧㄥˊ.",se:"The Great Wall is famous."},
+{h:"周末",hs:"周末",p:"zhōumò",z:"ㄓㄡ ㄇㄛˋ",e:"weekend",sh:"周末你做什么?",sp:"Zhōumò nǐ zuò shénme?",sz:"ㄓㄡ ㄇㄛˋ ㄋㄧˇ ㄗㄨㄛˋ ㄕㄣˊ ㄇㄜ˙?",se:"What do you do at weekends?"},
+{h:"打算",hs:"打算",p:"dǎsuàn",z:"ㄉㄚˇ ㄙㄨㄢˋ",e:"to plan",sh:"我打算去上海。",sp:"Wǒ dǎsuàn qù Shànghǎi.",sz:"ㄨㄛˇ ㄉㄚˇ ㄙㄨㄢˋ ㄑㄩˋ ㄕㄤˋ ㄏㄞˇ.",se:"I plan to go to Shanghai."},
+{h:"旅行",hs:"旅行",p:"lǚxíng",z:"ㄌㄩˇ ㄒㄧㄥˊ",e:"to travel",sh:"我很喜欢旅行。",sp:"Wǒ hěn xǐhuan lǚxíng.",sz:"ㄨㄛˇ ㄏㄣˇ ㄒㄧˇ ㄏㄨㄢ˙ ㄌㄩˇ ㄒㄧㄥˊ.",se:"I love travelling."},
+{h:"风景",hs:"风景",p:"fēngjǐng",z:"ㄈㄥ ㄐㄧㄥˇ",e:"scenery",sh:"那儿的风景很美。",sp:"Nàr de fēngjǐng hěn měi.",sz:"Nàr ㄉㄜ˙ ㄈㄥ ㄐㄧㄥˇ ㄏㄣˇ ㄇㄟˇ.",se:"The scenery there is beautiful."},
+]},
+{n:"Part II · Wishes and farewells",w:[
+{h:"美",hs:"美",p:"měi",z:"ㄇㄟˇ",e:"beautiful",sh:"这儿的风景真美。",sp:"Zhèr de fēngjǐng zhēn měi.",sz:"ㄓㄦˋ ㄉㄜ˙ ㄈㄥ ㄐㄧㄥˇ ㄓㄣ ㄇㄟˇ.",se:"The scenery here is really beautiful."},
+{h:"希望",hs:"希望",p:"xīwàng",z:"ㄒㄧ ㄨㄤˋ",e:"to hope",sh:"希望明年再来。",sp:"Xīwàng míngnián zài lái.",sz:"ㄒㄧ ㄨㄤˋ ㄇㄧㄥˊ ㄋㄧㄢˊ ㄗㄞˋ ㄌㄞˊ.",se:"I hope to come again next year."},
+{h:"帮助",hs:"帮助",p:"bāngzhù",z:"ㄅㄤ ㄓㄨˋ",e:"to help; help",sh:"谢谢你的帮助。",sp:"Xièxie nǐ de bāngzhù.",sz:"ㄒㄧㄝˋ ㄒㄧㄝ˙ ㄋㄧˇ ㄉㄜ˙ ㄅㄤ ㄓㄨˋ.",se:"Thank you for your help."},
+{h:"一定",hs:"一定",p:"yídìng",z:"ㄧˊ ㄉㄧㄥˋ",e:"certainly, definitely",sh:"我一定去。",sp:"Wǒ yídìng qù.",sz:"ㄨㄛˇ ㄧˊ ㄉㄧㄥˋ ㄑㄩˋ.",se:"I'll definitely go."},
+{h:"将来",hs:"将来",p:"jiānglái",z:"ㄐㄧㄤ ㄌㄞˊ",e:"in the future",sh:"将来我想在中国工作。",sp:"Jiānglái wǒ xiǎng zài Zhōngguó gōngzuò.",sz:"ㄐㄧㄤ ㄌㄞˊ ㄨㄛˇ ㄒㄧㄤˇ ㄗㄞˋ ㄓㄨㄥ ㄍㄨㄛˊ ㄍㄨㄥ ㄗㄨㄛˋ.",se:"In future I want to work in China."},
+{h:"祝",hs:"祝",p:"zhù",z:"ㄓㄨˋ",e:"to wish (someone something)",sh:"祝你生日快乐!",sp:"Zhù nǐ shēngrì kuàilè!",sz:"ㄓㄨˋ ㄋㄧˇ ㄕㄥ ㄖˋ ㄎㄨㄞˋ ㄌㄜˋ!",se:"Happy birthday!"},
+{h:"快乐",hs:"快乐",p:"kuàilè",z:"ㄎㄨㄞˋ ㄌㄜˋ",e:"happy, joyful",sh:"祝你们快乐。",sp:"Zhù nǐmen kuàilè.",sz:"ㄓㄨˋ ㄋㄧˇ ㄇㄣ˙ ㄎㄨㄞˋ ㄌㄜˋ.",se:"Wishing you happiness."},
+{h:"保重",hs:"保重",p:"bǎozhòng",z:"ㄅㄠˇ ㄓㄨㄥˋ",e:"take care of yourself",sh:"请多保重。",sp:"Qǐng duō bǎozhòng.",sz:"ㄑㄧㄥˇ ㄉㄨㄛ ㄅㄠˇ ㄓㄨㄥˋ.",se:"Do take care."},
+{h:"路上",hs:"路上",p:"lùshang",z:"ㄌㄨˋ ㄕㄤ˙",e:"on the way, en route",sh:"路上小心。",sp:"Lùshang xiǎoxīn.",sz:"ㄌㄨˋ ㄕㄤ˙ ㄒㄧㄠˇ ㄒㄧㄣ.",se:"Be careful on the way."},
+{h:"小心",hs:"小心",p:"xiǎoxīn",z:"ㄒㄧㄠˇ ㄒㄧㄣ",e:"careful",sh:"过马路要小心。",sp:"Guò mǎlù yào xiǎoxīn.",sz:"ㄍㄨㄛˋ ㄇㄚˇ ㄌㄨˋ ㄧㄠˋ ㄒㄧㄠˇ ㄒㄧㄣ.",se:"Be careful crossing the road."},
+{h:"联系",hs:"联系",p:"liánxì",z:"ㄌㄧㄢˊ ㄒㄧˋ",e:"to keep in touch",sh:"我们常联系。",sp:"Wǒmen cháng liánxì.",sz:"ㄨㄛˇ ㄇㄣ˙ ㄔㄤˊ ㄌㄧㄢˊ ㄒㄧˋ.",se:"Let's keep in touch."},
+{h:"努力",hs:"努力",p:"nǔlì",z:"ㄋㄨˇ ㄌㄧˋ",e:"to work hard",sh:"我要努力学习汉语。",sp:"Wǒ yào nǔlì xuéxí Hànyǔ.",sz:"ㄨㄛˇ ㄧㄠˋ ㄋㄨˇ ㄌㄧˋ ㄒㄩㄝˊ ㄒㄧˊ ㄏㄢˋ ㄩˇ.",se:"I'll work hard at Chinese."},
+]},
+]},
+]}
+]
+/* ================= book metadata ================= */
+const META = {
+  tw1:{
+    lang:'zh-TW', cls:'', zy:true, dual:true,
+    eyebrow:'國立臺灣師範大學《當代中文課程》第一冊 · A Course in Contemporary Chinese, Book 1 · 第 1–15 課',
+    title:'注音・筆順練習本', sub:'Stroke order, zhuyin &amp; real vocabulary — Book 1',
+    note:'Traditional characters lead, with the simplified form noted underneath and 注音 set vertically beside each character. Vocabulary, readings and lesson placement come from the textbook\'s own 生詞索引, checked against a Chinese-English dictionary — not reconstructed from memory. Coverage is partial (see the note on the book-picker page); anything that looked unreliable was left out rather than guessed.',
+    unitCn:'課', unitEn:'LESSON', countWord:'個生詞',
+    foot:'A self-study companion to 《當代中文課程》第一冊, built from the textbook\'s real vocabulary index.',
+  },
+  tw2:{
+    lang:'zh-TW', cls:'', zy:true, dual:true,
+    eyebrow:'國立臺灣師範大學《當代中文課程》第二冊 · A Course in Contemporary Chinese, Book 2 · 第 1–15 課',
+    title:'注音・筆順練習本', sub:'Stroke order, zhuyin &amp; real vocabulary — Book 2',
+    note:'Traditional characters lead, with the simplified form noted underneath and 注音 set vertically beside each character. Vocabulary, readings and lesson placement come from the textbook\'s own 生詞索引, checked against a Chinese-English dictionary — not reconstructed from memory. Coverage is partial (see the note on the book-picker page); anything that looked unreliable was left out rather than guessed.',
+    unitCn:'課', unitEn:'LESSON', countWord:'個生詞',
+    foot:'A self-study companion to 《當代中文課程》第二冊, built from the textbook\'s real vocabulary index.',
+  },
+  cn:{
+    lang:'zh-CN', cls:'book-cn', zy:true, dual:false,
+    eyebrow:'《当代中文》第一册 Contemporary Chinese, Book 1 — Wu Zhongwei, Sinolingua · 第 1–15 课',
+    title:'笔顺练习本', sub:'Stroke order &amp; vocabulary — Book 1',
+    note:'Simplified characters, mainland readings. Word list follows the standard Book 1 syllabus but is reconstructed rather than pulled from a scanned index — treat it as a solid practice set, not a page-for-page match to your copy.',
+    unitCn:'课', unitEn:'UNIT', countWord:'个生词',
+    foot:'A self-study workbook for learners of Mandarin, following the standard Book 1 syllabus.',
+  }
+};
+const RULES_TW = [['Top before bottom','先上後下 — 三'],['Left before right','先左後右 — 川'],['Horizontal before vertical','先橫後豎 — 十'],['Left-falling before right-falling','先撇後捺 — 人'],['Outside before inside','先外後內 — 月'],['Inside before closing the frame','先內後封口 — 國'],['Centre before the two sides','先中間後兩邊 — 小'],['A crossing stroke comes last','貫穿的筆畫最後寫 — 中']];
+const RULES_CN = [['Top before bottom','先上后下 — 三'],['Left before right','先左后右 — 川'],['Horizontal before vertical','先横后竖 — 十'],['Left-falling before right-falling','先撇后捺 — 人'],['Outside before inside','先外后内 — 月'],['Inside before closing the frame','先内后封口 — 国'],['Centre before the two sides','先中间后两边 — 小'],['A crossing stroke comes last','贯穿的笔画最后写 — 中']];
+
+const INITIALS = [['ㄅ','b','波'],['ㄆ','p','坡'],['ㄇ','m','摸'],['ㄈ','f','佛'],
+ ['ㄉ','d','得'],['ㄊ','t','特'],['ㄋ','n','那'],['ㄌ','l','了'],
+ ['ㄍ','g','哥'],['ㄎ','k','課'],['ㄏ','h','喝'],
+ ['ㄐ','j','雞'],['ㄑ','q','七'],['ㄒ','x','西'],
+ ['ㄓ','zh','知'],['ㄔ','ch','吃'],['ㄕ','sh','是'],['ㄖ','r','日'],
+ ['ㄗ','z','字'],['ㄘ','c','次'],['ㄙ','s','四']];
+const FINALS = [['ㄚ','a','啊'],['ㄛ','o','喔'],['ㄜ','e','餓'],['ㄝ','ê','誒'],
+ ['ㄞ','ai','愛'],['ㄟ','ei','黑'],['ㄠ','ao','好'],['ㄡ','ou','有'],
+ ['ㄢ','an','安'],['ㄣ','en','恩'],['ㄤ','ang','忙'],['ㄥ','eng','風'],
+ ['ㄦ','er','二'],['ㄧ','i','衣'],['ㄨ','u','五'],['ㄩ','ü','魚']];
+const TONES = [['ˉ','mā','媽'],['ˊ','má','麻'],['ˇ','mǎ','馬'],['ˋ','mà','罵'],['˙','ma','嗎']];
+
+const SPK = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.4 8.6a4.6 4.6 0 010 6.8M19 6a8 8 0 010 12" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>';
+const CN_NUM = ['零','一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五'];
+
+/* ================= helpers ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cjk = h => [...h].filter(c => /[\u3400-\u9fff]/.test(c));
+const store = {
+  mem:{},
+  async get(k){ try{ if(window.storage){ const r = await window.storage.get(k); return r ? r.value : null; } }catch(e){} return this.mem[k] || null; },
+  async set(k,v){ this.mem[k]=v; try{ if(window.storage) await window.storage.set(k,v); }catch(e){} }
+};
+
+let BOOK = null, UNITS = [], learned = new Set(), total = 0;
+
+/* ================= speech ================= */
+const synth = window.speechSynthesis || null;
+let slow = false;
+
+function zhVoice(){
+  if(!synth) return null;
+  const vs = synth.getVoices() || [];
+  const want = (BOOK ? BOOK.lang : 'zh-CN').toLowerCase();
+  const norm = v => v.lang.toLowerCase().replace('_','-');
+  return vs.find(v => norm(v) === want)
+      || (want === 'zh-tw' ? vs.find(v => /^zh-(tw|hk|hant)/.test(norm(v))) : vs.find(v => /^zh-(cn|hans|sg)/.test(norm(v))))
+      || vs.find(v => /^zh/.test(norm(v))) || null;
+}
+function speak(text, btn){
+  if(!synth || !text) return;
+  try{ synth.cancel(); }catch(e){}
+  const u = new SpeechSynthesisUtterance(text);
+  const v = zhVoice();
+  u.lang = BOOK ? BOOK.lang : 'zh-CN';
+  if(v) u.voice = v;
+  u.rate = slow ? 0.45 : 0.8;
+  if(btn){
+    document.querySelectorAll('.playing').forEach(b => b.classList.remove('playing'));
+    btn.classList.add('playing');
+    const off = () => btn.classList.remove('playing');
+    u.onend = off; u.onerror = off;
+  }
+  synth.speak(u);
+}
+function checkVoice(){
+  const bar = $('#novoice');
+  if(!bar) return;
+  if(!synth){
+    bar.hidden = false;
+    bar.textContent = 'This browser has no speech support, so the speaker buttons are silent. Everything else works.';
+    return;
+  }
+  const v = zhVoice();
+  bar.hidden = !!v;
+  if(!v) bar.innerHTML = 'No Chinese voice found on this device yet — speaker buttons will be silent. On iPad add one under Settings → Accessibility → Spoken Content → Voices → Chinese; on Android install a Chinese voice in Google Text-to-speech.';
+}
+if(synth) synth.addEventListener?.('voiceschanged', checkVoice);
+document.addEventListener('click', e => {
+  const s = e.target.closest('[data-say]');
+  if(s){ e.preventDefault(); speak(s.dataset.say, s); }
+});
+
+/* ================= chooser ================= */
+document.querySelectorAll('.pick').forEach(b => {
+  b.addEventListener('click', () => openBook(b.dataset.book));
+});
+
+async function openBook(id){
+  BOOK = BOOKS.find(b => b.id === id);
+  const m = META[id];
+  BOOK.lang = m.lang;
+  document.body.classList.remove('book-cn');
+  if(m.cls) document.body.classList.add(m.cls);
+  document.documentElement.lang = (id === 'cn') ? 'zh-Hans' : 'zh-Hant';
+  UNITS = BOOK.units;
+  learned = new Set(); total = 0;
+  $('#choose').hidden = true;
+  $('#app').hidden = false;
+  buildMast(id, m);
+  render(m);
+  $('#foot').innerHTML = esc(m.foot) + ' Stroke animations come from the open Hanzi Writer character data and need a connection the first time each character is drawn; the vocabulary works offline. Audio uses your device\'s own Chinese voice. Print this page for a paper copy.';
+  checkVoice();
+  await loadProgress();
+  window.scrollTo(0,0);
+}
+$('#switch').addEventListener('click', () => {
+  try{ synth && synth.cancel(); }catch(e){}
+  $('#app').hidden = true;
+  $('#choose').hidden = false;
+  window.scrollTo(0,0);
+});
+
+/* ================= masthead ================= */
+function buildMast(id, m){
+  const rules = (id === 'cn' ? RULES_CN : RULES_TW).map((r,i) =>
+    `<div class="rule-item"><span class="n">${CN_NUM[i+1]}</span><span class="t">${esc(r[0])}<i>${esc(r[1])}</i></span></div>`).join('');
+  const sndRow = (title, list) => `<div class="chart-row"><h4>${title}</h4><div class="sounds">${
+    list.map(([sym, rom, ch]) =>
+      `<button class="snd" data-say="${esc(ch)}"><span class="sym">${esc(sym)}</span><span class="rom">${esc(rom)}</span><span class="egg">${esc(ch)}</span></button>`
+    ).join('')}</div></div>`;
+
+  $('#mastIn').innerHTML = `
+    <span class="label">${esc(m.eyebrow)}</span>
+    <h1>${esc(m.title)}<span class="en">${m.sub}</span></h1>
+    <p><b>Tap any character</b> to open the practice square: watch the strokes draw themselves, then trace it with your finger. <b>Tap a speaker</b> to hear the word or a sentence read aloud.</p>
+    <p class="small">${m.note}</p>
+    <details class="fold">
+      <summary>The eight rules of stroke order</summary>
+      <div class="rule-grid">${rules}</div>
+    </details>
+    <details class="fold">
+      <summary>Sound chart — tap to listen · 發音表</summary>
+      <p class="chart-note">Every button plays a real word containing that sound, read by your device's Chinese voice. Turn on <b>Slow audio</b> in the toolbar to hear the tones stretched out.</p>
+      ${sndRow('Initials · 聲母', INITIALS)}
+      ${sndRow('Finals · 韻母', FINALS)}
+      ${sndRow('The four tones + neutral · 聲調', TONES)}
+    </details>`;
+}
+
+/* ================= render ================= */
+function zyParts(w){
+  const chars = cjk(w.h), zs = (w.z || '').trim().split(/\s+/).filter(Boolean);
+  return chars.length === zs.length ? zs : chars.map(() => '');
+}
+function cardHTML(w, key, dual){
+  const chars = cjk(w.h), zs = zyParts(w);
+  const tiles = chars.map((c, i) => `<span class="glyph">
+      <button class="sq" data-k="${key}" data-c="${esc(c)}" aria-label="Practise ${esc(c)}"><span>${esc(c)}</span></button>
+      <i class="zy">${esc(zs[i])}</i></span>`).join('');
+  const search = (w.h + ' ' + (w.hs||'') + ' ' + (w.z||'') + ' ' + w.p + ' ' + w.e).toLowerCase();
+  const simpNote = (dual && w.hs && w.hs !== w.h) ? `<div class="simp-note">簡 <b>${esc(w.hs)}</b></div>` : '';
+  const ex = w.sh ? `<div class="ex">
+      <div class="exh"><span>${esc(w.sh)}</span><button class="spk sm" data-say="${esc(w.sh)}" aria-label="Hear this sentence">${SPK}</button></div>
+      ${w.sz ? `<div class="exz">${esc(w.sz)}</div>` : ''}
+      <div class="exp">${esc(w.sp)}</div>
+      <div class="exe">${esc(w.se)}</div>
+    </div>` : '';
+  return `<article class="card" id="${key}" data-s="${esc(search)}">
+    <button class="seal" data-mark="${key}" aria-pressed="false" aria-label="Mark as learned">學</button>
+    <div class="chars">${tiles}</div>
+    ${simpNote}
+    <div class="py"><button class="spk" data-say="${esc(w.h)}" aria-label="Hear ${esc(w.h)}">${SPK}</button><span class="pyt">${esc(w.p)}</span></div>
+    <div class="gl-en">${esc(w.e)}</div>
+    ${ex}
+  </article>`;
+}
+function render(m){
+  const main = $('#main'), rail = $('#rail');
+  main.innerHTML = ''; rail.innerHTML = '';
+  UNITS.forEach((u, ui) => {
+    let n = 0;
+    const parts = u.parts.map((p, pi) => {
+      n += p.w.length;
+      const cards = p.w.map((w, wi) => cardHTML(w, `w${ui}-${pi}-${wi}`, m.dual)).join('');
+      return `<div class="part"><div class="part-bar"><span class="label">${esc(p.n)}</span><span class="line"></span><span class="count">${p.w.length} ${esc(m.countWord)}</span></div><div class="grid">${cards}</div></div>`;
+    }).join('');
+    total += n;
+    const sec = document.createElement('section');
+    sec.className = 'unit'; sec.id = 'u' + u.n; sec.dataset.n = n;
+    sec.innerHTML = `<div class="unit-head">
+        <div class="unit-num">第${CN_NUM[u.n]}${esc(m.unitCn)} · ${esc(m.unitEn)} ${u.n}</div>
+        <h2>${esc(u.t)} <button class="spk sm" data-say="${esc(u.t)}" aria-label="Hear the lesson title">${SPK}</button></h2>
+        <div class="tp">${esc(u.tp)}</div>
+        <div class="gl">${esc(u.te)}</div>
+      </div>${parts}`;
+    main.appendChild(sec);
+    const chip = document.createElement('button');
+    chip.className = 'chip'; chip.dataset.u = u.n;
+    chip.innerHTML = `${u.n} <span class="done" id="done${u.n}">0/${n}</span>`;
+    chip.addEventListener('click', () => sec.scrollIntoView({behavior:'smooth', block:'start'}));
+    rail.appendChild(chip);
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        const n = en.target.id.slice(1);
+        document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-current', c.dataset.u === n ? 'true' : 'false'));
+        const chip = document.querySelector(`.chip[data-u="${n}"]`);
+        if(chip){
+          const want = chip.offsetLeft - rail.clientWidth / 2 + chip.offsetWidth / 2;
+          rail.scrollTo({left:Math.max(0, want), behavior:'smooth'});
+        }
+      }
+    });
+  }, {rootMargin:'-120px 0px -70% 0px'});
+  document.querySelectorAll('.unit').forEach(u => io.observe(u));
+}
+
+/* ================= progress ================= */
+function refreshCounts(){
+  UNITS.forEach(u => {
+    const sec = document.getElementById('u' + u.n);
+    if(!sec) return;
+    document.getElementById('done' + u.n).textContent = sec.querySelectorAll('.card.on').length + '/' + sec.dataset.n;
+  });
+  $('#total').textContent = learned.size + ' / ' + total + ' marked learned';
+}
+async function loadProgress(){
+  const raw = await store.get('workbook3:' + BOOK.id + ':learned');
+  if(raw){
+    try{ JSON.parse(raw).forEach(k => learned.add(k)); }catch(e){}
+    learned.forEach(k => {
+      const c = document.getElementById(k);
+      if(c){ c.classList.add('on'); c.querySelector('.seal').setAttribute('aria-pressed','true'); }
+    });
+  }
+  refreshCounts();
+}
+$('#main').addEventListener('click', e => {
+  const seal = e.target.closest('.seal');
+  if(seal){
+    const key = seal.dataset.mark, card = document.getElementById(key);
+    const on = card.classList.toggle('on');
+    seal.setAttribute('aria-pressed', on ? 'true' : 'false');
+    on ? learned.add(key) : learned.delete(key);
+    store.set('workbook3:' + BOOK.id + ':learned', JSON.stringify([...learned]));
+    refreshCounts();
+    return;
+  }
+  const sq = e.target.closest('.sq');
+  if(sq) openSheet(sq.dataset.k, sq.dataset.c);
+});
+
+/* ================= toggles & search ================= */
+[['#t-zy','hide-zy'],['#t-py','hide-py'],['#t-en','hide-en'],['#t-ex','hide-ex']].forEach(([sel, cls]) => {
+  $(sel).addEventListener('click', () => {
+    const btn = $(sel), on = btn.getAttribute('aria-pressed') === 'true';
+    btn.setAttribute('aria-pressed', on ? 'false' : 'true');
+    document.body.classList.toggle(cls, on);
+  });
+});
+$('#t-slow').addEventListener('click', () => {
+  const btn = $('#t-slow');
+  slow = btn.getAttribute('aria-pressed') !== 'true';
+  btn.setAttribute('aria-pressed', slow ? 'true' : 'false');
+});
+$('#q').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  let hits = 0;
+  document.querySelectorAll('.card').forEach(c => {
+    const show = !q || c.dataset.s.includes(q);
+    c.style.display = show ? '' : 'none';
+    if(show) hits++;
+  });
+  document.querySelectorAll('.part').forEach(p => {
+    p.style.display = [...p.querySelectorAll('.card')].some(c => c.style.display !== 'none') ? '' : 'none';
+  });
+  document.querySelectorAll('.unit').forEach(u => {
+    u.style.display = [...u.querySelectorAll('.part')].some(p => p.style.display !== 'none') ? '' : 'none';
+  });
+  $('#empty').hidden = !(q && hits === 0);
+});
+
+/* ================= practice square ================= */
+const sheet = $('#sheet'), stage = $('#stage'), ghost = $('#ghost'), meta = $('#meta');
+let writer = null, curWord = null, curChars = [], curZy = [], curChar = '', strokeNote = '';
+function wordFromKey(k){
+  const [ui, pi, wi] = k.slice(1).split('-').map(Number);
+  return UNITS[ui].parts[pi].w[wi];
+}
+function mount(ch, sayIt){
+  curChar = ch;
+  const host = $('#writer');
+  host.innerHTML = '';
+  ghost.textContent = '';
+  meta.textContent = 'Loading strokes…';
+  $('#offline').hidden = true;
+  const i = curChars.indexOf(ch);
+  $('#stageZy').textContent = i >= 0 ? (curZy[i] || '') : '';
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.c === ch ? 'true' : 'false'));
+  if(sayIt) speak(ch);
+  if(window.__hwFail || typeof HanziWriter === 'undefined'){ fallback(ch); return; }
+  const size = Math.round(stage.clientWidth);
+  try{
+    writer = HanziWriter.create(host, ch, {
+      width:size, height:size, padding:Math.round(size*0.05),
+      showCharacter:false, showOutline:true,
+      strokeColor:'#161E1A', outlineColor:'#DCE3D8', radicalColor:'#B03A2C',
+      highlightColor:'#B03A2C', drawingColor:'#B03A2C', drawingWidth:Math.round(size/13),
+      strokeAnimationSpeed:1.1, delayBetweenStrokes:260,
+      onLoadCharDataSuccess: data => {
+        strokeNote = `<b>${data.strokes.length}</b> strokes · 畫 — the red strokes are the radical`;
+        meta.innerHTML = strokeNote;
+        writer.animateCharacter();
+      },
+      onLoadCharDataError: () => fallback(ch)
+    });
+  }catch(e){ fallback(ch); }
+}
+function fallback(ch){
+  writer = null; ghost.textContent = ch; meta.textContent = ''; $('#offline').hidden = false;
+}
+function openSheet(key, ch){
+  curWord = wordFromKey(key);
+  curChars = cjk(curWord.h);
+  curZy = zyParts(curWord);
+  $('#sheetTitle').innerHTML = `${esc(curWord.h)} <button class="spk sm" data-say="${esc(curWord.h)}" aria-label="Hear the whole word">${SPK}</button>`;
+  $('#sheetZy').textContent = curWord.z || '';
+  $('#sheetPy').textContent = curWord.p;
+  $('#sheetGl').textContent = curWord.e + (curWord.hs && curWord.hs !== curWord.h ? ' · 簡 ' + curWord.hs : '');
+  $('#tabs').innerHTML = curChars.map(c => `<button class="tab" role="tab" data-c="${esc(c)}" aria-selected="false">${esc(c)}</button>`).join('');
+  $('#note').innerHTML = curWord.sh ? `<div class="exh"><span>${esc(curWord.sh)}</span><button class="spk sm" data-say="${esc(curWord.sh)}" aria-label="Hear this sentence">${SPK}</button></div>${
+    curWord.sz ? `<div class="exz">${esc(curWord.sz)}</div>` : ''}<div class="exp">${esc(curWord.sp)}</div><div class="exe">${esc(curWord.se)}</div>` : '';
+  sheet.hidden = false;
+  document.body.style.overflow = 'hidden';
+  mount(ch, true);
+  $('#close').focus();
+}
+function closeSheet(){
+  try{ synth && synth.cancel(); }catch(e){}
+  sheet.hidden = true;
+  document.body.style.overflow = '';
+  $('#writer').innerHTML = '';
+  writer = null;
+}
+$('#tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if(t) mount(t.dataset.c, true); });
+$('#hear').addEventListener('click', () => speak(curChar));
+$('#play').addEventListener('click', () => {
+  if(!writer) return;
+  try{ writer.cancelQuiz(); }catch(e){}
+  meta.innerHTML = strokeNote;
+  writer.hideCharacter();
+  writer.animateCharacter();
+});
+$('#quiz').addEventListener('click', () => {
+  if(!writer) return;
+  meta.textContent = 'Draw the strokes in order — a hint appears after two misses.';
+  writer.quiz({
+    showHintAfterMisses:2,
+    onMistake: s => { meta.textContent = 'Not that stroke — try stroke ' + (s.strokeNum + 1) + ' again.'; },
+    onComplete: s => {
+      meta.innerHTML = `<b>Done</b> — ${s.totalMistakes === 0 ? 'no mistakes at all.' : s.totalMistakes + ' mistake(s). Trace it once more?'}`;
+      speak(curChar);
+    }
+  });
+});
+$('#clear').addEventListener('click', () => mount(curChar));
+$('#close').addEventListener('click', closeSheet);
+sheet.addEventListener('click', e => { if(e.target === sheet) closeSheet(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && !sheet.hidden) closeSheet(); });
+
+if(window.__hwFail){
+  const alt = document.createElement('script');
+  alt.src = 'https://cdn.jsdelivr.net/npm/hanzi-writer@3.5.0/dist/hanzi-writer.min.js';
+  alt.onload = () => { window.__hwFail = 0; if(!sheet.hidden) mount(curChar); };
+  document.head.appendChild(alt);
+}
+if(synth){ try{ synth.getVoices(); }catch(e){} }
+</script>
+</body>
+</html>
